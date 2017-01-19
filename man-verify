@@ -1,0 +1,9 @@
+#!/bin/bash
+# This script helps to verify re-assembled man pages from tokens.
+
+DIFF_RESULT="$(diff -qrs man-pages-source/ man-pages-manual/ \
+             | grep 'man-pages-[^/]*/man[0-9]')"
+
+echo " PASS: $(grep ' are identical$' <<<"$DIFF_RESULT" | wc -l)"
+echo " FAIL: $(grep ' differ$' <<<"$DIFF_RESULT" | wc -l)"
+echo "ERROR: $(grep '^Only in ' <<<"$DIFF_RESULT" | wc -l)"
