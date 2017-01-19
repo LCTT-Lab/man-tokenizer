@@ -23,12 +23,19 @@ DIFF_RESULT="$(diff -qrs man-pages-source/ man-pages-manual/ \
 
 print_result() { printf "  %-6s : %6d  \n" "$1" "$2"; }
 
+N_PASS="$(grep ' are identical$' <<<"$DIFF_RESULT" | wc -l)"
+N_FAIL="$(grep ' differ$' <<<"$DIFF_RESULT" | wc -l)"
+N_ERROR="$(grep '^Only in ' <<<"$DIFF_RESULT" | wc -l)"
+N_TOTAL="$(wc -l <<<"$DIFF_RESULT")"
+
 echo "==================="
 echo "    TEST RESULT    "
 echo "-------------------"
-print_result "PASS"  "$(grep ' are identical$' <<<"$DIFF_RESULT" | wc -l)"
-print_result "FAIL"  "$(grep ' differ$' <<<"$DIFF_RESULT" | wc -l)"
-print_result "ERROR" "$(grep '^Only in ' <<<"$DIFF_RESULT" | wc -l)"
+print_result "PASS"  "$N_PASS"
+print_result "FAIL"  "$N_FAIL"
+print_result "ERROR" "$N_ERROR"
 echo "-------------------"
-print_result "TOTAL" "$(wc -l <<<"$DIFF_RESULT")"
+print_result "TOTAL" "$N_TOTAL"
 echo "==================="
+
+test "$N_PASS" = "$N_TOTAL"
