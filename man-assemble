@@ -4,10 +4,7 @@
 set -e
 
 process() {
-  while read -r LINE; do
-    [ -z "$LINE" ] && { echo; continue; }
-    sed 's/^[^:]*: |\||$//g' <<<"$LINE" | tr -d '\n'
-  done
+  tr '\n' '\r' | perl -pe 's/[^\r:]*: \|(.*?)\|\r/\1/g' | tr '\r' '\n'
 }
 
 [ -z "$1" ] && process || { cat "$1" | process; }
