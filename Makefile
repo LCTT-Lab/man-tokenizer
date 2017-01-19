@@ -1,7 +1,7 @@
 # Makefile for man-tokenizer project.
 
 .PHONY: all test clean
-.PRECIOUS: man-pages-manual/% man-pages-tokens/%
+.PRECIOUS: man-pages-manual/% man-pages-tokens/%.tokens
 
 TARGET := man.js
 SOURCE := $(TARGET:.js=.jison)
@@ -19,6 +19,7 @@ MAN_MANUAL := $(patsubst man-pages-source%,\
 all: $(TARGET)
 
 test: $(TARGET) $(MAN_MANUAL)
+	find man-pages-manual/ -empty -type f -exec rm '{}' \;
 	$(VERIFY)
 
 clean:
