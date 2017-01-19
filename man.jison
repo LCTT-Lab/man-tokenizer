@@ -4,7 +4,7 @@
 
 %%
 
-[.'][\\]["].*    return 'COMMENT'
+[.']?[\\]["].*   return 'COMMENT'
 [.'][^ \n]+[ ]*  return 'CONTROL'
 [\\]([(]..|.)    return 'SPECIAL'
 [\n]             return 'EOL'
