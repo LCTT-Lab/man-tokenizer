@@ -9,6 +9,7 @@
 [\\]([(]..|.)    return 'SPECIAL'
 [\n]             return 'EOL'
 [^\\\n]+         return 'TEXT'
+[\\]             return 'SPECIAL' // '\' at end of line.
 <<EOF>>          return 'EOF'
 .                return 'INVALID'
 
