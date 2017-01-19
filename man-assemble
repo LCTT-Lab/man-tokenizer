@@ -1,0 +1,7 @@
+#!/bin/bash
+# This script helps to re-assemble tokens back to man pages.
+
+while read -r LINE; do
+  [ -z "$LINE" ] && { echo; continue; }
+  sed 's/^[^:]*: |\||$//g' <<<"$LINE" | tr -d '\n'
+done
