@@ -22,13 +22,17 @@
 %%
 
 [.']?[\\]["].*   return 'COMMENT'
-[.'][^ \n]+[ ]*  return 'CONTROL'
-[\\]([(]..|.)    return 'SPECIAL'
+// https://github.com/zaach/jison/issues/67#issuecomment-31093442
+[.'][^ \n]+[ ]*  %{
+                     this.yy_ = this;
+                     return (this.yylloc.first_column === 0) ? 'CTRL' : 'TEXT';
+                 %}
+[\\]([(]..|.)    return 'SPEC'
 [\n]             return 'EOL'
 [^\\\n]+         return 'TEXT'
-[\\]             return 'SPECIAL' // '\' at end of line.
+[\\]             return 'SPEC' // '\' at end of line.
 <<EOF>>          return 'EOF'
-.                return 'INVALID'
+.                return 'INV'
 
 /lex
 
@@ -54,10 +58,10 @@ e
 t
     : COMMENT
         { $$ = 'COMMENT: |' + yytext + '|'; }
-    | CONTROL
-        { $$ = 'CONTROL: |' + yytext + '|'; }
-    | SPECIAL
-        { $$ = 'SPECIAL: |' + yytext + '|'; }
+    | CTRL
+        { $$ = 'CTRL: |' + yytext + '|'; }
+    | SPEC
+        { $$ = 'SPEC: |' + yytext + '|'; }
     | EOL
         { $$ = ''; }
     | TEXT
