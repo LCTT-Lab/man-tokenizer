@@ -18,12 +18,12 @@
 .PHONY: all test clean
 .PRECIOUS: man-pages-manual/% man-pages-tokens/%.tokens
 
-TARGET := man.js
-SOURCE := $(TARGET:.js=.jison)
+TARGET := man.rb
+SOURCE := $(TARGET:.rb=.y)
 
-NODE := node
+RUBY := ruby
 
-TOKENIZE := $(NODE) $(TARGET)
+TOKENIZE := $(RUBY) $(TARGET)
 ASSEMBLE := ./man-assemble
 VERIFY   := ./man-verify
 
@@ -41,7 +41,7 @@ clean:
 	rm -rf man-pages-tokens/ man-pages-manual/ $(TARGET)
 
 $(TARGET): $(SOURCE)
-	jison $<
+	racc -o $@ $<
 
 man-pages-manual/%: man-pages-tokens/%.tokens
 	@echo Re-assemble manual $(notdir $@) from $(notdir $<)...
