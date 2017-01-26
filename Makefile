@@ -24,7 +24,7 @@ SOURCE := $(TARGET:.rb=.y)
 RUBY := ruby
 
 TOKENIZE := $(RUBY) $(TARGET)
-ASSEMBLE := ./man-assemble
+ASSEMBLE := $(RUBY) man-assemble.rb
 VERIFY   := ./man-verify
 
 MAN_MANUAL := $(patsubst man-pages-source%,\

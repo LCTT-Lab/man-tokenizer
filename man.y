@@ -49,20 +49,13 @@ end
 
 ---- footer
 
-require 'yaml'
+require 'json'
 
 mt = ManTokenizer.new
 input = File.read ARGV[0]
 
 begin
-  mt.parse(input).each do |token|
-    # print (token[:type] == :NEWLINE && "\n" || token[:content])
-    if token[:type] == :NEWLINE
-      puts "\n"
-    else
-      puts "#{token[:type]}: |#{token[:content]}|"
-    end
-  end
+  puts JSON.pretty_generate(mt.parse(input))
 rescue ParseError
   puts $!
 end
