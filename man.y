@@ -17,7 +17,7 @@ end
 ---- inner
 
   def node(type, content)
-    [ type, { type: type, content: content } ]
+    [ type, { 'type' => type.to_s, 'content' => content } ]
   end
   
   def parse(str)
@@ -49,13 +49,32 @@ end
 
 ---- footer
 
-require 'json'
+DEBUG=!!ENV["DEBUG"]
+require (DEBUG and 'yaml' or 'json')
 
 mt = ManTokenizer.new
 input = File.read ARGV[0]
 
 begin
-  puts JSON.pretty_generate(mt.parse(input))
+  raw_tokens = mt.parse input
+
+  tokens = []
+  line_buffer = []
+  raw_tokens.each do |tok|
+    if tok['type'] == 'NEWLINE'
+      tokens.push line_buffer
+      line_buffer = []
+    else
+      line_buffer.push tok
+    end
+  end
+
+  if DEBUG
+    output = tokens.to_yaml.gsub /^---\n/, ''
+  else
+    output = JSON.pretty_generate tokens
+  end
+  puts output
 rescue ParseError
   puts $!
 end
