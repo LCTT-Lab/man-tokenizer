@@ -2,19 +2,28 @@
 
 class ManTokenizer
 rule
-  target: tokens
-  
-  tokens: token { result = [val[0]] }
-        | tokens token { result = val[0] + [val[1]] }
+  target: lines
 
-  token: COMMENT
-       | CONTROL
-       | SPECIAL
-       | NEWLINE
-       | TEXT
+  lines  : line { result = [val[0]] }
+         | lines line { result = val[0] + [val[1]] }
+
+  line   : tokens NEWLINE { result = val[0] }
+         | NEWLINE { result = [] }
+  
+  tokens : token { result = [val[0]] }
+         | tokens token { result = val[0] + [val[1]] }
+
+  token  : COMMENT
+         | CONTROL
+         | ESCAPE
+         | TEXT
 end
 
 ---- inner
+
+  # m_ignore = %w(TH LP RS RE TP)
+  # m_block  = %w(SH BR)
+  # m_inline = %w(B IR I RI)
 
   def node(type, content)
     [ type, { 'type' => type.to_s, 'content' => content } ]
@@ -29,13 +38,13 @@ end
       when /\A[.']../o
         @q.push node(:CONTROL, $&)
       when /\A\\(\(..|.)/o
-        @q.push node(:SPECIAL, $&)
+        @q.push node(:ESCAPE, $&)
       when /\A\n/o
         @q.push node(:NEWLINE, $&)
       when /\A[^\\\n]+/o
         @q.push node(:TEXT, $&)
       when /\A\\/o
-        @q.push node(:SPECIAL, $&)
+        @q.push node(:ESCAPE, $&)
       end
       str = $'
     end
@@ -56,18 +65,7 @@ mt = ManTokenizer.new
 input = File.read ARGV[0]
 
 begin
-  raw_tokens = mt.parse input
-
-  tokens = []
-  line_buffer = []
-  raw_tokens.each do |tok|
-    if tok['type'] == 'NEWLINE'
-      tokens.push line_buffer
-      line_buffer = []
-    else
-      line_buffer.push tok
-    end
-  end
+  tokens = mt.parse input
 
   if DEBUG
     output = tokens.to_yaml.gsub /^---\n/, ''
