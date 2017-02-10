@@ -6,17 +6,25 @@ rule
 
   # Blocks
 
-  blocks        : block { result = [val[0]] }
+  blocks        : block        { result = [val[0]] }
                 | blocks block { result = val[0] + [val[1]] }
 
-  block         : comment_lines
-                | control_lines
-                | content_lines
-                | empty_lines
+  block         : comment_lines {
+                      result = { "type" => "comment", "lines" => val[0] }
+                  }
+                | control_lines {
+                      result = { "type" => "control", "lines" => val[0] }
+                  }
+                | content_lines {
+                      result = { "type" => "content", "lines" => val[0] }
+                  }
+                | empty_lines   {
+                      result = { "type" => "empty",   "lines" => val[0] }
+                  }
 
   # Block --- comment lines
 
-  comment_lines : comment_line { result = [val[0]] }
+  comment_lines : comment_line               { result = [val[0]] }
                 | comment_lines comment_line { result = val[0] + [val[1]] }
 
   comment_line  : COMMENT_BLOCK NEWLINE { result = [val[0]] }
@@ -26,24 +34,24 @@ rule
   control_lines : control_line { result = [val[0]] }
 
   control_line  : CONTROL_BLOCK tokens NEWLINE { result = [val[0]] + val[1] }
-                | CONTROL_BLOCK NEWLINE { result = [val[0]] }
+                | CONTROL_BLOCK NEWLINE        { result = [val[0]] }
 
   # Block --- content lines
 
-  content_lines : content_line { result = [val[0]] }
+  content_lines : content_line               { result = [val[0]] }
                 | content_lines content_line { result = val[0] + [val[1]] }
 
   content_line  : token tokens NEWLINE { result = [val[0]] + val[1] }
-                | token NEWLINE { result = [val[0]] }
+                | token NEWLINE        { result = [val[0]] }
 
   # Block --- empty lines
 
-  empty_lines   : NEWLINE { result = [[]] }
+  empty_lines   : NEWLINE             { result = [[]] }
                 | empty_lines NEWLINE { result = val[0] + [[]] }
 
   # Tokens
 
-  tokens        : token { result = [val[0]] }
+  tokens        : token        { result = [val[0]] }
                 | tokens token { result = val[0] + [val[1]] }
 
   token         : COMMENT_INLINE
@@ -145,8 +153,7 @@ end
 
 ---- footer
 
-DEBUG=!!ENV["DEBUG"]
-require (DEBUG and 'yaml' or 'json')
+require (!!ENV["YAML"] and 'yaml' or 'json')
 
 mt = ManTokenizer.new
 input = File.read ARGV[0]
@@ -154,7 +161,7 @@ input = File.read ARGV[0]
 begin
   tokens = mt.parse input
 
-  if DEBUG
+  if !!ENV["YAML"]
     output = tokens.to_yaml.gsub /^---\n/, ''
   else
     output = JSON.pretty_generate tokens

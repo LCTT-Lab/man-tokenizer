@@ -1,11 +1,11 @@
 require 'json'
 
 input = File.read ARGV[0]
-tokens = JSON.parse(input).flatten 1
+tokens = JSON.parse(input).collect { |block| block['lines'] }.flatten 1
 
 output = tokens.collect do |line|
   line.collect do |token|
-    token["content"]
+    token['content']
   end.join + "\n"
 end.join
 
