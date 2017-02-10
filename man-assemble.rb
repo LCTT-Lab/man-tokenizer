@@ -1,6 +1,16 @@
 require 'json'
 
 input = File.read ARGV[0]
-tokens = JSON.parse input
+tokens = JSON.parse(input).flatten 1
 
-puts tokens.collect { |line| line.collect { |token| token["content"] }.join }
+output = tokens.collect do |line|
+  line.collect do |token|
+    token["content"]
+  end.join + "\n"
+end.join
+
+if ARGV[1] == '-'
+  print output
+else
+  File.write ARGV[1], output
+end

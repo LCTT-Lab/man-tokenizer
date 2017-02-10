@@ -27,9 +27,12 @@ TOKENIZE := $(RUBY) $(TARGET)
 ASSEMBLE := $(RUBY) man-assemble.rb
 VERIFY   := ./man-verify
 
-MAN_MANUAL := $(patsubst man-pages-source%,\
-                         man-pages-manual%,\
-                         $(shell find man-pages-source/man?/ -type f))
+MAN_MANUAL := $(patsubst man-pages-source%, \
+                         man-pages-manual%, \
+                         $(shell find man-pages-source/man?/ -type f \
+                                                             -name '*.?' \
+                          )\
+               )
 
 all: $(TARGET)
 
@@ -46,7 +49,7 @@ $(TARGET): $(SOURCE)
 man-pages-manual/%: man-pages-tokens/%.tokens
 	@echo Re-assemble manual $(notdir $@) from $(notdir $<)...
 	@mkdir -p $(dir $@)
-	$(ASSEMBLE) $< > $@
+	$(ASSEMBLE) $< $@
 
 man-pages-tokens/%.tokens: man-pages-source/% $(TARGET)
 	@echo Generate tokens $(notdir $@) from $(notdir $<)...
