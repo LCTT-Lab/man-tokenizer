@@ -65,13 +65,13 @@ end
   control_tokens = lambda do |type, len|
     "(#{type.select { |ctl| ctl.length == len }.join('|')})"
   end
-  TOK_CONTROL_IGNORE = %w(TH LP RS RE TP)
+  TOK_CONTROL_IGNORE = %w(BI LP RE RS TH TP)
   #REG_CONTROL_IGNORE_1 = /\A[.']#{control_tokens.call TOK_CONTROL_IGNORE, 1}/o
   REG_CONTROL_IGNORE_2 = /\A[.']#{control_tokens.call TOK_CONTROL_IGNORE, 2}/o
-  TOK_CONTROL_BLOCK = %w(SH BR)
+  TOK_CONTROL_BLOCK = %w(SH)
   #REG_CONTROL_BLOCK_1 = /\A[.']#{control_tokens.call TOK_CONTROL_BLOCK, 1}/o
   REG_CONTROL_BLOCK_2 = /\A[.']#{control_tokens.call TOK_CONTROL_BLOCK, 2}/o
-  TOK_CONTROL_INLINE = %w(IR RI B I)
+  TOK_CONTROL_INLINE = %w(B BR I IR RI)
   REG_CONTROL_INLINE_1 = /\A[.']#{control_tokens.call TOK_CONTROL_INLINE, 1}/o
   REG_CONTROL_INLINE_2 = /\A[.']#{control_tokens.call TOK_CONTROL_INLINE, 2}/o
 
