@@ -18,8 +18,10 @@
 
 set -e
 
-DIFF_RESULT="$(diff -qrs man-pages-source/ man-pages-manual/ \
-             | grep 'man-pages-[^/]*/man[0-9]')"
+DIFF_RESULT="$(diff -qrs previews/man-pages-source/ \
+                         previews/man-pages-manual/ 2>/dev/null)" || true
+
+[ -z "$DIFF_RESULT" ] && exit 1
 
 print_result() { printf "  %-6s : %6d  \n" "$1" "$2"; }
 

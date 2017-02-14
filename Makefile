@@ -15,9 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-.PHONY: all test clean
-.PRECIOUS: man-pages-manual/% man-pages-tokens/%.tokens
-
 TARGET := man.rb
 SOURCE := $(TARGET:.rb=.y)
 
@@ -27,23 +24,29 @@ TOKENIZE := $(RUBY) $(TARGET)
 ASSEMBLE := $(RUBY) man-assemble.rb
 VERIFY   := ./man-verify
 
-MAN_MANUAL := $(patsubst man-pages-source%, \
-                         man-pages-manual%, \
-                         $(shell find man-pages-source/man?/ -type f \
-                                                             -name '*.?' \
-                          )\
-               )
+MAN_SOURCE  := $(shell find man-pages-source/man?/ -type f -name '*.?')
+MAN_MANUAL  := $(patsubst man-pages-source%, man-pages-manual%, $(MAN_SOURCE))
+MAN_ALL     := $(MAN_SOURCE) $(MAN_MANUAL)
+MAN_PREVIEW := $(patsubst %, previews/%.txt, $(MAN_ALL))
+
+.PHONY: all test clean
+.PRECIOUS: man-pages-manual/% man-pages-tokens/%.tokens previews/%.txt
 
 all: $(TARGET)
 
-test: $(TARGET) $(MAN_MANUAL)
+test: $(TARGET) $(MAN_PREVIEW)
 	$(VERIFY)
 
 clean:
-	rm -rf man-pages-tokens/ man-pages-manual/ $(TARGET)
+	rm -rf man-pages-tokens/ man-pages-manual/ previews/ $(TARGET)
 
 $(TARGET): $(SOURCE)
 	racc -o $@ $<
+
+previews/%.txt: %
+	@echo Render preview $(notdir $@) from $(notdir $<)...
+	@mkdir -p $(dir $@)
+	env MANWIDTH=80 man -Pcat $< > $@
 
 man-pages-manual/%: man-pages-tokens/%.tokens
 	@echo Re-assemble manual $(notdir $@) from $(notdir $<)...
