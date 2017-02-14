@@ -37,7 +37,6 @@ MAN_MANUAL := $(patsubst man-pages-source%, \
 all: $(TARGET)
 
 test: $(TARGET) $(MAN_MANUAL)
-	find man-pages-manual/ -empty -type f -exec rm '{}' \;
 	$(VERIFY)
 
 clean:
