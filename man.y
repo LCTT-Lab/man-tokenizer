@@ -12,8 +12,8 @@ rule
   block         : comment_lines {
                       result = { "type" => "comment", "lines" => val[0] }
                   }
-                | control_lines {
-                      result = { "type" => "control", "lines" => val[0] }
+                | macro_lines {
+                      result = { "type" => "macro",   "lines" => val[0] }
                   }
                 | content_lines {
                       result = { "type" => "content", "lines" => val[0] }
@@ -27,14 +27,14 @@ rule
   comment_lines : comment_line               { result = [val[0]] }
                 | comment_lines comment_line { result = val[0] + [val[1]] }
 
-  comment_line  : COMMENT_BLOCK NEWLINE { result = [val[0]] }
+  comment_line  : COMMENT_BLOCK NEWLINE      { result = [val[0]] }
 
-  # Block --- control lines
+  # Block --- macro lines
 
-  control_lines : control_line { result = [val[0]] }
+  macro_lines : macro_line { result = [val[0]] }
 
-  control_line  : CONTROL_BLOCK tokens NEWLINE { result = [val[0]] + val[1] }
-                | CONTROL_BLOCK NEWLINE        { result = [val[0]] }
+  macro_line  : MACRO_BLOCK tokens NEWLINE { result = [val[0]] + val[1] }
+              | MACRO_BLOCK NEWLINE        { result = [val[0]] }
 
   # Block --- content lines
 
@@ -55,93 +55,103 @@ rule
                 | tokens token { result = val[0] + [val[1]] }
 
   token         : COMMENT_INLINE
-                | CONTROL_INLINE
+                | MACRO_INLINE
                 | ESCAPE
                 | TEXT
 end
 
 ---- inner
 
-  control_tokens = lambda do |type, len|
-    "(#{type.select { |ctl| ctl.length == len }.join('|')})"
+  macro_tokens = lambda do |type, len|
+    "(#{type.select do |ctl|
+      ctl.length == len
+    end.collect do |token|
+      Regexp.escape token
+    end.join('|')})"
   end
-  TOK_CONTROL_IGNORE = %w(BI LP RE RS TH TP)
-  #REG_CONTROL_IGNORE_1 = /\A[.']#{control_tokens.call TOK_CONTROL_IGNORE, 1}/o
-  REG_CONTROL_IGNORE_2 = /\A[.']#{control_tokens.call TOK_CONTROL_IGNORE, 2}/o
-  TOK_CONTROL_BLOCK = %w(SH)
-  #REG_CONTROL_BLOCK_1 = /\A[.']#{control_tokens.call TOK_CONTROL_BLOCK, 1}/o
-  REG_CONTROL_BLOCK_2 = /\A[.']#{control_tokens.call TOK_CONTROL_BLOCK, 2}/o
-  TOK_CONTROL_INLINE = %w(B BR I IR RI)
-  REG_CONTROL_INLINE_1 = /\A[.']#{control_tokens.call TOK_CONTROL_INLINE, 1}/o
-  REG_CONTROL_INLINE_2 = /\A[.']#{control_tokens.call TOK_CONTROL_INLINE, 2}/o
 
-  def node(type, content)
-    [ type, { 'type' => type.to_s, 'content' => content } ]
+  IGNORE_BLOCK   = %w(. ad BI Bl bp br Bd Bx Dd de ds DT Dt Ed El el fam
+                      fi Fn ft HP hy ie if In in It LP na ne nf nh nr ns
+                      Os P PD PP Pp RE RS so sp ta TH ti TP TS UC)
+  REG_MACRO_IGNORE_BLOCK_1   = /\A[.']#{macro_tokens.call IGNORE_BLOCK,   1}/o
+  REG_MACRO_IGNORE_BLOCK_2   = /\A[.']#{macro_tokens.call IGNORE_BLOCK,   2}/o
+  REG_MACRO_IGNORE_BLOCK_3   = /\A[.']#{macro_tokens.call IGNORE_BLOCK,   3}/o
+
+  CONTENT_BLOCK  = %w(IP SH Sh SS Ss TE)
+  REG_MACRO_CONTENT_BLOCK_2  = /\A[.']#{macro_tokens.call CONTENT_BLOCK,  2}/o
+
+  IGNORE_INLINE  = %w(B BR Dv Fa I IB IR Li Nm RB RI UE UR)
+  REG_MACRO_IGNORE_INLINE_1  = /\A[.']#{macro_tokens.call IGNORE_INLINE,  1}/o
+  REG_MACRO_IGNORE_INLINE_2  = /\A[.']#{macro_tokens.call IGNORE_INLINE,  2}/o
+
+  CONTENT_INLINE = %w(Nd q)
+  REG_MACRO_CONTENT_INLINE_1 = /\A[.']#{macro_tokens.call CONTENT_INLINE, 1}/o
+  REG_MACRO_CONTENT_INLINE_2 = /\A[.']#{macro_tokens.call CONTENT_INLINE, 2}/o
+
+  REG_COMMENT_BLOCK  = /\A[.']\\".*/o
+  REG_COMMENT_INLINE = /\A\\".*/o
+
+  REG_ESCAPE  = /\A\\(\(..|.)/o # FIXME: need handle each escape separately.
+  REG_NEWLINE = /\A\n/o
+  REG_TEXT    = /\A[^\\\n]+/o
+  REG_WARP    = /\A\\/o
+
+  def node(type, content, translatable = nil)
+    ret = [ type, { 'type' => type.to_s, 'content' => content } ]
+    ret[1]['translatable'] = translatable unless translatable.nil?
+    ret
   end
 
   def parse(str)
-    first = true
-    reset = false
+    line_begin = true
     @q = []
     until str.empty?
-      case str
-      when /\A[.']\\".*/o
-        if first
-          first = false
+      match_first = false
+
+      if line_begin
+        match_first = true
+        line_begin = false
+        case str
+        when REG_COMMENT_BLOCK
           @q.push node(:COMMENT_BLOCK, $&)
+        when REG_MACRO_IGNORE_BLOCK_3
+          @q.push node(:MACRO_BLOCK, $&, false)
+        when REG_MACRO_IGNORE_BLOCK_2
+          @q.push node(:MACRO_BLOCK, $&, false)
+        when REG_MACRO_CONTENT_BLOCK_2
+          @q.push node(:MACRO_BLOCK, $&, true)
+        when REG_MACRO_IGNORE_INLINE_2
+          @q.push node(:MACRO_INLINE, $&, false)
+        when REG_MACRO_CONTENT_INLINE_2
+          @q.push node(:MACRO_INLINE, $&, true)
+        when REG_MACRO_IGNORE_BLOCK_1
+          @q.push node(:MACRO_BLOCK, $&, false)
+        when REG_MACRO_IGNORE_INLINE_1
+          @q.push node(:MACRO_INLINE, $&, false)
+        when REG_MACRO_CONTENT_INLINE_1
+          @q.push node(:MACRO_INLINE, $&, true)
         else
-          # For text end with a '.' followed by inline comment.
-          @q.push node(:TEXT, '.')
-          @q.push node(:COMMENT_INLINE, $&[1..-1])
+          match_first = false
         end
-      when REG_CONTROL_INLINE_2
-        @q.push node(:CONTROL_INLINE, $&)
-      when REG_CONTROL_BLOCK_2
-        if first
-          first = false
-          @q.push node(:CONTROL_BLOCK, $&)
-        else
-          # FIXME: handle control block not at beginning of the line.
-          @q.push node(:TEXT, $&) # FIXME: parse as text for now.
-        end
-      when REG_CONTROL_IGNORE_2
-        # FIXME: add new syntax rules.
-        if first
-          first = false
-          @q.push node(:CONTROL_BLOCK, $&)
-        else
-          # FIXME: handle control block not at beginning of the line.
-          @q.push node(:TEXT, $&) # FIXME: parse as text for now.
-        end
-      when REG_CONTROL_INLINE_1
-        @q.push node(:CONTROL_INLINE, $&)
-      when /\A[.'][A-Z]{1,2}/o
-        # FIXME: don't trait other control as block token.
-        if first
-          first = false
-          @q.push node(:CONTROL_BLOCK, $&)
-        else
-          # FIXME: handle control block not at beginning of the line.
-          @q.push node(:TEXT, $&) # FIXME: parse as text for now.
-        end
-      when /\A\\".*/o
-        @q.push node(:COMMENT_INLINE, $&)
-      when /\A\\(\(..|.)/o
-        @q.push node(:ESCAPE, $&)
-      when /\A\n/o
-        @q.push node(:NEWLINE, $&)
-        reset = true
-      when /\A[^\\\n]+/o
-        @q.push node(:TEXT, $&)
-      when /\A\\/o
-        @q.push node(:ESCAPE, $&)
       end
+
+      if not match_first
+        case str
+        when REG_COMMENT_INLINE
+          @q.push node(:COMMENT_INLINE, $&)
+        when REG_ESCAPE
+          @q.push node(:ESCAPE, $&)
+        when REG_NEWLINE
+          @q.push node(:NEWLINE, $&)
+          line_begin = true
+        when REG_TEXT
+          @q.push node(:TEXT, $&)
+        when REG_WARP
+          @q.push node(:ESCAPE, $&)
+        end
+      end
+
       str = $'
-      first = false
-      if reset
-        reset = false
-        first = true
-      end
     end
     @q.push [false, '$end']
     do_parse
