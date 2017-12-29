@@ -26,16 +26,20 @@ VERIFY   := ./man-verify
 
 MAN_SOURCE  := $(shell find man-pages-source/man?/ -type f -name '*.?')
 MAN_MANUAL  := $(patsubst man-pages-source%, man-pages-manual%, $(MAN_SOURCE))
+MAN_TOKENS  := $(patsubst man-pages-source%, man-pages-tokens%.tokens, \
+                          $(MAN_SOURCE))
 MAN_ALL     := $(MAN_SOURCE) $(MAN_MANUAL)
 MAN_PREVIEW := $(patsubst %, previews/%.txt, $(MAN_ALL))
 
-.PHONY: all test clean
+.PHONY: all test tokenize clean
 .PRECIOUS: man-pages-manual/% man-pages-tokens/%.tokens previews/%.txt
 
 all: $(TARGET)
 
 test: $(TARGET) $(MAN_PREVIEW)
 	$(VERIFY)
+
+tokenize: $(TARGET) $(MAN_TOKENS)
 
 clean:
 	rm -rf man-pages-tokens/ man-pages-manual/ previews/ $(TARGET)
