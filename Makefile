@@ -23,7 +23,7 @@ SOURCE := $(TARGET:.rb=.y)
 
 RUBY := ruby
 
-TOKENIZE := $(RUBY) $(TARGET)
+TOKENIZE := $(RUBY) man-tokenize.rb
 ASSEMBLE := $(RUBY) man-assemble.rb
 VERIFY   := ./man-verify
 
