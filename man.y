@@ -55,3 +55,16 @@ end
   def next_token
     @q.shift
   end
+
+  def self.assemble tokens
+    tokens.collect do |line|
+      line.collect do |token|
+        token["content"]
+      end.join.concat "\n"
+    end.join
+  end
+
+  def self.tokenize inputs
+    mt = ManTokenizer.new
+    mt.parse inputs
+  end

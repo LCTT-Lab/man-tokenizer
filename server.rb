@@ -6,20 +6,38 @@ require './man'
 
 class MyServlet < WEBrick::HTTPServlet::AbstractServlet
   def do_POST request, response
-    begin
-      mt = ManTokenizer.new
-      tokens = mt.parse request.query['file']
+    file = request.query['file']
+    return if file.nil?
+    use_yaml = !!request.query['yaml']
+
+    status = 200
+    case request.path
+    when '/tokenize'
+      begin
+        tokens = ManTokenizer.tokenize file
+      rescue ParseError
+        status = 500
+        body = $!
+	return
+      end
 
       output = JSON.pretty_generate tokens
-      if request.query['debug']
-        output = JSON.parse(output).to_yaml.gsub /^---\n/, ''
+      output = JSON.parse(output).to_yaml.gsub /^---\n/, '' if use_yaml
+    when '/assemble'
+      if use_yaml
+        tokens = YAML.load file
+      else
+        tokens = JSON.parse file
       end
-      response.body = output
-      response.status = 200
-    rescue ParseError
-      response.status = 500
-      response.body = $!
+
+      output = ManTokenizer.assemble tokens
+    else
+      status = 404
+      output = 'Not Found'
     end
+
+    response.status = status
+    response.body = output
   end
 end
 
