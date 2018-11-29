@@ -2,5 +2,7 @@ require 'json'
 
 token_dir = ARGV[0]
 
-index_json = Dir["#{token_dir}/*/*.json"].to_json
-File.write "#{token_dir}/index.json", index_json
+index_list = Dir["#{token_dir}/*/*.json"].map do |file|
+  file.gsub /^[^\/]*\//, ''
+end
+File.write "#{token_dir}/index.json", JSON.pretty_generate(index_list)
