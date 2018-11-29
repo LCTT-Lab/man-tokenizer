@@ -26,13 +26,13 @@ VERIFY   := ./man-verify
 
 MAN_SOURCE  := $(shell find man-pages-source/man?/ -type f -name '*.?')
 MAN_MANUAL  := $(patsubst man-pages-source%, man-pages-manual%, $(MAN_SOURCE))
-MAN_TOKENS  := $(patsubst man-pages-source%, man-pages-tokens%.tokens, \
+MAN_TOKENS  := $(patsubst man-pages-source%, man-pages-tokens%.json, \
                           $(MAN_SOURCE))
 MAN_ALL     := $(MAN_SOURCE) $(MAN_MANUAL)
 MAN_PREVIEW := $(patsubst %, previews/%.txt, $(MAN_ALL))
 
 .PHONY: all test tokenize clean
-.PRECIOUS: man-pages-manual/% man-pages-tokens/%.tokens previews/%.txt
+.PRECIOUS: man-pages-manual/% man-pages-tokens/%.json previews/%.txt
 
 all: $(TARGET)
 
@@ -52,12 +52,12 @@ previews/%.txt: %
 	@mkdir -p $(dir $@)
 	env MANWIDTH=80 man -Pcat $< > $@
 
-man-pages-manual/%: man-pages-tokens/%.tokens
+man-pages-manual/%: man-pages-tokens/%.json
 	@echo Re-assemble manual $(notdir $@) from $(notdir $<)...
 	@mkdir -p $(dir $@)
 	$(ASSEMBLE) $< $@
 
-man-pages-tokens/%.tokens: man-pages-source/% $(TARGET)
+man-pages-tokens/%.json: man-pages-source/% $(TARGET)
 	@echo Generate tokens $(notdir $@) from $(notdir $<)...
 	@mkdir -p $(dir $@)
 	$(TOKENIZE) $< > $@
