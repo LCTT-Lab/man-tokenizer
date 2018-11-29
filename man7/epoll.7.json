@@ -1,0 +1,5587 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  Copyright (C) 2003  Davide Libenzi"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPLv2+_SW_3_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  This program is free software; you can redistribute it and/or modify"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  it under the terms of the GNU General Public License as published by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  the Free Software Foundation; either version 2 of the License, or"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  (at your option) any later version."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  This program is distributed in the hope that it will be useful,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  but WITHOUT ANY WARRANTY; without even the implied warranty of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  GNU General Public License for more details."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" You should have received a copy of the GNU General Public"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" License along with this manual; if not, see"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" <http://www.gnu.org/licenses/>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  Davide Libenzi <davidel@xmailserver.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLL 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "epoll "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " I/O event notification facility"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/epoll.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API performs a similar task to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2):"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "monitoring multiple file descriptors to see if I/O is possible on any of them."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API can be used either as an edge-triggered or a level-triggered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface and scales well to large numbers of watched file descriptors."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The central concept of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API is the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " instance ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an in-kernel data structure which, from a user-space perspective,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be considered as a container for two lists:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " interest"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "list (sometimes also called the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set): the set of file descriptors that the process has registered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an interest in monitoring."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ready"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "list: the set of file descriptors that are \"ready\" for I/O."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The ready list is a subset of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or, more precisely, a set of references to)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the file descriptors in the interest list that is dynamically populated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by the kernel as a result of I/O activity on those file descriptors."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following system calls are provided to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "create and manage an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_create (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creates a new"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance and returns a file descriptor referring to that instance."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The more recent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_create1 (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "extends the functionality of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_create (2).)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Interest in particular file descriptors is then registered via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which adds items to the interest list of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "waits for I/O events,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "blocking the calling thread if no events are currently available."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This system call can be thought of as fetching items from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the ready list of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Level-triggered and edge-triggered"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event distribution interface is able to behave both as edge-triggered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(ET) and as level-triggered (LT)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The difference between the two mechanisms"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be described as follows."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this scenario happens:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 1. 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor that represents the read side of a pipe"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( rfd )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is registered on the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A pipe writer writes 2"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "kB of data on the write side of the pipe."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 3."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is done that will return"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rfd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as a ready file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 4."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The pipe reader reads 1"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "kB of data from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rfd ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 5."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is done."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rfd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor has been added to the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(edge-triggered)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag, the call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "done in step"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 5"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will probably hang despite the available data still present in the file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "input buffer;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "meanwhile the remote peer might be expecting a response based on the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "data it already sent."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The reason for this is that edge-triggered mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "delivers events only when changes occur on the monitored file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "So, in step"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 5"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the caller might end up waiting for some data that is already present inside"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the input buffer."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the above example, an event on"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rfd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be generated because of the write done in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 2"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the event is consumed in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 3 ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since the read operation done in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "does not consume the whole buffer data, the call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "done in step"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 5"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "might block indefinitely."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An application that employs the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag should use nonblocking file descriptors to avoid having a blocking"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "read or write starve a task that is handling multiple file descriptors."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The suggested way to use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as an edge-triggered"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( EPOLLET )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface is as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " i"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with nonblocking file descriptors; and"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ii"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by waiting for an event only after"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "return"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By contrast, when used as a level-triggered interface"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(the default, when"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not specified),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is simply a faster"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and can be used wherever the latter is used since it shares the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "same semantics."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since even with edge-triggered"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "multiple events can be generated upon receipt of multiple chunks of data,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the caller has the option to specify the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLONESHOT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag, to tell"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to disable the associated file descriptor after the receipt of an event with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLONESHOT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is specified,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is the caller's responsibility to rearm the file descriptor using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLL_CTL_MOD ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If multiple threads"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or processes, if child processes have inherited the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor across"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are blocked in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "waiting on the same the same epoll file descriptor and a file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the interest list that is marked for edge-triggered"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( EPOLLET )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "notification becomes ready,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "just one of the threads (or processes) is awoken from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This provides a useful optimization for avoiding \"thundering herd\" wake-ups"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in some scenarios."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Interaction with autosleep"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the system is in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " autosleep"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mode via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /sys/power/autosleep"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an event happens which wakes the device from sleep, the device"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "driver will keep the device awake only until that event is queued."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To keep the device awake until the event has been processed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is necessary to use the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLWAKEUP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLWAKEUP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is set in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field for a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"struct epoll_event\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the system will be kept awake from the moment the event is queued,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "through the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call which returns the event until the subsequent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the event should keep the system awake beyond that time,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then a separate"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wake_lock"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should be taken before the second"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc interfaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following interfaces can be used to limit the amount of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel memory consumed by epoll:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Following was added in 2.6.28, but them removed in 2.6.29"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .TP"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .IR /proc/sys/fs/epoll/max_user_instances \" (since Linux 2.6.28)\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This specifies an upper limit on the number of epoll instances"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" that can be created per real user ID."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/fs/epoll/max_user_watches \" (since Linux 2.6.28)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This specifies a limit on the total number of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptors that a user can register across"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all epoll instances on the system."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The limit is per real user ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each registered file descriptor costs roughly 90 bytes on a 32-bit kernel,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and roughly 160 bytes on a 64-bit kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Currently,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2.6.29 (in 2.6.28, the default was 1/32 of lowmem)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the default value for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " max_user_watches"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is 1/25 (4%) of the available low memory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "divided by the registration cost in bytes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Example for suggested usage"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "While the usage of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when employed as a level-triggered interface does have the same"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "semantics as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the edge-triggered usage requires more clarification to avoid stalls"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the application event loop."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this example, listener is a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nonblocking socket on which"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " listen (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has been called."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The function"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " do_use_fd()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "uses the new ready file descriptor until"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is returned by either"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An event-driven state machine application should, after having received"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "record its current state so that at the next call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " do_use_fd()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it will continue to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from where it stopped before."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define MAX_EVENTS 10"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct epoll_event ev, events[MAX_EVENTS];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "int listen_sock, conn_sock, nfds, epollfd;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "/* Code to set up listening socket, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "listen_sock"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   (socket(), bind(), listen()) omitted */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "epollfd = epoll_create1(0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if (epollfd == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    perror(\"epoll_create1\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ev.events = EPOLLIN;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ev.data.fd = listen_sock;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if (epoll_ctl(epollfd, EPOLL_CTL_ADD, listen_sock, &ev) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    perror(\"epoll_ctl: listen_sock\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "for (;;) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    nfds = epoll_wait(epollfd, events, MAX_EVENTS, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (nfds == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        perror(\"epoll_wait\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    for (n = 0; n < nfds; ++n) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (events[n].data.fd == listen_sock) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            conn_sock = accept(listen_sock,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                               (struct sockaddr *) &addr, &addrlen);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (conn_sock == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                perror(\"accept\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            setnonblocking(conn_sock);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            ev.events = EPOLLIN | EPOLLET;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            ev.data.fd = conn_sock;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (epoll_ctl(epollfd, EPOLL_CTL_ADD, conn_sock,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        &ev) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                perror(\"epoll_ctl: conn_sock\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        } else {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            do_use_fd(events[n].data.fd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When used as an edge-triggered interface, for performance reasons, it is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "possible to add the file descriptor inside the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( EPOLL_CTL_ADD )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "once by specifying"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( EPOLLIN | EPOLLOUT )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This allows you to avoid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "continuously switching between"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLOUT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLL_CTL_MOD ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Questions and answers"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 0. 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "What is the key used to distinguish the file descriptors registered in an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interest list?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The key is the combination of the file descriptor number and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the open file description"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(also known as an \"open file handle\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel's internal representation of an open file)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 1."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "What happens if you register the same file descriptor on an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance twice?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "You will probably get"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EEXIST ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, it is possible to add a duplicate"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( dup (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dup2 (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " F_DUPFD )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor to the same"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" But a file descriptor duplicated by fork(2) can't be added to the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" set, because the [file *, fd] pair is already in the epoll set."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" That is a somewhat ugly inconsistency.  On the one hand, a child process"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" cannot add the duplicate file descriptor to the epoll set.  (In every"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" other case that I can think of, file descriptors duplicated by fork have"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" similar semantics to file descriptors duplicated by dup() and friends.)  On"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the other hand, the very fact that the child has a duplicate of the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" file descriptor means that even if the parent closes its file descriptor,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" then epoll_wait() in the parent will continue to receive notifications for"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" that file descriptor because of the duplicated file descriptor in the child."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See http://thread.gmane.org/gmane.linux.kernel/596462/"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \"epoll design problems with common fork/exec patterns\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" mtk, Feb 2008"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This can be a useful technique for filtering events,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the duplicate file descriptors are registered with different"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "masks."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Can two"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instances wait for the same file descriptor?"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If so, are events reported to both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptors?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Yes, and events would be reported to both."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, careful programming may be needed to do this correctly."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 3."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Is the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor itself poll/epoll/selectable?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Yes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor has events waiting, then it will"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicate as being readable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 4."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "What happens if one attempts to put an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor into its own file descriptor set?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call fails"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( EINVAL )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, you can add an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor inside another"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor set."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 5."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Can I send an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor over a UNIX domain socket to another process?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Yes, but it does not make sense to do this, since the receiving process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "would not have copies of the file descriptors in the interest list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 6."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Will closing a file descriptor cause it to be removed from all"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interest lists?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Yes, but be aware of the following point."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file descriptor is a reference to an open file description (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Whenever a file descriptor is duplicated via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dup (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dup2 (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " F_DUPFD ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a new file descriptor referring to the same open file description is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An open file description continues to exist until all"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptors referring to it have been closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A file descriptor is removed from an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interest list only after all the file descriptors referring to the underlying"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "open file description have been closed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This means that even after a file descriptor that is part of an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interest list has been closed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events may be reported for that file descriptor if other file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "descriptors referring to the same underlying file description remain open."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To prevent this happening,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the file descriptor must be explicitly removed from the interest list (using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLL_CTL_DEL )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before it is duplicated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Alternatively,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the application must ensure that all file descriptors are closed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(which may be difficult if file descriptors were duplicated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "behind the scenes by library functions that used"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dup (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 7."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If more than one event occurs between"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "calls, are they combined or reported separately?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "They will be combined."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 8."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Does an operation on a file descriptor affect the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "already collected but not yet reported events?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "You can do two operations on an existing file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Remove would be meaningless for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this case."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Modify will reread available I/O."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 9."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Do I need to continuously read/write a file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "until"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPOLLET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag (edge-triggered behavior)?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Receiving an event from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should suggest to you that such"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor is ready for the requested I/O operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "You must consider it ready until the next (nonblocking)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "read/write yields"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When and how you will use the file descriptor is entirely up to you."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For packet/token-oriented files (e.g., datagram socket,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "terminal in canonical mode),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the only way to detect the end of the read/write I/O space"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is to continue to read/write until"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For stream-oriented files (e.g., pipe, FIFO, stream socket), the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "condition that the read/write I/O space is exhausted can also be detected by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "checking the amount of data read from / written to the target file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, if you call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by asking to read a certain amount of data and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns a lower number of bytes, you"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be sure of having exhausted the read I/O space for the file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The same is true when writing using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Avoid this latter technique if you cannot guarantee that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the monitored file descriptor always refers to a stream-oriented file.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Possible pitfalls and ways to avoid them"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " o Starvation (edge-triggered)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If there is a large amount of I/O space,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is possible that by trying to drain"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it the other files will not get processed causing starvation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This problem is not specific to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll .)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The solution is to maintain a ready list"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and mark the file descriptor as ready"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in its associated data structure, thereby allowing the application to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "remember which files need to be processed but still round robin amongst"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all the ready files."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This also supports ignoring subsequent events you"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "receive for file descriptors that are already ready."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " o If using an event cache..."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If you use an event cache or store all the file descriptors returned from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then make sure to provide a way to mark"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "its closure dynamically (i.e., caused by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a previous event's processing)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose you receive 100 events from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and in event #47 a condition causes event #13 to be closed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If you remove the structure and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " close (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the file descriptor for event #13, then your"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event cache might still say there are events waiting for that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor causing confusion."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "One solution for this is to call, during the processing of event 47,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl ( EPOLL_CTL_DEL )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to delete file descriptor 13 and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " close (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then mark its associated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "data structure as removed and link it to a cleanup list."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If you find another"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for file descriptor 13 in your batch processing,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "you will discover the file descriptor had been"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "previously removed and there will be no confusion."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API was introduced in Linux kernel 2.5.44."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Its interface should be finalized in Linux kernel 2.5.66."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Support was added to glibc in version 2.3.2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API is Linux-specific."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some other systems provide similar"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mechanisms, for example, FreeBSD has"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " kqueue ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and Solaris has"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/poll ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The set of file descriptors that is being monitored via"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an epoll file descriptor can be viewed via the entry for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the epoll file descriptor in the process's"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/fdinfo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " kcmp (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " KCMP_EPOLL_TFD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation can be used to test whether a file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is present in an epoll instance."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_create (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_create1 (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_ctl (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll_wait (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2)"
+        }
+      ]
+    ]
+  }
+]

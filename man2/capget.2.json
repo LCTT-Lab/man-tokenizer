@@ -1,0 +1,2345 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" written by Andrew Morgan <morgan@kernel.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPL_NOVERSION_ONELINE)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" may be distributed as per GPL"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified by David A. Wheeler <dwheeler@ida.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2004-05-27, mtk"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2004-06-21, aeb"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2008-04-28, morgan of kernel.org"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     Update in line with addition of file capabilities and"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     64-bit capability sets in kernel 2.6.2[45]."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2009-01-26, andi kleen"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAPGET 2 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "capget, capset "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " set/get capabilities of thread(s)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/capability.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int capget(cap_user_header_t \" hdrp \", cap_user_data_t \" datap );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int capset(cap_user_header_t \" hdrp \", const cap_user_data_t \" datap );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.2,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the power of the superuser (root) has been partitioned into"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a set of discrete capabilities."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each thread has a set of effective capabilities identifying"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which capabilities (if any) it may currently exercise."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each thread also has a set of inheritable capabilities that may be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "passed through an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call, and a set of permitted capabilities"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that it can make effective or inheritable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These two system calls are the raw kernel interface for getting and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setting thread capabilities."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Not only are these system calls specific to Linux,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but the kernel API is likely to change and use of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "these system calls (in particular the format of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cap_user_*_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "types) is subject to extension with each kernel revision,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but old programs will keep working."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The portable interfaces are"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cap_set_proc (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cap_get_proc (3);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if possible, you should use those interfaces in applications."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If you wish to use the Linux extensions in applications, you should"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "use the easier-to-use interfaces"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capsetp (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capgetp (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Current details"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Now that you have been warned, some current kernel details."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The structures are defined as follows."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _LINUX_CAPABILITY_VERSION_1  0x19980330"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _LINUX_CAPABILITY_U32S_1     1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* V2 added in Linux 2.6.25; deprecated */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _LINUX_CAPABILITY_VERSION_2  0x20071026"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit e338d263a76af78fe8f38a72131188b58fceb591"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Added 64 bit capability support"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _LINUX_CAPABILITY_U32S_2     2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* V3 added in Linux 2.6.26 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _LINUX_CAPABILITY_VERSION_3  0x20080522"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit ca05a99a54db1db5bca72eccb5866d2a86f8517f"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _LINUX_CAPABILITY_U32S_3     2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "typedef struct __user_cap_header_struct {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   __u32 version;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   int pid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "} *cap_user_header_t;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "typedef struct __user_cap_data_struct {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   __u32 effective;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   __u32 permitted;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   __u32 inheritable;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "} *cap_user_data_t;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " effective ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " permitted ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inheritable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fields are bit masks of the capabilities defined in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "values are bit indexes and need to be bit-shifted before ORing into"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the bit fields."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To define the structures for passing to the system call, you have to use the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct __user_cap_header_struct"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct __user_cap_data_struct"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "names because the typedefs are only pointers."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Kernels prior to 2.6.25 prefer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "32-bit capabilities with version"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _LINUX_CAPABILITY_VERSION_1 ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux 2.6.25 added 64-bit capability sets, with version"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _LINUX_CAPABILITY_VERSION_2 ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There was, however, an API glitch, and Linux 2.6.26 added"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _LINUX_CAPABILITY_VERSION_3"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to fix the problem."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that 64-bit capabilities use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " datap [0]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " datap [1],"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "whereas 32-bit capabilities use only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " datap [0]."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On kernels that support file capabilities (VFS capabilities support),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "these system calls behave slightly differently."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This support was added as an option in Linux 2.6.24,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and became fixed (nonoptional) in Linux 2.6.33."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capget ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "calls, one can probe the capabilities of any process by specifying its"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process ID with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdrp->pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " With VFS capabilities support"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "VFS capabilities employ a file extended attribute (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xattr (7))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to allow capabilities to be attached to executables."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This privilege model obsoletes kernel support for one process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "asynchronously setting the capabilities of another."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That is, on kernels that have VFS capabilities support, when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capset (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the only permitted values for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdrp->pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are 0 or, equivalently, the value returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gettid (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Without VFS capabilities support"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On older kernels that do not provide VFS capabilities support"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capset ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can, if the caller has the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SETPCAP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability, be used to change not only the caller's own capabilities,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but also the capabilities of other threads."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The call operates on the capabilities of the thread specified by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdrp"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when that is nonzero, or on the capabilities of the calling thread if"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is 0."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "refers to a single-threaded process, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be specified as a traditional process ID;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operating on a thread of a multithreaded process requires a thread ID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the type returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gettid (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capset (),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can also be: "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, meaning perform the change on all threads except the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "caller and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " init (1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a value less than "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, in which case the change is applied"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to all members of the process group whose ID is "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ipid"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For details on the data, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success, zero is returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 is returned, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set appropriately."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The calls fail with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and set the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " version"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdrp"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the kernel preferred value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _LINUX_CAPABILITY_VERSION_?"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when an unsupported"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " version"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value is specified."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this way, one can probe what the current"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "preferred capability revision is."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Bad memory address."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdrp"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must not be NULL."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " datap"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may be NULL only when the user is trying to determine the preferred"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability version format supported by the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "One of the arguments was invalid."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An attempt was made to add a capability to the Permitted set, or to set"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a capability in the Effective or Inheritable sets that is not in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Permitted set."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The caller attempted to use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capset ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to modify the capabilities of a thread other than itself,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but lacked sufficient privilege."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For kernels supporting VFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capabilities, this is never permitted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For kernels lacking VFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "support, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SETPCAP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability is required."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(A bug in kernels before 2.6.11 meant that this error could also"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "occur if a thread without this capability tried to change its"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "own capabilities by specifying the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field as a nonzero value (i.e., the value returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpid (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead of 0.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ESRCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No such thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These system calls are Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The portable interface to the capability querying and setting"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "functions is provided by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libcap"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "library and is available here:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " http://git.kernel.org/cgit"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/linux"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/kernel"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/git"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/morgan"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/libcap.git"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gettid (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7)"
+        }
+      ]
+    ]
+  }
+]

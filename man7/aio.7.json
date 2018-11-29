@@ -1,0 +1,4382 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2010 by Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AIO 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "aio "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " POSIX asynchronous I/O overview"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The POSIX asynchronous I/O (AIO) interface allows applications"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to initiate one or more I/O operations that are performed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "asynchronously (i.e., in the background)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The application can elect to be notified of completion of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the I/O operation in a variety of ways:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by delivery of a signal, by instantiation of a thread,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or no notification at all."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The POSIX AIO interface consists of the following functions:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 16"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_read (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Enqueue a read request."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the asynchronous analog of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_write (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Enqueue a write request."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the asynchronous analog of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_fsync (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Enqueue a sync request for the I/O operations on a file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the asynchronous analog of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fdatasync (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_error (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Obtain the error status of an enqueued I/O request."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_return (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Obtain the return status of a completed I/O request."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_suspend (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Suspend the caller until one or more of a specified set of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "I/O requests completes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_cancel (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Attempt to cancel outstanding I/O requests on a specified"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lio_listio (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Enqueue multiple I/O requests using a single function call."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aiocb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(\"asynchronous I/O control block\") structure defines"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "parameters that control an I/O operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An argument of this type is employed with all of the functions listed above."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This structure has the following form:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <aiocb.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "struct aiocb {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* The order of these fields is implementation-dependent */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    int             aio_fildes;     /* File descriptor */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    off_t           aio_offset;     /* File offset */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    volatile void  *aio_buf;        /* Location of buffer */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    size_t          aio_nbytes;     /* Length of transfer */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int             aio_reqprio;    /* Request priority */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct sigevent aio_sigevent;   /* Notification method */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int             aio_lio_opcode; /* Operation to be performed;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                                       lio_listio() only */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Various implementation-internal fields not shown */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "/* Operation codes for "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "aio_lio_opcode"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ": */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "enum { LIO_READ, LIO_WRITE, LIO_NOP };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fields of this structure are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 16"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_fildes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor on which the I/O operation is to be performed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_offset"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the file offset at which the I/O operation is to be performed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_buf"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the buffer used to transfer data for a read or write operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_nbytes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the size of the buffer pointed to by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_buf ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_reqprio"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field specifies a value that is subtracted"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the calling thread's real-time priority in order to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "determine the priority for execution of this I/O request (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setschedparam (3))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The specified value must be between 0 and the value returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sysconf(_SC_AIO_PRIO_DELTA_MAX) ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is ignored for file synchronization operations."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_sigevent"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is a structure that specifies how the caller is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to be notified when the asynchronous I/O operation completes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Possible values for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_sigevent.sigev_notify"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGEV_NONE ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGEV_SIGNAL ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGEV_THREAD ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigevent (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_lio_opcode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The type of operation to be performed; used only for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lio_listio (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition to the standard functions listed above,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the GNU C library provides the following extension to the POSIX AIO API:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 16"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_init (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set parameters for tuning the behavior of the glibc POSIX AIO implementation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_reqprio"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aiocb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure was less than 0,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or was greater than the limit returned by the call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sysconf(_SC_AIO_PRIO_DELTA_MAX) ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The POSIX AIO interfaces are provided by glibc since version 2.1."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001, POSIX.1-2008."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It is a good idea to zero out the control block buffer before use (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " memset (3))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The control block buffer and the buffer pointed to by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_buf"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must not be changed while the I/O operation is in progress."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These buffers must remain valid until the I/O operation completes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Simultaneous asynchronous read or write operations using the same"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aiocb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure yield undefined results."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The current Linux POSIX AIO implementation is provided in user space by glibc."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This has a number of limitations, most notably that maintaining multiple"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads to perform I/O operations is expensive and scales poorly."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Work has been in progress for some time on a kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "state-machine-based implementation of asynchronous I/O"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_submit (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_setup (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_cancel (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_destroy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_getevents (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but this implementation hasn't yet matured to the point where"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the POSIX AIO implementation can be completely"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reimplemented using the kernel system calls."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" http://lse.sourceforge.net/io/aio.html"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" http://lse.sourceforge.net/io/aionotes.txt"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" http://lwn.net/Articles/148755/"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The program below opens each of the files named in its command-line"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments and queues a request on the resulting file descriptor using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_read (3)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The program then loops,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "periodically monitoring each of the I/O operations"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is still in progress using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_error (3)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each of the I/O requests is set up to provide notification by delivery"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of a signal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After all I/O requests have completed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the program retrieves their status using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_return (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGQUIT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal (generated by typing control-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": ") causes the program to request"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cancellation of each of the outstanding requests using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_cancel (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Here is an example of what we might see when running this program."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this example, the program queues two requests to standard input,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and these are satisfied by two lines of input containing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\"abc\" and \"x\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "$ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B./a.out /dev/stdin /dev/stdin"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "opened /dev/stdin on descriptor 3"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "opened /dev/stdin on descriptor 4"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aio_error():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 0 (descriptor 3): In progress"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 1 (descriptor 4): In progress"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Babc"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "I/O completion signal received"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aio_error():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 0 (descriptor 3): I/O succeeded"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 1 (descriptor 4): In progress"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aio_error():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 1 (descriptor 4): In progress"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bx"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "I/O completion signal received"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aio_error():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 1 (descriptor 4): I/O succeeded"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All I/O requests completed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aio_return():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 0 (descriptor 3): 4"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for request 1 (descriptor 4): 2"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Program source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <fcntl.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdlib.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <unistd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <errno.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <aio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <signal.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define BUF_SIZE 20     /* Size of buffers for read operations */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define errExit(msg) do { perror(msg); exit(EXIT_FAILURE); } while (0)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define errMsg(msg)  do { perror(msg); } while (0)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "struct ioRequest {      /* Application"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "defined structure for tracking"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           I/O requests */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int           reqNum;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int           status;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct aiocb *aiocbp;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static volatile sig_atomic_t gotSIGQUIT = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        /* On delivery of SIGQUIT, we attempt to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           cancel all outstanding I/O requests */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static void             /* Handler for SIGQUIT */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "quitHandler(int sig)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    gotSIGQUIT = 1;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define IO_SIGNAL SIGUSR1   /* Signal used to notify I/O completion */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static void                 /* Handler for I/O completion signal */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aioSigHandler(int sig, siginfo_t *si, void *ucontext)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (si->si_code == SI_ASYNCIO) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        write(STDOUT_FILENO, \"I/O completion signal received"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", 31);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* The corresponding ioRequest structure would be available as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "               struct ioRequest *ioReq = si"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">si_value.sival_ptr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           and the file descriptor would then be available via"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "               ioReq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(int argc, char *argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct ioRequest *ioList;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct aiocb *aiocbList;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct sigaction sa;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int s, j;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int numReqs;        /* Total number of queued I/O requests */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int openReqs;       /* Number of I/O requests still in progress */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (argc < 2) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fprintf(stderr, \"Usage: %s <pathname> <pathname>..."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                argv[0]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    numReqs = argc "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 1;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Allocate our arrays */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    ioList = calloc(numReqs, sizeof(struct ioRequest));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (ioList == NULL)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"calloc\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    aiocbList = calloc(numReqs, sizeof(struct aiocb));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (aiocbList == NULL)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"calloc\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Establish handlers for SIGQUIT and the I/O completion signal */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    sa.sa_flags = SA_RESTART;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    sigemptyset(&sa.sa_mask);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    sa.sa_handler = quitHandler;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (sigaction(SIGQUIT, &sa, NULL) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"sigaction\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    sa.sa_flags = SA_RESTART | SA_SIGINFO;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    sa.sa_sigaction = aioSigHandler;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (sigaction(IO_SIGNAL, &sa, NULL) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"sigaction\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Open each file specified on the command line, and queue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       a read request on the resulting file descriptor */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    for (j = 0; j < numReqs; j++) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].reqNum = j;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].status = EINPROGRESS;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp = &aiocbList[j];"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes = open(argv[j + 1], O_RDONLY);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"open\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"opened %s on descriptor %d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[j + 1],"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_buf = malloc(BUF_SIZE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_buf == NULL)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"malloc\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_nbytes = BUF_SIZE;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_reqprio = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_offset = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_sigevent.sigev_notify = SIGEV_SIGNAL;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_sigevent.sigev_signo = IO_SIGNAL;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_sigevent.sigev_value.sival_ptr ="
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                                &ioList[j];"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        s = aio_read(ioList[j].aiocbp);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (s == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"aio_read\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    openReqs = numReqs;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Loop, monitoring status of I/O requests */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    while (openReqs > 0) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        sleep(3);       /* Delay between each monitoring step */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (gotSIGQUIT) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* On receipt of SIGQUIT, attempt to cancel each of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "               outstanding I/O requests, and display status returned"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "               from the cancellation requests */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            printf(\"got SIGQUIT; canceling I/O requests: "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            for (j = 0; j < numReqs; j++) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                if (ioList[j].status == EINPROGRESS) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"    Request %d on descriptor %d:\", j,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                            ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    s = aio_cancel(ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                            ioList[j].aiocbp);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    if (s == AIO_CANCELED)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        printf(\"I/O canceled"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    else if (s == AIO_NOTCANCELED)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        printf(\"I/O not canceled"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    else if (s == AIO_ALLDONE)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        printf(\"I/O all done"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    else"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        errMsg(\"aio_cancel\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            gotSIGQUIT = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Check the status of each I/O request that is still"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           in progress */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"aio_error():"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        for (j = 0; j < numReqs; j++) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (ioList[j].status == EINPROGRESS) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\"    for request %d (descriptor %d): \","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        j, ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                ioList[j].status = aio_error(ioList[j].aiocbp);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                switch (ioList[j].status) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                case 0:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"I/O succeeded"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                case EINPROGRESS:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"In progress"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                case ECANCELED:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"Canceled"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                default:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    errMsg(\"aio_error\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                if (ioList[j].status != EINPROGRESS)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    openReqs"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ";"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"All I/O requests completed"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Check status return of all I/O requests */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"aio_return():"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    for (j = 0; j < numReqs; j++) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ssize_t s;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        s = aio_return(ioList[j].aiocbp);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"    for request %d (descriptor %d): %zd"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                j, ioList[j].aiocbp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">aio_fildes, s);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_SUCCESS);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nh",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_cancel (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_destroy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_getevents (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_setup (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " io_submit (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_cancel (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_error (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_init (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_read (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_return (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " aio_write (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lio_listio (3)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "\"Asynchronous I/O Support in Linux 2.5\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Bhattacharya, Pratt, Pulavarty, and Morgan,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Proceedings of the Linux Symposium, 2003,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " https://www.kernel.org/doc/ols/2003/ols2003"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "pages"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "351"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "366.pdf"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        }
+      ]
+    ]
+  }
+]

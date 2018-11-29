@@ -1,0 +1,2563 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 1992 Drew Eckhardt, March 28, 1992"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright (c) 2002 Michael Kerrisk"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2004-11-16 -- mtk: the getrlimit.2 page, which formerly included"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" coverage of getrusage(2), has been split, so that the latter is"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" now covered in its own getrusage.2.  For older details of change"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" history, etc., see getrlimit.2"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2004-11-16, mtk, Noted that the nonconformance"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\twhen SIGCHLD is being ignored is fixed in 2.6.9."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2008-02-22, Sripathi Kodi <sripathik@in.ibm.com>: Document RUSAGE_THREAD"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2008-05-25, mtk, clarify RUSAGE_CHILDREN + other clean-ups."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2010-05-24, Mark Hills <mark@pogo.org.uk>: Description of fields,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     document ru_maxrss"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2010-05-24, mtk, enhanced description of various fields"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " GETRUSAGE 2 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "getrusage "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " get resource usage"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/time.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/resource.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int getrusage(int \" who \", struct rusage *\" usage );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns resource usage measures for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " who ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which can be one of the following:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RUSAGE_SELF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return resource usage statistics for the calling process,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which is the sum of resources used by all threads in the process."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RUSAGE_CHILDREN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return resource usage statistics for all children of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "calling process that have terminated and been waited for."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These statistics will include the resources used by grandchildren,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and further removed descendants,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if all of the intervening descendants waited on their terminated children."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RUSAGE_THREAD \" (since Linux 2.6.26)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return resource usage statistics for the calling thread."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _GNU_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "feature test macro must be defined (before including"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " any"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "header file)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in order to obtain the definition of this constant from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <sys/resource.h> ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The resource usages are returned in the structure pointed to by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " usage ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which has the following form:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct rusage {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct timeval ru_utime; /* user CPU time used */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct timeval ru_stime; /* system CPU time used */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_maxrss;        /* maximum resident set size */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_ixrss;         /* integral shared memory size */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_idrss;         /* integral unshared data size */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_isrss;         /* integral unshared stack size */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_minflt;        /* page reclaims (soft page faults) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_majflt;        /* page faults (hard page faults) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_nswap;         /* swaps */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_inblock;       /* block input operations */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_oublock;       /* block output operations */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_msgsnd;        /* IPC messages sent */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_msgrcv;        /* IPC messages received */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_nsignals;      /* signals received */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_nvcsw;         /* voluntary context switches */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long   ru_nivcsw;        /* involuntary context switches */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Not all fields are completed;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unmaintained fields are set to zero by the kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The unmaintained fields are provided for compatibility with other systems,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and because they may one day be supported on Linux.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The fields are interpreted as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_utime"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the total amount of time spent executing in user mode,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "expressed in a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timeval"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure (seconds plus microseconds)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_stime"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the total amount of time spent executing in kernel mode,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "expressed in a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timeval"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure (seconds plus microseconds)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_maxrss \" (since Linux 2.6.32)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the maximum resident set size used (in kilobytes)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RUSAGE_CHILDREN ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this is the resident set size of the largest child, not the maximum"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resident set size of the process tree."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_ixrss \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" this is the integral of the text segment memory consumption,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" expressed in kilobyte-seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_idrss \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems, this is the integral of the data segment memory consumption,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" expressed in kilobyte-seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_isrss \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems, this is the integral of the stack memory consumption,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" expressed in kilobyte-seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_minflt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of page faults serviced without any I/O activity; here"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "I/O activity is avoided by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(lqreclaiming"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(rq a page frame from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the list of pages awaiting reallocation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_majflt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of page faults serviced that required I/O activity."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_nswap  \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems, this is the number of swaps out of physical memory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_inblock \" (since Linux 2.6.22)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of times the filesystem had to perform input."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_oublock \" (since Linux 2.6.22)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of times the filesystem had to perform output."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_msgsnd \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On FreeBSD 6.2, this appears to measure messages sent over sockets"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" this field records the number of messages sent over sockets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_msgrcv \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On FreeBSD 6.2, this appears to measure messages received over sockets"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" this field records the number of messages received over sockets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_nsignals \" (unmaintained)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is currently unused on Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On some systems, this field records the number of signals received."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_nvcsw \" (since Linux 2.6)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of times a context switch resulted due to a process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "voluntarily giving up the processor before its time slice was"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "completed (usually to await availability of a resource)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_nivcsw \" (since Linux 2.6)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of times a context switch resulted due to a higher"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "priority process becoming runnable or because the current process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "exceeded its time slice."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success, zero is returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 is returned, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set appropriately."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFAULT"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " usage"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "points outside the accessible address space."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " who"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is invalid."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ATTRIBUTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For an explanation of the terms used in this section, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attributes (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "allbox;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lb lb lb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Interface\tAttribute\tValue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T{"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}\tThread safety\tMT-Safe"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".sp",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001, POSIX.1-2008, SVr4, 4.3BSD."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1 specifies"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but specifies only the fields"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_utime"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ru_stime ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RUSAGE_THREAD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Resource usage metrics are preserved across an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Including"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <sys/time.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not required these days, but increases portability."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Indeed,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct timeval"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is defined in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <sys/time.h> .)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux kernel versions before 2.6.9, if the disposition of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGCHLD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIG_IGN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the resource usages of child processes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are automatically included in the value returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RUSAGE_CHILDREN ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "although POSIX.1-2001 explicitly prohibits this."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This nonconformance is rectified in Linux 2.6.9 and later."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See the description of getrusage() in XSH."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" A similar statement was also in SUSv2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The structure definition shown at the start of this page"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was taken from 4.3BSD Reno."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Ancient systems provided a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vtimes ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "function with a similar purpose to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage ()."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For backward compatibility, glibc also provides"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vtimes ()."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All new applications should be written using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage ()."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "See also the description of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/stat"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_gettime (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " times (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wait (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wait4 (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock (3)"
+        }
+      ]
+    ]
+  }
+]

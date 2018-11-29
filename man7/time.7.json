@@ -1,0 +1,2033 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2006 by Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2008-06-24, mtk: added some details about where jiffies come into"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     play; added section on high-resolution timers."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TIME 7 2018-04-30 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "time "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " overview of time and timers"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Real time and process time"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"Real time\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is defined as time measured from some fixed point,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "either from a standard point in the past"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see the description of the Epoch and calendar time below),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or from some point (e.g., the start) in the life of a process"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( \"elapsed time\" )."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"Process time\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is defined as the amount of CPU time used by a process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is sometimes divided into"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " system"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "components."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "User CPU time is the time spent executing code in user mode."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "System CPU time is the time spent by the kernel executing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in system mode on behalf of the process (e.g., executing system calls)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " time (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "command can be used to determine the amount of CPU time consumed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "during the execution of a program."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A program can determine the amount of CPU time it has consumed using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " times (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The hardware clock"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Most computers have a (battery-powered) hardware clock which the kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reads at boot time in order to initialize the software clock."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For further details, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtc (4)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hwclock (8)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The software clock, HZ, and jiffies"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The accuracy of various system calls that set timeouts,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigtimedwait (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" semtimedop(), mq_timedwait(), io_getevents(), poll() are the same"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" futexes and thus sem_timedwait() seem to use high-res timers."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "and measure CPU time (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is limited by the resolution of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"software clock\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a clock maintained by the kernel which measures time in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " jiffies ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The size of a jiffy is determined by the value of the kernel constant"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " HZ ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " HZ"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "varies across kernel versions and hardware platforms."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On i386 the situation is as follows:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on kernels up to and including 2.4.x, HZ was 100,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "giving a jiffy value of 0.01 seconds;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "starting with 2.6.0, HZ was raised to 1000, giving a jiffy of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0.001 seconds."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since kernel 2.6.13, the HZ value is a kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "configuration parameter and can be 100, 250 (the default) or 1000,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "yielding a jiffies value of, respectively, 0.01, 0.004, or 0.001 seconds."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since kernel 2.6.20, a further frequency is available:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "300, a number that divides evenly for the common video"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "frame rates (PAL, 25 HZ; NTSC, 30 HZ)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " times (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call is a special case."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It reports times with a granularity defined by the kernel constant"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " USER_HZ ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "User-space applications can determine the value of this constant using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sysconf(_SC_CLK_TCK) ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" glibc gets this info with a little help from the ELF loader;"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" see glibc elf/dl-support.c and kernel fs/binfmt_elf.c."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " High-resolution timers"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Before Linux 2.6.21, the accuracy of timer and sleep system calls"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see below) was also limited by the size of the jiffy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.21, Linux supports high-resolution timers (HRTs),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "optionally configurable via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_HIGH_RES_TIMERS ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On a system that supports HRTs, the accuracy of sleep and timer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system calls is no longer constrained by the jiffy,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but instead can be as accurate as the hardware allows"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(microsecond accuracy is typical of modern hardware)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "You can determine whether high-resolution timers are supported by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "checking the resolution returned by a call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_getres (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or looking at the \"resolution\" entries in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/timer_list ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "HRTs are not supported on all hardware architectures."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Support is provided on x86, arm, and powerpc, among others.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The Epoch"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "UNIX systems represent time in seconds since the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Epoch ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "1970-01-01 00:00:00 +0000 (UTC)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A program can determine the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"calendar time\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "via the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_gettime (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLOCK_REALTIME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "clock,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which returns time (in seconds and nanoseconds) that have"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "elapsed since the Epoch;"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " time (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "provides similar information, but only with accuracy to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nearest second."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The system time can be changed using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_settime (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Broken-down time"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Certain library functions use a structure of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tm"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to represent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"broken-down time\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which stores time value separated out into distinct components"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(year, month, day, hour, minute, second, etc.)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This structure is described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ctime (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which also describes functions that convert between calendar time and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "broken-down time."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Functions for converting between broken-down time and printable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "string representations of the time are described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ctime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " strftime (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " strptime (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Sleeping and setting timers"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Various system calls and functions allow a program to sleep"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(suspend execution) for a specified period of time; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nanosleep (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_nanosleep (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sleep (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Various system calls allow a process to set a timer that expires"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at some point in the future, and optionally at repeated intervals;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " alarm (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getitimer (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timerfd_create (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timer_create (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Timer slack"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.28, it is possible to control the \"timer slack\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value for a thread."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The timer slack is the length of time by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which the kernel may delay the wake-up of certain"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system calls that block with a timeout."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Permitting this delay allows the kernel to coalesce wake-up events,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thus possibly reducing the number of system wake-ups and saving power."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For more details, see the description of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PR_SET_TIMERSLACK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " prctl (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nh",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " date (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " time (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timeout (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " adjtimex (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " alarm (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_gettime (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_nanosleep (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getitimer (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gettimeofday (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nanosleep (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stat (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " time (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timer_create (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timerfd_create (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " times (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " utime (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " adjtime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clock_getcpuclockid (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ctime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ntp_adjtime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ntp_gettime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_getcpuclockid (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sleep (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " strftime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " strptime (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timeradd (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " usleep (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtc (4),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hwclock (8)"
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,1776 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright 2009 Intel Corporation"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"                Author: Andi Kleen"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Based on the move_pages manpage which was"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This manpage is Copyright (C) 2006 Silicon Graphics, Inc."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"                               Christoph Lameter"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_TWO_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MIGRATE_PAGES 2 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "migrate_pages "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " move all pages in a process to another set of nodes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <numaif.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"long migrate_pages(int \" pid \", unsigned long \" maxnode,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"                   const unsigned long *\" old_nodes,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"                   const unsigned long *\" new_nodes );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Link with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "lnuma"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "attempts to move all pages of the process"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that are in memory nodes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " old_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the memory nodes in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " new_nodes ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Pages not located in any node in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " old_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will not be migrated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As far as possible,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel maintains the relative topology relationship inside"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " old_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "during the migration to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " new_nodes ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " old_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " new_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments are pointers to bit masks of node numbers, with up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bits in each mask."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These masks are maintained as arrays of unsigned"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " long"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "integers (in the last"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " long"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "integer, the bits beyond those specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are ignored)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument is the maximum node number in the bit mask plus one (this is the same"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but different from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument is the ID of the process whose pages are to be moved."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To move pages in another process,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the caller must be privileged"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the real or effective user ID of the calling process must match the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "real or saved-set user ID of the target process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is 0, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "moves pages of the calling process."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Pages shared with another process will be moved only if the initiating"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process has the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SYS_NICE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "privilege."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns the number of pages that could not be moved"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., a return of zero means that all pages were successfully moved)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, it returns "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, and sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to indicate the error."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Part or all of the memory range specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " old_nodes / new_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "points outside your accessible address space."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "exceeds a kernel-imposed limit."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" As at 3.5, this limit is \"a page worth of bits\", e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 8 * 4096 bits, assuming a 4kB page size."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Or,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " old_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " new_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifies one or more node IDs that are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "greater than the maximum supported node ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Or, none of the node IDs specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " new_nodes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are on-line and allowed by the process's current cpuset context,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or none of the specified nodes contain memory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Insufficient privilege"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to move pages of the process specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or insufficient privilege"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to access the specified target nodes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ESRCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No process matching"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "could be found."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME Document the other errors that can occur for migrate_pages()"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call first appeared on Linux in version 2.6.16."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This system call is Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For information on library support, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " get_mempolicy (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_F_MEMS_ALLOWED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag to obtain the set of nodes that are allowed by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the calling process's cpuset."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that this information is subject to change at any"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "time by manual or automatic reconfiguration of the cpuset."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Use of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may result in pages whose location"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(node) violates the memory policy established for the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specified addresses (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and/or the specified process (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That is, memory policy does not constrain the destination"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nodes used by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages ()."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <numaif.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "header is not included with glibc, but requires installing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libnuma-devel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a similar package."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " get_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa_maps (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cpuset (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migratepages (8),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numastat (8)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/vm/page_migration.rst"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the Linux kernel source tree"
+        }
+      ]
+    ]
+  }
+]

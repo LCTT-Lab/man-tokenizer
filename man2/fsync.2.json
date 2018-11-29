@@ -1,0 +1,1878 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright 1993 Rickard E. Faith (faith@cs.unc.edu) and"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright 2006 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 21 Aug 1994 by Michael Chastain <mec@shell.portal.com>:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"   Removed note about old libc (pre-4.5.26) translating to 'sync'."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 15 Apr 1995 by Michael Chastain <mec@shell.portal.com>:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"   Added `see also' section."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 13 Apr 1996 by Markus Kuhn <mskuhn@cip.informatik.uni-erlangen.de>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"   Added remarks about fdatasync."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 31 Jan 1997 by Eric S. Raymond <esr@thyrsus.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 18 Apr 2001 by Andi Kleen"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"   Fix description to describe what it really does; add a few caveats."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2006-04-28, mtk, substantial rewrite of various parts."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2012-02-27 Various changes by Christoph Hellwig <hch@lst.de>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FSYNC 2 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fsync, fdatasync "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " synchronize a file's in-core state with storage device"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <unistd.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int fsync(int \" fd );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int fdatasync(int \" fd );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " -4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Feature Test Macro Requirements for glibc (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " feature_test_macros (7)):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync ():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    Glibc 2.16 and later:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        No feature test macros need be defined"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    Glibc up to and including 2.15:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        _BSD_SOURCE || _XOPEN_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            || /* since glibc 2.8: */ _POSIX_C_SOURCE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": ">="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "200112L"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fdatasync ():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    _POSIX_C_SOURCE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": ">="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "199309L || _XOPEN_SOURCE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": ">="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "500"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "transfers (\"flushes\") all modified in-core data of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., modified buffer cache pages for) the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file referred to by the file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the disk device (or other permanent storage device) so that all"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changed information can be retrieved even if the system crashes or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is rebooted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This includes writing through or flushing a disk cache if present."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The call blocks until the device reports that the transfer has completed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As well as flushing the file data,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "also flushes the metadata information associated with the file (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inode (7))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "does not necessarily ensure"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that the entry in the directory containing the file has also reached disk."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For that an explicit"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on a file descriptor for the directory is also needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fdatasync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is similar to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but does not flush modified metadata unless that metadata"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is needed in order to allow a subsequent data retrieval to be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "correctly handled."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, changes to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " st_atime"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " st_mtime"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(respectively, time of last access and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "time of last modification; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inode (7))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "do not require flushing because they are not necessary for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a subsequent data read to be handled correctly."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On the other hand, a change to the file size"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( st_size ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as made by say"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ftruncate (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "would require a metadata flush."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The aim of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fdatasync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is to reduce disk activity for applications that do not"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "require all metadata to be synchronized with the disk."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success, these system calls return zero."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 is returned, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set appropriately."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EBADF"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not a valid open file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An error occurred during synchronization."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This error may relate to data written to some other file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the same file."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 4.13,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 088737f44bbf6378745f5b57b035e57ee3dc4750"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "errors from write-back will be reported to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all file descriptors that might have written the data which triggered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the error."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some filesystems (e.g., NFS) keep close track of which data"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "came through which file descriptor, and give more precise reporting."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Other filesystems (e.g., most local filesystems) will report errors to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all file descriptors that where open on the file when the error was recorded."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOSPC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Disk space was exhausted while synchronizing."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EROFS \", \" EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is bound to a special file (e.g., a pipe, FIFO, or socket)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which does not support synchronization."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOSPC \", \" EDQUOT"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is bound to a file on NFS or another filesystem which does not allocate"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "space at the time of a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call, and some previous write failed due to insufficient"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "storage space."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001, POSIX.1-2008, 4.3BSD."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " AVAILABILITY"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On POSIX systems on which"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fdatasync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is available,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _POSIX_SYNCHRONIZED_IO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is defined in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <unistd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a value greater than 0."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(See also"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sysconf (3).)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" POSIX.1-2001: It shall be defined to -1 or 0 or 200112L."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" -1: unavailable, 0: ask using sysconf()."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" glibc defines them to 1."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On some UNIX systems (but not Linux),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must be a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " writable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux 2.2 and earlier,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fdatasync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is equivalent to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and so has no performance advantage."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fsync ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "implementations in older kernels and lesser used filesystems"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "does not know how to flush disk caches."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In these cases disk caches need to be disabled using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdparm (8)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sdparm (8)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to guarantee safe operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sync (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bdflush (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " posix_fadvise (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pwritev (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sync (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sync_file_range (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fflush (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fileno (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hdparm (8),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mount (8)"
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,1908 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page is Copyright (C) 1999 Andi Kleen <ak@muc.de>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_ONE_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to distribute possibly modified copies"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of this page provided the header is included verbatim,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and in case of nontrivial modification author and date"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of the modification is added to the header."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" $Id: icmp.7,v 1.6 2000/08/14 08:03:45 ak Exp $"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP 7 2017-11-26 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "icmp "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " Linux IPv4 ICMP kernel module."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This kernel protocol module implements the Internet Control"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Message Protocol defined in RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "792."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is used to signal error conditions and for diagnosis."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The user doesn't interact directly with this module;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead it communicates with the other protocols in the kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and these pass the ICMP errors to the application layers."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel ICMP module also answers ICMP requests."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A user protocol may receive ICMP packets for all local sockets by opening"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a raw socket with the protocol"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IPPROTO_ICMP ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " raw (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for more information."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The types of ICMP packets passed to the socket can be filtered using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_FILTER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket option."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ICMP packets are always processed by the kernel too, even"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when passed to a user socket."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux limits the rate of ICMP error packets to each destination."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_REDIRECT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_DEST_UNREACH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are also limited by the destination route of the incoming packets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc interfaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ICMP supports a set of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interfaces to configure some global IP parameters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The parameters can be accessed by reading or writing files in the directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/net/ipv4/ ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Most of these parameters are rate limitations for specific ICMP types."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux 2.2 uses a token bucket filter to limit ICMPs."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . better description needed"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The value is the timeout in jiffies until the token bucket filter is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cleared after a burst."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A jiffy is a system dependent unit, usually 10ms on i386 and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "about 1ms on alpha and ia64."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_destunreach_rate \" (Linux 2.2 to 2.4.9)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: from 2.1.102"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Maximum rate to send ICMP Destination Unreachable packets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This limits the rate at which packets are sent to any individual"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "route or destination."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The limit does not affect sending of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_FRAG_NEEDED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets needed for path MTU discovery."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_echo_ignore_all \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.68"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If this value is nonzero, Linux will ignore all"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_ECHO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "requests."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_echo_ignore_broadcasts \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: from 2.1.68"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If this value is nonzero, Linux will ignore all"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_ECHO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets sent to broadcast addresses."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_echoreply_rate \" (Linux 2.2 to 2.4.9)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: from 2.1.102"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Maximum rate for sending"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_ECHOREPLY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets in response to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_ECHOREQUEST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_errors_use_inbound_ifaddr \" (Boolean; default: disabled; since Linux 2.6.12)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following taken from 2.6.28-rc4 Documentation/networking/ip-sysctl.txt"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If disabled, ICMP error messages are sent with the primary address of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the exiting interface."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If enabled, the message will be sent with the primary address of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the interface that received the packet that caused the ICMP error."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the behavior that many network administrators will expect from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a router."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "And it can make debugging complicated network layouts much easier."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that if no primary address exists for the interface selected,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the primary address of the first non-loopback interface that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has one will be used regardless of this setting."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_ignore_bogus_error_responses \" (Boolean; default: disabled; since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" precisely: since 2.1.32"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following taken from 2.6.28-rc4 Documentation/networking/ip-sysctl.txt"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some routers violate RFC1122 by sending bogus responses to broadcast frames."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Such violations are normally logged via a kernel warning."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If this parameter is enabled, the kernel will not give such warnings,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which will avoid log file clutter."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_paramprob_rate \" (Linux 2.2 to 2.4.9)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: from 2.1.102"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Maximum rate for sending"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_PARAMETERPROB"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These packets are sent when a packet arrives with an invalid IP header."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_ratelimit \" (integer; default: 1000; since Linux 2.4.10)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following taken from 2.6.28-rc4 Documentation/networking/ip-sysctl.txt"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Limit the maximum rates for sending ICMP packets whose type matches"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_ratemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see below) to specific targets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0 to disable any limiting,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "otherwise the minimum space between responses in milliseconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_ratemask \" (integer; default: see below; since Linux 2.4.10)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following taken from 2.6.28-rc4 Documentation/networking/ip-sysctl.txt"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Mask made of ICMP types for which rates are being limited."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Significant bits: IHGFEDCBA9876543210"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Default mask:     0000001100000011000 (0x1818)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Bit definitions (see the Linux kernel source file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " include/linux/icmp.h ):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 12"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0 Echo Reply"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "3 Destination Unreachable *"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "4 Source Quench *"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "5 Redirect"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "8 Echo Request"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "B Time Exceeded *"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "C Parameter Problem *"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "D Timestamp Request"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "E Timestamp Reply"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "F Info Request"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "G Info Reply"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "H Address Mask Request"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "I Address Mask Reply"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The bits marked with an asterisk are rate limited by default"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see the default mask above)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " icmp_timeexceed_rate \" (Linux 2.2 to 2.4.9)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Maximum rate for sending"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_TIME_EXCEEDED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These packets are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sent to prevent loops when a packet has crossed too many hops."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ping_group_range \" (two integers; default: see below; since Linux 2.6.39)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Range of the group IDs (minimum and maximum group IDs, inclusive)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that are allowed to create ICMP Echo sockets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default is \"1 0\", which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "means no group is allowed to create ICMP Echo sockets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Support for the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_ADDRESS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "request was removed in 2.2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Support for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_SOURCE_QUENCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was removed in Linux 2.2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As many other implementations don't support"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IPPROTO_ICMP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "raw sockets, this feature"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should not be relied on in portable programs."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" not really true ATM"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .PP"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Linux ICMP should be compliant to RFC 1122."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_REDIRECT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets are not sent when Linux is not acting as a router."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They are also accepted only from the old gateway defined in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "routing table and the redirect routes are expired after some time."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The 64-bit timestamp returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ICMP_TIMESTAMP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is in milliseconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux ICMP internally uses a raw socket to send ICMPs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This raw socket may appear in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netstat (8)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "output with a zero inode."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rdisc (8)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "792 for a description of the ICMP protocol."
+        }
+      ]
+    ]
+  }
+]

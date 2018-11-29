@@ -1,0 +1,1967 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2001 John Levon <moz@compsoc.man.ac.uk>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Based in part on GNU libc documentation"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " GETLINE 3  2017-09-15 \"GNU\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "getline, getdelim "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " delimited string input"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <stdio.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"ssize_t getline(char **\" lineptr \", size_t *\" n \", FILE *\" stream );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"ssize_t getdelim(char **\" lineptr \", size_t *\" n \", int \" delim "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "\", FILE *\" stream );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " -4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Feature Test Macro Requirements for glibc (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " feature_test_macros (7)):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline (),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getdelim ():"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PD",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 0"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since glibc 2.10:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "_POSIX_C_SOURCE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": ">="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "200809L"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Before glibc 2.10:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "_GNU_SOURCE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PD",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reads an entire line from "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Istream"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "storing the address of the buffer containing the text into"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*lineptr\" ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The buffer is null-terminated and includes the newline character, if"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "one was found."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*lineptr\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to NULL and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " *n"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set 0 before the call, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will allocate a buffer for storing the line."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This buffer should be freed by the user program"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "even if"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "failed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Alternatively, before calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline (),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*lineptr\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can contain a pointer to a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " malloc (3)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "allocated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "buffer"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*n\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bytes in size."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the buffer is not large enough to hold the line,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resizes it with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " realloc (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "updating"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*lineptr\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*n\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as necessary."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In either case, on a successful call,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*lineptr\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"*n\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be updated to reflect the buffer address and allocated size respectively."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getdelim ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "works like"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "except that a line delimiter other than newline can be specified as the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " delimiter"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a delimiter character is not added if one was not present"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the input before end of file was reached."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getdelim ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "return the number of characters read, including the delimiter character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but not including the terminating null byte ("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ")."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This value can be used"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to handle embedded null bytes in the line read."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Both functions return "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 on failure to read a line (including end-of-file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "condition)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the event of an error,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to indicate the cause."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Bad arguments"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( n"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lineptr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is NULL, or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stream"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not valid)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOMEM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Allocation or reallocation of the line buffer failed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ATTRIBUTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For an explanation of the terms used in this section, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attributes (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "allbox;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lbw21 lb lb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Interface\tAttribute\tValue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T{"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline (),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getdelim ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}\tThread safety\tMT-Safe"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".sp",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getline ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getdelim ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "were originally GNU extensions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They were standardized in POSIX.1-2008."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _GNU_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdlib.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(int argc, char *argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    FILE *stream;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char *line = NULL;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    size_t len = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ssize_t nread;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (argc != 2) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fprintf(stderr, \"Usage: %s <file>"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[0]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    stream = fopen(argv[1], \"r\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (stream == NULL) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        perror(\"fopen\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    while ((nread = getline(&line, &len, stream)) != "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"Retrieved line of length %zu:"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", nread);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fwrite(line, nread, 1, stdout);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    free(line);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    fclose(stream);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_SUCCESS);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fgets (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fopen (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fread (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " scanf (3)"
+        }
+      ]
+    ]
+  }
+]

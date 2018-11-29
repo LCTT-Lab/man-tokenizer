@@ -1,0 +1,3367 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(PUBLIC_DOMAIN)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This page is in the public domain."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Almost all details are from RFC 2553."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2004-12-14, mtk, Added EAI_OVERFLOW error"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2004-12-14 Fixed description of error return"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " GETNAMEINFO 3 2017-09-15 \"GNU\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "getnameinfo "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " address-to-name translation in protocol-independent manner"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/socket.h>"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <netdb.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int getnameinfo(const struct sockaddr *\" \"addr\" \", socklen_t \" \"addrlen\" ,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"                char *\" \"host\" \", socklen_t \" \"hostlen\" ,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"                char *\" \"serv\" \", socklen_t \" \"servlen\" \", int \" \"flags\" );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " -4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Feature Test Macro Requirements for glibc (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " feature_test_macros (7)):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    Since glibc 2.22: _POSIX_C_SOURCE >= 201112L"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    Glibc 2.21 and earlier: _POSIX_C_SOURCE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " b"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "function is the inverse of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getaddrinfo (3):"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it converts a socket address to a corresponding host and service,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in a protocol-independent manner."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It combines the functionality of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostbyaddr (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getservbyport (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but unlike those functions,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is reentrant and allows programs to eliminate"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IPv4-versus-IPv6 dependencies."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument is a pointer to a generic socket address structure"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(of type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_in6 )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of size"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addrlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that holds the input IP address and port number."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The arguments"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " host"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " serv"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are pointers to caller-allocated buffers (of size"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hostlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " servlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "respectively) into which"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "places null-terminated strings containing the host and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "service names respectively."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The caller can specify that no hostname (or no service name)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is required by providing a NULL"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " host"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " serv )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument or a zero"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hostlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " servlen )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, at least one of hostname or service name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must be requested."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument modifies the behavior of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_NAMEREQD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If set, then an error is returned if the hostname cannot be determined."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_DGRAM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If set, then the service is datagram (UDP) based rather than"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "stream (TCP) based."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is required for the few ports (512"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(en"
+        },
+        {
+          "type": "TEXT",
+          "content": "514)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that have different services for UDP and TCP."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_NOFQDN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If set, return only the hostname part of the fully qualified domain name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for local hosts."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_NUMERICHOST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If set, then the numeric form of the hostname is returned."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" For example, by calling"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .BR inet_ntop ()"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" instead of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .BR gethostbyaddr ()."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(When not set, this will still happen in case the node's name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cannot be determined.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" POSIX.1-2003 has NI_NUMERICSCOPE, but glibc doesn't have it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_NUMERICSERV"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If set, then the numeric form of the service address is returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(When not set, this will still happen in case the service's name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cannot be determined.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Extensions to getnameinfo() for Internationalized Domain Names"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Starting with glibc 2.3.4,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has been extended to selectively allow"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "hostnames to be transparently converted to and from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Internationalized Domain Name (IDN) format (see RFC 3490,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"Internationalizing Domain Names in Applications (IDNA)\" )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Three new flags are defined:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_IDN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If this flag is used, then the name found in the lookup process is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "converted from IDN format to the locale's encoding if necessary."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ASCII-only names are not affected by the conversion, which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "makes this flag usable in existing programs and environments."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_IDN_ALLOW_UNASSIGNED \", \" NI_IDN_USE_STD3_ASCII_RULES"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting these flags will enable the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IDNA_ALLOW_UNASSIGNED (allow unassigned Unicode code points) and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IDNA_USE_STD3_ASCII_RULES (check output to make sure it is a STD3"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "conforming hostname)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flags respectively to be used in the IDNA handling."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME glibc defines the following additional errors, some which"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" can probably be returned by getnameinfo(); they need to"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" be documented."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #ifdef __USE_GNU"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #define EAI_INPROGRESS  -100  /* Processing request in progress.  */"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #define EAI_CANCELED    -101  /* Request canceled.  */"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #define EAI_NOTCANCELED -102  /* Request not canceled.  */"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #define EAI_ALLDONE     -103  /* All requests done.  */"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #define EAI_INTR        -104  /* Interrupted by a signal.  */"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #define EAI_IDN_ENCODE  -105  /* IDN encoding failed.  */"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     #endif"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success, 0 is returned, and node and service names, if requested,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are filled with null-terminated strings, possibly truncated to fit"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the specified buffer lengths."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, one of the following nonzero error codes is returned:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_AGAIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The name could not be resolved at this time."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Try again later."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_BADFLAGS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument has an invalid value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_FAIL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A nonrecoverable error occurred."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_FAMILY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The address family was not recognized,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the address length was invalid for the specified family."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_MEMORY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Out of memory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_NONAME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The name does not resolve for the supplied arguments."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NI_NAMEREQD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set and the host's name cannot be located,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or neither hostname nor service name were requested."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_OVERFLOW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The buffer pointed to by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " host"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " serv"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was too small."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAI_SYSTEM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A system error occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The error code can be found in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gai_strerror (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "function translates these error codes to a human readable string,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "suitable for error reporting."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " FILES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/hosts"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/nsswitch.conf"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/resolv.conf"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is provided in glibc since version 2.1."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ATTRIBUTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For an explanation of the terms used in this section, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attributes (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "allbox;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lb lb lb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Interface\tAttribute\tValue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T{"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}\tThread safety\tMT-Safe env locale"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".sp",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001, POSIX.1-2008, RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "2553."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In order to assist the programmer in choosing reasonable sizes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the supplied buffers,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <netdb.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "defines the constants"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define NI_MAXHOST      1025"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define NI_MAXSERV      32"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since glibc 2.8,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "these definitions are exposed only if suitable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "feature test macros are defined, namely:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _GNU_SOURCE ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _DEFAULT_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(since glibc 2.19),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or (in glibc versions up to and including 2.19)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _BSD_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _SVID_SOURCE ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The former is the constant"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAXDNAME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in recent versions of BIND's"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <arpa/nameser.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "header file."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The latter is a guess based on the services listed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the current Assigned Numbers RFC."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Before glibc version 2.2, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hostlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " servlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments were typed as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " size_t ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following code tries to get the numeric hostname and service name,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a given socket address."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that there is no hardcoded reference to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a particular address family."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr *addr;     /* input */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socklen_t addrlen;         /* input */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "char hbuf[NI_MAXHOST], sbuf[NI_MAXSERV];"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "if (getnameinfo(addr, addrlen, hbuf, sizeof(hbuf), sbuf,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            sizeof(sbuf), NI_NUMERICHOST | NI_NUMERICSERV) == 0)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"host=%s, serv=%s"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", hbuf, sbuf);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following version checks if the socket address has a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reverse address mapping."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr *addr;     /* input */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socklen_t addrlen;         /* input */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "char hbuf[NI_MAXHOST];"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "if (getnameinfo(addr, addrlen, hbuf, sizeof(hbuf),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            NULL, 0, NI_NAMEREQD))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"could not resolve hostname\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "else"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"host=%s"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", hbuf);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An example program using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getnameinfo ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be found in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getaddrinfo (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " accept (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpeername (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getsockname (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recvfrom (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socket (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getaddrinfo (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostbyaddr (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getservbyname (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getservbyport (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inet_ntop (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hosts (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " services (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hostname (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " named (8)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "R. Gilligan, S. Thomson, J. Bound and W. Stevens,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"Basic Socket Interface Extensions for IPv6\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "2553, March 1999."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Tatsuya Jinmei and Atsushi Onoe,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"An Extension of Format for IPv6 Scoped Addresses\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "internet draft, work in progress"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ftp://ftp.ietf.org"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/internet"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "drafts"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/draft"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "ietf"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "ipngwg"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "scopedaddr"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "format"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "02.txt"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Craig Metz,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"Protocol Independence Using the Sockets API\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Proceedings of the freenix track:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "2000 USENIX annual technical conference, June 2000"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " http://www.usenix.org"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/publications"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/library"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/proceedings"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/usenix2000"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/freenix"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/metzprotocol.html"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ."
+        }
+      ]
+    ]
+  }
+]

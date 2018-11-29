@@ -1,0 +1,5422 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page is Copyright (c) 1998 by Andi Kleen."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPL_NOVERSION_ONELINE)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Subject to the GPL."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Based on the original comments from Alexey Kuznetsov"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2005-12-27 by Hasso Tepper <hasso@estpak.ee>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" $Id: netlink.7,v 1.8 2000/06/22 13:23:00 ak Exp $"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK  7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "netlink "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " communication between kernel and user space (AF_NETLINK)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <asm/types.h>"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/socket.h>"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <linux/netlink.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"netlink_socket = socket(AF_NETLINK, \" socket_type \", \" netlink_family );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Netlink is used to transfer information between the kernel and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "user-space processes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It consists of a standard sockets-based interface for user space"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "processes and an internal kernel API for kernel modules."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The internal kernel interface is not documented in this manual page."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is also an obsolete netlink interface"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "via netlink character devices; this interface is not documented here"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and is provided only for backward compatibility."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Netlink is a datagram-oriented service."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_RAW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are valid values for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socket_type ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, the netlink protocol does not distinguish between datagram"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and raw sockets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netlink_family"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "selects the kernel module or netlink group to communicate with."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The currently assigned netlink families are:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_ROUTE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Receives routing and link updates and may be used to modify the routing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tables (both IPv4 and IPv6), IP addresses, link parameters,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "neighbor setups, queueing disciplines, traffic classes and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packet classifiers (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtnetlink (7))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_W1 \" (Linux 2.6.13 to 2.16.17)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Messages from 1-wire subsystem."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_USERSOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Reserved for user-mode socket protocols."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_FIREWALL \" (up to and including Linux 3.4)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" removed by commit d16cf20e2f2f13411eece7f7fb72c17d141c4a84"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Transport IPv4 packets from netfilter to user space."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Used by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip_queue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel module."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After a long period of being declared obsolete (in favor of the more advanced"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nfnetlink_queue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "feature),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_FIREWALL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was removed in Linux 3.5."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_INET_DIAG \" (since Linux 2.6.14)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Query information about sockets of various protocol families from the kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sock_diag (7))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_SOCK_DIAG \" (since Linux 3.3)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 7f1fb60c4fc9fb29fbb406ac8c4cfb4e59e168d6"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A synonym for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_INET_DIAG ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_NFLOG \" (up to and including Linux 3.16)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Netfilter/iptables ULOG."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_XFRM"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_XFRM needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "IPsec."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_SELINUX \" (since Linux 2.6.4)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "SELinux event notifications."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_ISCSI \" (since Linux 2.6.15)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_ISCSI needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Open-iSCSI."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_AUDIT \" (since Linux 2.6.6)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_AUDIT needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Auditing."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_FIB_LOOKUP \" (since Linux 2.6.13)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_FIB_LOOKUP needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Access to FIB lookup from user space."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_CONNECTOR \" (since Linux 2.6.14)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Kernel connector."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/connector/*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the Linux kernel source tree for further information."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_NETFILTER \" (since Linux 2.6.14)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_NETFILTER needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Netfilter subsystem."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_SCSITRANSPORT \" (since Linux 2.6.19)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 84314fd4740ad73550c76dee4a9578979d84af48"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_SCSITRANSPORT needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "SCSI Transports."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_RDMA \" (since Linux 3.0)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit b2cbae2c248776d81cc265ff7d48405b6a4cc463"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_RDMA needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Infiniband RDMA."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_IP6_FW \" (up to and including Linux 3.4)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Transport IPv6 packets from netfilter to user space."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Used by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip6_queue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel module."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_DNRTMSG"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECnet routing messages."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_KOBJECT_UEVENT \" (since Linux 2.6.10)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME More details on NETLINK_KOBJECT_UEVENT needed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Kernel messages to user space."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_GENERIC \" (since Linux 2.6.15)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generic netlink family for simplified netlink usage."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_CRYPTO \" (since Linux 3.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit a38f7907b926e4c6c7d389ad96cc38cec2e5a9e9"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Author: Steffen Klassert <steffen.klassert@secunet.com>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Netlink interface to request information about ciphers registered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the kernel crypto API as well as allow configuration of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel crypto API."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Netlink messages consist of a byte stream with one or multiple"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsghdr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "headers and associated payload."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The byte stream should be accessed only with the standard"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "macros."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netlink (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further information."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In multipart messages (multiple"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsghdr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "headers with associated payload in one byte stream) the first and all"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "following headers have the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLM_F_MULTI"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag set, except for the last header which has the type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_DONE ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After each"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsghdr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the payload follows."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct nlmsghdr {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 nlmsg_len;    /* Length of message including header */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 nlmsg_type;   /* Type of message content */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 nlmsg_flags;  /* Additional flags */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 nlmsg_seq;    /* Sequence number */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 nlmsg_pid;    /* Sender port ID */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_type"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be one of the standard message types:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_NOOP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "message is to be ignored,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_ERROR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "message signals an error and the payload contains an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsgerr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_DONE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "message terminates a multipart message."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct nlmsgerr {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int error;        /* Negative errno or 0 for acknowledgements */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct nlmsghdr msg;  /* Message header that caused the error */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A netlink family usually specifies more message types, see the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "appropriate manual pages for that, for example,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtnetlink (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_ROUTE ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "tab(:);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lB l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Standard flag bits in "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Inlmsg_flags"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "_"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_REQUEST:Must be set on all request messages."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_MULTI:T{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The message is part of a multipart message terminated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_DONE ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_ACK:Request for an acknowledgment on success."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_ECHO:Echo this request."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" No right adjustment for text blocks in tables"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "tab(:);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lB l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Additional flag bits for GET requests"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "_"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_ROOT:Return the complete table instead of a single entry."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_MATCH:T{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return all entries matching criteria passed in message content."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Not implemented yet."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_ATOMIC:Return an atomic snapshot of the table."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_DUMP:T{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Convenience macro; equivalent to"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(NLM_F_ROOT|NLM_F_MATCH)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME NLM_F_ATOMIC is not used anymore?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLM_F_ATOMIC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "requires the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_NET_ADMIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability or an effective UID of 0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "tab(:);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lB l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Additional flag bits for NEW requests"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "_"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_REPLACE:Replace existing matching object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_EXCL:Don't replace if the object already exists."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_CREATE:Create object if it doesn't already exist."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NLM_F_APPEND:Add to the end of the object list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_seq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are used to track messages."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "shows the origin of the message."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that there isn't a 1:1 relationship between"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the PID of the process if the message originated from a netlink"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ADDRESS FORMATS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "section for further information."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_seq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nlmsg_pid"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME Explain more about nlmsg_seq and nlmsg_pid."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "are opaque to netlink core."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Netlink is not a reliable protocol."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It tries its best to deliver a message to its destination(s),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but may drop messages when an out-of-memory condition or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "other error occurs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For reliable transfer the sender can request an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "acknowledgement from the receiver by setting the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLM_F_ACK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An acknowledgment is an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_ERROR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packet with the error field set to 0."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The application must generate acknowledgements for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "received messages itself."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel tries to send an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NLMSG_ERROR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "message for every failed packet."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A user process should follow this convention too."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "However, reliable transmissions from kernel to user are impossible"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in any case."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel can't send a netlink message if the socket buffer is full:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the message will be dropped and the kernel and the user-space process will"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "no longer have the same view of kernel state."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is up to the application to detect when this happens (via the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOBUFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recvmsg (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and resynchronize."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Address formats"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_nl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure describes a netlink client in user space or in the kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_nl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be either unicast (only sent to one peer) or sent to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "netlink multicast groups"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( nl_groups"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "not equal 0)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr_nl {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    sa_family_t     nl_family;  /* AF_NETLINK */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short  nl_pad;     /* Zero */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    pid_t           nl_pid;     /* Port ID */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32           nl_groups;  /* Multicast groups mask */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the unicast address of netlink socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It's always 0 if the destination is in the kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For a user-space process,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is usually the PID of the process owning the destination socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "identifies a netlink socket, not a process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If a process owns several netlink"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sockets, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be equal to the process ID only for at most one socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There are two ways to assign"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a netlink socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the application sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bind (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then it is up to the application to make sure that"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is unique."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the application sets it to 0, the kernel takes care of assigning it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel assigns the process ID to the first netlink socket the process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "opens and assigns a unique"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to every netlink socket that the process subsequently creates."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_groups"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a bit mask with every bit representing a netlink group number."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each netlink family has a set of 32 multicast groups."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bind (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is called on the socket, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_groups"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_nl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should be set to a bit mask of the groups which it wishes to listen to."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default value for this field is zero which means that no multicasts"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be received."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A socket may multicast messages to any of the multicast groups by setting"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_groups"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a bit mask of the groups it wishes to send to when it calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sendmsg (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or does a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " connect (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Only processes with an effective UID of 0 or the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_NET_ADMIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability may send or listen to a netlink multicast group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.13,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit d629b836d151d43332492651dd841d32e57ebe3b"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "messages can't be broadcast to multiple groups."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Any replies to a message received for a multicast group should be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sent back to the sending PID and the multicast group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some Linux kernel subsystems may additionally allow other users"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to send and/or receive messages."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As at Linux 3.0, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_KOBJECT_UEVENT ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_GENERIC ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_ROUTE ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_SELINUX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "groups allow other users to receive messages."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No groups allow other users to send messages."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Socket options"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To set or get a netlink socket option, call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getsockopt (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to read or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsockopt (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to write the option with the option level argument set to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOL_NETLINK ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unless otherwise noted,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " optval"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a pointer to an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " int ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_PKTINFO \" (since Linux 2.6.14)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit 9a4595bc7e67962f13232ee55a64e063062c3a99"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: Patrick McHardy <kaber@trash.net>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Enable"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nl_pktinfo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "control messages for received packets to get the extended"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "destination group number."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_ADD_MEMBERSHIP ,"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_DROP_MEMBERSHIP \" (since Linux 2.6.14)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit 9a4595bc7e67962f13232ee55a64e063062c3a99"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: Patrick McHardy <kaber@trash.net>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Join/leave a group specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " optval ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_LIST_MEMBERSHIPS \" (since Linux 4.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit b42be38b2778eda2237fc759e55e3b698b05b315"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: David Herrmann <dh.herrmann@gmail.com>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Retrieve all groups a socket is a member of."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " optval"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a pointer to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " __u32"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " optlen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the size of the array."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The array is filled with the full membership set of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket, and the required array size is returned in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " optlen ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_BROADCAST_ERROR \" (since Linux 2.6.30)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit be0c22a46cfb79ab2342bb28fde99afa94ef868e"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: Pablo Neira Ayuso <pablo@netfilter.org>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When not set,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netlink_broadcast()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "only reports"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ESRCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "errors and silently ignore"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NOBUFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "errors."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_NO_ENOBUFS \" (since Linux 2.6.30)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit 38938bfe3489394e2eed5e40c9bb8f66a2ce1405"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: Pablo Neira Ayuso <pablo@netfilter.org>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This flag can be used by unicast and broadcast listeners to avoid receiving"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOBUFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "errors."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_LISTEN_ALL_NSID \" (since Linux 4.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit 59324cf35aba5336b611074028777838a963d03b"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: Nicolas Dichtel <nicolas.dichtel@6wind.com>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When set, this socket will receive netlink notifications from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all network namespaces that have an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nsid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "assigned into the network namespace where the socket has been opened."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nsid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is sent to user space via an ancillary data."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_CAP_ACK \" (since Linux 4.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tcommit 0a6a3a23ea6efde079a5b77688541a98bf202721"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tAuthor: Christophe Ricard <christophe.ricard@gmail.com>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel may fail to allocate the necessary room for the acknowledgment"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "message back to user space."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option trims off the payload of the original netlink message."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The netlink message header is still included, so the user can guess from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sequence number which message triggered the acknowledgment."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The socket interface to netlink first appeared Linux 2.2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux 2.0 supported a more primitive device-based netlink interface"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(which is still available as a compatibility option)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This obsolete interface is not described here."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It is often better to use netlink via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libnetlink"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libnl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "than via the low-level kernel interface."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This manual page is not complete."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following example creates a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETLINK_ROUTE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "netlink socket which will listen to the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RTMGRP_LINK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(network interface create/delete/up/down events) and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RTMGRP_IPV4_IFADDR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(IPv4 addresses add/delete events) multicast groups."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr_nl sa;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "memset(&sa, 0, sizeof(sa));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sa.nl_family = AF_NETLINK;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sa.nl_groups = RTMGRP_LINK | RTMGRP_IPV4_IFADDR;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fd = socket(AF_NETLINK, SOCK_RAW, NETLINK_ROUTE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bind(fd, (struct sockaddr *) &sa, sizeof(sa));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The next example demonstrates how to send a netlink message to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel (pid 0)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the application must take care of message sequence numbers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in order to reliably track acknowledgements."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct nlmsghdr *nh;    /* The nlmsghdr with payload to send */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr_nl sa;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct iovec iov = { nh, nh"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nlmsg_len };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct msghdr msg;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "msg = { &sa, sizeof(sa), &iov, 1, NULL, 0, 0 };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "memset(&sa, 0, sizeof(sa));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sa.nl_family = AF_NETLINK;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nh"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nlmsg_pid = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nh"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nlmsg_seq = ++sequence_number;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "/* Request an ack from kernel by setting NLM_F_ACK */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nh"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nlmsg_flags |= NLM_F_ACK;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "sendmsg(fd, &msg, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "And the last example is about reading netlink message."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "int len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "char buf[8192];     /* 8192 to avoid message truncation on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                       platforms with page size > 4096 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct iovec iov = { buf, sizeof(buf) };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr_nl sa;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct msghdr msg;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct nlmsghdr *nh;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "msg = { &sa, sizeof(sa), &iov, 1, NULL, 0, 0 };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "len = recvmsg(fd, &msg, 0);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "for (nh = (struct nlmsghdr *) buf; NLMSG_OK (nh, len);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     nh = NLMSG_NEXT (nh, len)) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* The end of multipart message */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (nh"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nlmsg_type == NLMSG_DONE)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        return;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (nh"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nlmsg_type == NLMSG_ERROR)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Do some error handling */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ..."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Continue with parsing payload */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ..."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cmsg (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netlink (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtnetlink (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sock_diag (7)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ftp://ftp.inr.ac.ru"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/ip"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "routing"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/iproute2*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "information about libnetlink"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " http://www.infradead.org"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/~tgr"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/libnl/"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "information about libnl"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC 3549 \"Linux Netlink as an IP Services Protocol\""
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,2379 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2016 Intel Corporation"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PKEYS 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "pkeys "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " overview of Memory Protection Keys"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Memory Protection Keys (pkeys) are an extension to existing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "page-based memory permissions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Normal page permissions using"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "page tables require expensive system calls and TLB invalidations"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when changing permissions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Memory Protection Keys provide a mechanism for changing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "protections without requiring modification of the page tables on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "every permission change."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To use pkeys, software must first \"tag\" a page in the page tables"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with a pkey."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After this tag is in place, an application only has"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to change the contents of a register in order to remove write"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "access, or all access to a tagged page."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Protection keys work in conjunction with the existing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PROT_READ /"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PROT_WRITE /"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PROT_EXEC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "permissions passed to system calls such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mprotect (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but always act to further restrict these traditional permission"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mechanisms."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If a process performs an access that violates pkey"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "restrictions, it receives a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGSEGV"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for details of the information available with that signal."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To use the pkeys feature, the processor must support it, and the kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must contain support for the feature on a given processor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As of early 2016 only future Intel x86 processors are supported,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and this hardware supports 16 protection keys in each process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, pkey 0 is used as the default key, so a maximum of 15"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are available for actual application use."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default key is assigned to any memory region for which a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pkey has not been explicitly assigned via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_mprotect (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Protection keys have the potential to add a layer of security and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reliability to applications."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "But they have not been primarily designed as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a security feature."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For instance, WRPKRU is a completely unprivileged"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instruction, so pkeys are useless in any case that an attacker controls"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the PKRU register or can execute arbitrary instructions."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications should be very careful to ensure that they do not \"leak\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "protection keys."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For instance, before calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_free (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the application should be sure that no memory has that pkey assigned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the application left the freed pkey assigned, a future user of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that pkey might inadvertently change the permissions of an unrelated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "data structure, which could impact security or stability."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel currently allows in-use pkeys to have"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_free (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "called on them because it would have processor or memory performance"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "implications to perform the additional checks needed to disallow it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Implementation of the necessary checks is left up to applications."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications may implement these checks by searching the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/smaps"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file for memory regions with the pkey assigned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Further details can be found in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Any application wanting to use protection keys needs to be able"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to function without them."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They might be unavailable because the hardware that the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "application runs on does not support them, the kernel code does"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "not contain support, the kernel support has been disabled, or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "because the keys have all been allocated, perhaps by a library"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the application is using."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is recommended that applications wanting to use protection"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "keys should simply call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_alloc (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and test whether the call succeeds,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead of attempting to detect support for the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "feature in any other way."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Although unnecessary, hardware support for protection keys may be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enumerated with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cpuid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instruction."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Details of how to do this can be found in the Intel Software"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Developers Manual."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel performs this enumeration and exposes the information in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/cpuinfo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "under the \"flags\" field."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The string \"pku\" in this field indicates hardware support for protection"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "keys and the string \"ospke\" indicates that the kernel contains and has"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enabled protection keys support."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications using threads and protection keys should be especially"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "careful."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads inherit the protection key rights of the parent at the time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications should either ensure that their own permissions are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "appropriate for child threads at the time when"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is called, or ensure that each child thread can perform its"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "own initialization of protection key rights."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Signal Handler Behavior"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each time a signal handler is invoked (including nested signals), the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread is temporarily given a new, default set of protection key rights"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that override the rights from the interrupted context."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This means that applications must re-establish their desired protection"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "key rights upon entering a signal handler if the desired rights differ"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the defaults."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The rights of any interrupted context are restored when the signal"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "handler returns."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This signal behavior is unusual and is due to the fact that the x86 PKRU"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "register (which stores protection key access rights) is managed with the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "same hardware mechanism (XSAVE) that manages floating-point registers."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The signal behavior is the same as that of floating-point registers."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Protection Keys system calls"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux kernel implements the following pkey-related system calls:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_mprotect (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_alloc (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_free (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux pkey system calls are available only if the kernel was"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "configured and built with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "option."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The program below allocates a page of memory with read and write permissions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It then writes some data to the memory and successfully reads it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "back."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After that, it attempts to allocate a protection key and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "disallows access to the page by using the WRPKRU instruction."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It then tries to access the page,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which we now expect to cause a fatal signal to the application."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"$\" \" ./a.out\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "buffer contains: 73"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "about to read buffer again..."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Segmentation fault (core dumped)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Program source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _GNU_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <unistd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/syscall.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/mman.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static inline void"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wrpkru(unsigned int pkru)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned int eax = pkru;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned int ecx = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned int edx = 0;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    asm volatile(\".byte 0x0f,0x01,0xef"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "t\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                 : : \"a\" (eax), \"c\" (ecx), \"d\" (edx));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pkey_set(int pkey, unsigned long rights, unsigned long flags)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned int pkru = (rights << (2 * pkey));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    return wrpkru(pkru);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pkey_mprotect(void *ptr, size_t size, unsigned long orig_prot,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "              unsigned long pkey)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    return syscall(SYS_pkey_mprotect, ptr, size, orig_prot, pkey);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pkey_alloc(void)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    return syscall(SYS_pkey_alloc, 0, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pkey_free(unsigned long pkey)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    return syscall(SYS_pkey_free, pkey);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           } while (0)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(void)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int status;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int pkey;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int *buffer;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     *Allocate one page of memory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    buffer = mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                  MAP_ANONYMOUS | MAP_PRIVATE, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (buffer == MAP_FAILED)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"mmap\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * Put some random data into the page (still OK to touch)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    *buffer = __LINE__;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"buffer contains: %d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", *buffer);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * Allocate a protection key:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    pkey = pkey_alloc();"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (pkey == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"pkey_alloc\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * Disable access to any memory with \"pkey\" set,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * even though there is none right now"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    status = pkey_set(pkey, PKEY_DISABLE_ACCESS, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (status)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"pkey_set\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * Set the protection key on \"buffer\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * Note that it is still read/write as far as mprotect() is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * concerned and the previous pkey_set() overrides it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    status = pkey_mprotect(buffer, getpagesize(),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           PROT_READ | PROT_WRITE, pkey);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (status == -1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"pkey_mprotect\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"about to read buffer again..."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     * This will crash, because we have disallowed access"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"buffer contains: %d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", *buffer);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    status = pkey_free(pkey);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (status == -1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"pkey_free\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_SUCCESS);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_alloc (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_free (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pkey_mprotect (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2)"
+        }
+      ]
+    ]
+  }
+]

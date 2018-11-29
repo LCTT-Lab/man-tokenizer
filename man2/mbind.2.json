@@ -1,0 +1,4309 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright 2003,2004 Andi Kleen, SuSE Labs."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright 2007 Lee Schermerhorn, Hewlett Packard"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_PROF)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2006-02-03, mtk, substantial wording changes and other improvements"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2007-08-27, Lee Schermerhorn <Lee.Schermerhorn@hp.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\tmore precise specification of behavior."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Linux 3.8 added MPOL_MF_LAZY, which needs to be documented."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Does it also apply for move_pages()?"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"                commit b24f53a0bea38b266d219ee651b22dba727c44ae"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"                Author: Lee Schermerhorn <lee.schermerhorn@hp.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"                Date:   Thu Oct 25 14:16:32 2012 +0200"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MBIND 2 2017-09-15 Linux \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "mbind "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " set memory policy for a memory range"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"#include <numaif.h>\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"long mbind(void *\" addr \", unsigned long \" len  \", int \" mode ,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"           const unsigned long *\" nodemask  \", unsigned long \" maxnode ,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"           unsigned \" flags );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Link with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "lnuma"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sets the NUMA memory policy,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which consists of a policy mode and zero or more nodes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the memory range starting with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and continuing for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bytes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The memory policy defines from which node memory is allocated."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the memory range specified by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr \" and \" len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments includes an \"anonymous\" region of memory"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "that is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a region of memory created using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAP_ANONYMOUS "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a memory-mapped file, mapped using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAP_PRIVATE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag, pages will be allocated only according to the specified"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy when the application writes (stores) to the page."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For anonymous regions, an initial read access will use a shared"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "page in the kernel containing all zeros."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For a file mapped with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAP_PRIVATE ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an initial read access will allocate pages according to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "memory policy of the thread that causes the page to be allocated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This may not be the thread that called"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The specified policy will be ignored for any"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAP_SHARED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mappings in the specified memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Rather the pages will be allocated according to the memory policy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the thread that caused the page to be allocated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Again, this may not be the thread that called"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the specified memory range includes a shared memory region"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " shmget (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call and attached using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " shmat (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pages allocated for the anonymous or shared memory region will"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be allocated according to the policy specified, regardless of which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process attached to the shared memory segment causes the allocation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If, however, the shared memory region was created with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SHM_HUGETLB"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the huge pages will be allocated according to the policy specified"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "only if the page allocation is caused by the process that calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for that region."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By default,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has an effect only for new allocations; if the pages inside"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the range have been already touched before setting the policy,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the policy has no effect."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This default behavior may be overridden by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE_ALL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flags described below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument must specify one of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_BIND ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_INTERLEAVE ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_PREFERRED ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_LOCAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(which are described in detail below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All policy modes except"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "require the caller to specify the node or nodes to which the mode applies,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "via the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument may also include an optional"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"mode flag\" ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The supported"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"mode flags\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_F_STATIC_NODES \" (since Linux-2.6.26)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A nonempty"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifies physical node IDs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux does not remap the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when the thread moves to a different cpuset context,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nor when the set of nodes allowed by the thread's"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "current cpuset context changes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_F_RELATIVE_NODES \" (since Linux-2.6.26)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A nonempty"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifies node IDs that are relative to the set of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "node IDs allowed by the thread's current cpuset."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "points to a bit mask of nodes containing up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bits."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The bit mask size is rounded to the next multiple of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"sizeof(unsigned long)\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but the kernel will use bits only up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A NULL value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value of zero specifies the empty set of nodes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is zero,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument is ignored."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Where a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is required, it must contain at least one node that is on-line,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "allowed by the thread's current cpuset context"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(unless the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_F_STATIC_NODES"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mode flag is specified),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and contains memory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument must include one of the following values:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This mode requests that any nondefault policy be removed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "restoring default behavior."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When applied to a range of memory via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this means to use the thread memory policy,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which may have been set with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the mode of the thread memory policy is also"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the system-wide default policy will be used."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The system-wide default policy allocates"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pages on the node of the CPU that triggers the allocation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments must be specify the empty set of nodes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_BIND"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This mode specifies a strict policy that restricts memory allocation to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the nodes specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifies more than one node, page allocations will come from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the node with sufficient free memory that is closest to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the node where the allocation takes place."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Pages will not be allocated from any node not specified in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IR nodemask ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Before Linux 2.6.26,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 19770b32609b6bf97a3dece2529089494cbfc549"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "page allocations came from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the node with the lowest numeric node ID first, until that node"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contained no free memory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Allocations then came from the node with the next highest"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "node ID specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and so forth, until none of the specified nodes contained free memory.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_INTERLEAVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This mode specifies that page allocations be interleaved across the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set of nodes specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This optimizes for bandwidth instead of latency"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by spreading out pages and memory accesses to those pages across"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "multiple nodes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To be effective the memory area should be fairly large,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at least 1"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "MB or bigger with a fairly uniform access pattern."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Accesses to a single page of the area will still be limited to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the memory bandwidth of a single node."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_PREFERRED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This mode sets the preferred node for allocation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel will try to allocate pages from this"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "node first and fall back to other nodes if the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "preferred nodes is low on free memory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifies more than one node ID, the first node in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mask will be selected as the preferred node."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments specify the empty set, then the memory is allocated on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the node of the CPU that triggered the allocation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_LOCAL \" (since Linux 3.8)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 479e2802d09f1e18a97262c4c6f8f17ae5884bd8"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit f2a07f40dbc603c15f8b06e6ec7f768af67b424f"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This mode specifies \"local allocation\"; the memory is allocated on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the node of the CPU that triggered the allocation (the \"local node\")."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arguments must specify the empty set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the \"local node\" is low on free memory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel will try to allocate memory from other nodes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel will allocate memory from the \"local node\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "whenever memory for this node is available."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the \"local node\" is not allowed by the thread's current cpuset context,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel will try to allocate memory from other nodes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel will allocate memory from the \"local node\" whenever"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it becomes allowed by the thread's current cpuset context."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "By contrast,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reverts to the memory policy of the thread (which may be set via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that policy may be something other than \"local allocation\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_STRICT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is passed in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the call fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the existing pages in the memory range don't follow the policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" According to the kernel code, the following is not true"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" --Lee Schermerhorn"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" In 2.6.16 or later the kernel will also try to move pages"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" to the requested node with this flag."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the kernel will attempt to move all the existing pages"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the memory range so that they follow the policy."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Pages that are shared with other processes will not be moved."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_STRICT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is also specified, then the call fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if some pages could not be moved."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE_ALL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is passed in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the kernel will attempt to move all existing pages in the memory range"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "regardless of whether other processes use the pages."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The calling thread must be privileged"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to use this flag."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_STRICT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is also specified, then the call fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if some pages could not be moved."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ---------------------------------------------------------------"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on error, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 is returned and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to indicate the error."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ---------------------------------------------------------------"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  I think I got all of the error returns.  --Lee Schermerhorn"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Part or all of the memory range specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "points outside your accessible address space."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Or, there was an unmapped hole in the specified memory range specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An invalid value was specified for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr + len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was less than"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " addr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not a multiple of the system page size."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Or,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specified a nonempty set;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_BIND"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_INTERLEAVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is empty."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Or,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " maxnode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "exceeds a kernel-imposed limit."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" As at 2.6.23, this limit is \"a page worth of bits\", e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 8 * 4096 bits, assuming a 4kB page size."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Or,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifies one or more node IDs that are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "greater than the maximum supported node ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Or, none of the node IDs specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodemask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are on-line and allowed by the thread's current cpuset context,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or none of the specified nodes contain memory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Or, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument specified both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_F_STATIC_NODES"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_F_RELATIVE_NODES ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_STRICT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was specified and an existing page was already on a node"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that does not follow the policy;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE_ALL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was specified and the kernel was unable to move all existing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pages in the range."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOMEM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Insufficient kernel memory was available."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument included the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE_ALL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag and the caller does not have the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SYS_NICE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "privilege."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ---------------------------------------------------------------"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call was added to the Linux kernel in version 2.6.7."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This system call is Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For information on library support, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "NUMA policy is not supported on a memory-mapped file range"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that was mapped with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAP_SHARED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mode can have different effects for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is specified for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the thread's memory policy reverts to the system default policy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or local allocation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_DEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is specified for a range of memory using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "any pages subsequently allocated for that range will use"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the thread's memory policy, as set by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This effectively removes the explicit policy from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specified range, \"falling back\" to a possibly nondefault"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To select explicit \"local allocation\" for a memory range,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specify a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_LOCAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_PREFERRED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with an empty set of nodes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This method will work for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as well."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Support for huge page policy was added with 2.6.16."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For interleave policy to be effective on huge page mappings the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policied memory needs to be tens of megabytes or larger."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_STRICT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is ignored on huge page mappings."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MPOL_MF_MOVE_ALL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are available only on Linux 2.6.16 and later."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " get_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getcpu (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " shmat (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " shmget (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cpuset (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numactl (8)"
+        }
+      ]
+    ]
+  }
+]

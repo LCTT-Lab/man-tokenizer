@@ -1,0 +1,4125 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2008 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" starting from a version by Davide Libenzi <davidel@xmailserver.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPLv2+_SW_3_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This program is free software; you can redistribute it and/or modify"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" it under the terms of the GNU General Public License as published by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the Free Software Foundation; either version 2 of the License, or"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" (at your option) any later version."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This program is distributed in the hope that it will be useful,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" but WITHOUT ANY WARRANTY; without even the implied warranty of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" GNU General Public License for more details."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" You should have received a copy of the GNU General Public"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" License along with this manual; if not, see"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" <http://www.gnu.org/licenses/>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2008-10-10, mtk: describe eventfd2(), and EFD_NONBLOCK and EFD_CLOEXEC"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EVENTFD 2 2017-09-15 Linux \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "eventfd "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " create a file descriptor for event notification"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/eventfd.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int eventfd(unsigned int \" initval \", int \" flags );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creates an \"eventfd object\" that can be used as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an event wait/notify mechanism by user-space applications,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and by the kernel to notify user-space applications of events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The object contains an unsigned 64-bit integer"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( uint64_t )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "counter that is maintained by the kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This counter is initialized with the value specified in the argument"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " initval ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following values may be bitwise ORed in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to change the behavior of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ():"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFD_CLOEXEC \" (since Linux 2.6.27)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the close-on-exec"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( FD_CLOEXEC )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag on the new file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the description of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_CLOEXEC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for reasons why this may be useful."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFD_NONBLOCK \" (since Linux 2.6.27)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_NONBLOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file status flag on the new open file description."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Using this flag saves extra calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to achieve the same result."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFD_SEMAPHORE \" (since Linux 2.6.30)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Provide semaphore-like semantics for reads from the new file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux up to version 2.6.26, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument is unused, and must be specified as zero."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As its return value,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns a new file descriptor that can be used to refer to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "eventfd object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The following operations can be performed on the file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each successful"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns an 8-byte integer."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the size of the supplied buffer is less than 8 bytes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The value returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is in host byte order"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "that is,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the native byte order for integers on the host machine."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The semantics of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "depend on whether the eventfd counter currently has a nonzero value"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and whether the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFD_SEMAPHORE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag was specified when creating the eventfd file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFD_SEMAPHORE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was not specified and the eventfd counter has a nonzero value, then a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns 8 bytes containing that value,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the counter's value is reset to zero."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFD_SEMAPHORE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was specified and the eventfd counter has a nonzero value, then a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns 8 bytes containing the value 1,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the counter's value is decremented by 1."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the eventfd counter is zero at the time of the call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the call either blocks until the counter becomes nonzero"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(at which time, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "proceeds as described above)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the file descriptor has been made nonblocking."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call adds the 8-byte integer value supplied in its"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "buffer to the counter."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum value that may be stored in the counter is the largest"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unsigned 64-bit value minus 1 (i.e., 0xfffffffffffffffe)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the addition would cause the counter's value to exceed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the maximum, then the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "either blocks until a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is performed on the file descriptor,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the file descriptor has been made nonblocking."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the size of the supplied buffer is less than 8 bytes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or if an attempt is made to write the value 0xffffffffffffffff."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll \"(2), \" select \"(2) (and similar)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The returned file descriptor supports"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(and analogously"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor is readable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " readfds"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument; the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " POLLIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the counter has a value greater than 0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor is writable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " writefds"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument; the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " POLLOUT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if it is possible to write a value of at least \"1\" without blocking."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If an overflow of the counter value was detected,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicates the file descriptor as being both readable and writable, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " POLLERR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As noted above,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can never overflow the counter."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However an overflow can occur if 2^64"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "eventfd \"signal posts\" were performed by the KAIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "subsystem (theoretically possible, but practically unlikely)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If an overflow has occurred, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will return that maximum"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " uint64_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value (i.e., 0xffffffffffffffff)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The eventfd file descriptor also supports the other file-descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "multiplexing APIs:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pselect (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ppoll (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " close (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When the file descriptor is no longer required it should be closed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When all file descriptors associated with the same eventfd object"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "have been closed, the resources for object are freed by the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A copy of the file descriptor created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is inherited by the child produced by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The duplicate file descriptor is associated with the same"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "eventfd object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File descriptors created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are preserved across"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unless the close-on-exec flag has been set."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns a new eventfd file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 is returned and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to indicate the error."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An unsupported value was specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EMFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The per-process limit on the number of open file descriptors has been reached."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The system-wide limit on the total number of open files has been"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reached."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENODEV"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Note from Davide:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The ENODEV error is basically never going to happen if"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the kernel boots correctly. That error happen only if during"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the kernel initialization, some error occur in the anonymous"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" inode source initialization."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Could not mount (internal) anonymous inode device."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOMEM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There was insufficient memory to create a new"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "eventfd file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is available on Linux since kernel 2.6.22."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Working support is provided in glibc since version 2.8."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" eventfd() is in glibc 2.7, but reportedly does not build"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd2 ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call (see NOTES) is available on Linux since kernel 2.6.27."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since version 2.9, the glibc"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wrapper will employ the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd2 ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call, if it is supported by the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ATTRIBUTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For an explanation of the terms used in this section, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attributes (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "allbox;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lb lb lb"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Interface\tAttribute\tValue"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T{"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}\tThread safety\tMT-Safe"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".sp",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd2 ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications can use an eventfd file descriptor instead of a pipe (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pipe (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in all cases where a pipe is used simply to signal events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel overhead of an eventfd file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is much lower than that of a pipe,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and only one file descriptor is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "required (versus the two required for a pipe)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When used in the kernel, an eventfd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor can provide a bridge from kernel to user space, allowing,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for example, functionalities like KAIO (kernel AIO)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" or eventually syslets/threadlets"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "to signal to a file descriptor that some operation is complete."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A key point about an eventfd file descriptor is that it can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "monitored just like any other file descriptor using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This means that an application can simultaneously monitor the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readiness of \"traditional\" files and the readiness of other"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel mechanisms that support the eventfd interface."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Without the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface, these mechanisms could not be multiplexed via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7).)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The current value of an eventfd counter can be viewed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "via the entry for the corresponding file descriptor in the process's"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/fdinfo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " C library/kernel differences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "There are two underlying Linux system calls:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the more recent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd2 ()."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The former system call does not implement a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The latter system call implements the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "values described above."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The glibc wrapper function will use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " eventfd2 ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "where it is available."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Additional glibc features"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The GNU C library defines an additional type,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and two functions that attempt to abstract some of the details of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reading and writing on an eventfd file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "typedef uint64_t eventfd_t;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int eventfd_read(int fd, eventfd_t *value);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "int eventfd_write(int fd, eventfd_t value);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The functions perform the read and write operations on an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "eventfd file descriptor,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returning 0 if the correct number of bytes was transferred,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 otherwise."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following program creates an eventfd file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and then forks to create a child process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "While the parent briefly sleeps,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the child writes each of the integers supplied in the program's"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "command-line arguments to the eventfd file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When the parent has finished sleeping,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it reads from the eventfd file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following shell session shows a sample run of the program:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"$\" \" ./a.out 1 2 4 7 14\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Child writing 1 to efd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Child writing 2 to efd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Child writing 4 to efd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Child writing 7 to efd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Child writing 14 to efd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Child completed write loop"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Parent about to read"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Parent read 28 (0x1c) from efd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Program source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/eventfd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <unistd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdlib.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdint.h>             /* Definition of uint64_t */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define handle_error(msg) "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    do { perror(msg); exit(EXIT_FAILURE); } while (0)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(int argc, char *argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int efd, j;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t u;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ssize_t s;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (argc < 2) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fprintf(stderr, \"Usage: %s <num>..."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[0]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    efd = eventfd(0, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (efd == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        handle_error(\"eventfd\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    switch (fork()) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    case 0:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        for (j = 1; j < argc; j++) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            printf(\"Child writing %s to efd"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[j]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            u = strtoull(argv[j], NULL, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    /* strtoull() allows various bases */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            s = write(efd, &u, sizeof(uint64_t));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (s != sizeof(uint64_t))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                handle_error(\"write\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"Child completed write loop"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_SUCCESS);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    default:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        sleep(2);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"Parent about to read"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        s = read(efd, &u, sizeof(uint64_t));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (s != sizeof(uint64_t))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            handle_error(\"read\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"Parent read %llu (0x%llx) from efd"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                (unsigned long long) u, (unsigned long long) u);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_SUCCESS);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    case "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        handle_error(\"fork\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " futex (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pipe (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signalfd (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timerfd_create (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sem_overview (7)"
+        }
+      ]
+    ]
+  }
+]

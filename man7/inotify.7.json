@@ -1,0 +1,9954 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2006, 2014 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2014 Heinrich Schuchardt <xypron.glpk@gmx.de>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " INOTIFY 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "inotify "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " monitoring filesystem events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API provides a mechanism for monitoring filesystem events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Inotify can be used to monitor individual files,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or to monitor directories."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When a directory is monitored, inotify will return events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the directory itself, and for files inside the directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following system calls are used with this API:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_init (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creates an inotify instance and returns a file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "referring to the inotify instance."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The more recent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_init1 (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is like"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_init (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but has a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument that provides access to some extra functionality."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "manipulates the \"watch list\" associated with an inotify instance."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each item (\"watch\") in the watch list specifies the pathname of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a file or directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "along with some set of events that the kernel should monitor for the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file referred to by that pathname."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "either creates a new watch item, or modifies an existing watch."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each watch has a unique \"watch descriptor\", an integer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when the watch is created."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When events occur for monitored files and directories,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "those events are made available to the application as structured data that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be read from the inotify file descriptor using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see below)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_rm_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "removes an item from an inotify watch list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When all file descriptors referring to an inotify"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instance have been closed (using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " close (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the underlying object and its resources are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "freed for reuse by the kernel;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all associated watches are automatically freed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "With careful programming,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an application can use inotify to efficiently monitor and cache"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the state of a set of filesystem objects."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, robust applications should allow for the fact that bugs"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the monitoring logic or races of the kind described below"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may leave the cache inconsistent with the filesystem state."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is probably wise to do some consistency checking,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and rebuild the cache when inconsistencies are detected."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Reading events from an inotify file descriptor"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To determine what events have occurred, an application"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the inotify file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If no events have so far occurred, then,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "assuming a blocking file descriptor,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will block until at least one event occurs"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(unless interrupted by a signal,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in which case the call fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINTR ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (7))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each successful"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns a buffer containing one or more of the following structures:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct inotify_event {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int      wd;       /* Watch descriptor */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . The type of the 'wd' field should probably be \"int32_t\"."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" I submitted a patch to fix this.  See the LKML thread"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \"[patch] Fix type errors in inotify interfaces\", 18 Nov 2008"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Glibc bug filed: http://sources.redhat.com/bugzilla/show_bug.cgi?id=7040"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t mask;     /* Mask describing event */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t cookie;   /* Unique cookie associating related"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                          events (for rename(2)) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t len;      /* Size of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iname"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P field */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char     name[];   /* Optional null-terminated name */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "identifies the watch for which this event occurs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is one of the watch descriptors returned by a previous call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains bits that describe the event that occurred (see below)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cookie"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a unique integer that connects related events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Currently, this is used only for rename events, and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "allows the resulting pair of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events to be connected by the application."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For all other event types,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cookie"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to 0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field is present only when an event is returned"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a file inside a watched directory;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it identifies the filename within to the watched directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This filename is null-terminated,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and may include further null bytes ("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ") to align subsequent reads to a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "suitable address boundary."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field counts all of the bytes in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " name ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "including the null bytes;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the length of each"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure is thus"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"sizeof(struct inotify_event)+len\" ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The behavior when the buffer given to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is too small to return information about the next event depends"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the kernel version: in kernels before 2.6.21,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns 0; since kernel 2.6.21,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Specifying a buffer of size"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    sizeof(struct inotify_event) + NAME_MAX + 1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "will be sufficient to read at least one event."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument and the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure returned when"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)ing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an inotify file descriptor are both bit masks identifying"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inotify events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The following bits can be specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and may be returned in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ACCESS \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File was accessed (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ATTRIB \" (*)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Metadata changed"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "for example, permissions (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chmod (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "timestamps (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " utimensat (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "extended attributes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( setxattr (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "link count (since Linux 2.6.25; e.g.,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME ."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Events do not occur for link count changes on a file inside a monitored"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" directory. This differs from other metadata changes for files inside"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" a monitored directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "for the target of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " link (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unlink (2)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and user/group ID (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chown (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_WRITE \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File opened for writing was closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_NOWRITE \" (*)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File or directory not opened for writing was closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CREATE \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File/directory created in watched directory (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_CREAT ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mkdir (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " link (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " symlink (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bind (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on a UNIX domain socket)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DELETE \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File/directory deleted from watched directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DELETE_SELF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Watched file/directory was itself deleted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This event also occurs if an object is moved to another filesystem,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "since"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mv (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in effect copies the file to the other filesystem and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then deletes it from the original filesystem.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event will subsequently be generated for the watch descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MODIFY \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File was modified (e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " truncate (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVE_SELF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Watched file/directory was itself moved."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generated for the directory containing the old filename"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when a file is renamed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO \" (+)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generated for the directory containing the new filename"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when a file is renamed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_OPEN \" (*)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "File or directory was opened."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Inotify monitoring is inode-based: when monitoring a file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(but not when monitoring the directory containing a file),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an event can be generated for activity on any link to the file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(in the same or a different directory)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When monitoring a directory:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the events marked above with an asterisk (*) can occur both"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the directory itself and for objects inside the directory; and"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the events marked with a plus sign (+) occur only for objects"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inside the directory (not for the directory itself)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Note :"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when monitoring a directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events are not generated for the files inside the directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when the events are performed via a pathname (i.e., a link)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that lies outside the monitored directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When events are generated for objects inside a watched directory, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field in the returned"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure identifies the name of the file within the directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ALL_EVENTS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "macro is defined as a bit mask of all of the above events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This macro can be used as the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Two additional convenience macros are defined:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Equates to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"IN_MOVED_FROM | IN_MOVED_TO\" ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Equates to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"IN_CLOSE_WRITE | IN_CLOSE_NOWRITE\" ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following further bits can be specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DONT_FOLLOW \" (since Linux 2.6.15)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Don't dereference"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pathname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if it is a symbolic link."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_EXCL_UNLINK \" (since Linux 2.6.36)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 8c1934c8d70b22ca8333b216aec6c7d09fdbd6a6"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By default, when watching events on the children of a directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events are generated for children even after they have been unlinked"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This can result in large numbers of uninteresting events for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "some applications (e.g., if watching"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /tmp ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in which many applications create temporary files whose"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "names are immediately unlinked)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Specifying"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_EXCL_UNLINK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changes the default behavior,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that events are not generated for children after"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "they have been unlinked from the watched directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MASK_ADD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If a watch instance already exists for the filesystem object corresponding to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pathname ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "add (OR) the events in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the watch mask (instead of replacing the mask)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ONESHOT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Monitor the filesystem object corresponding to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pathname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for one event, then remove from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "watch list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ONLYDIR \" (since Linux 2.6.15)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Watch"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pathname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "only if it is a directory;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOTDIR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "results if"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pathname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not a directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Using this flag provides an application with a race-free way of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ensuring that the monitored object is a directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following bits may be set in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Watch was removed explicitly"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( inotify_rm_watch (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or automatically (file was deleted, or filesystem was unmounted)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See also BUGS."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ISDIR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Subject of this event is a directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_Q_OVERFLOW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Event queue overflowed"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( wd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 for this event)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_UNMOUNT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Filesystem containing watched object was unmounted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event will subsequently be generated for the watch descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Examples"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose an application is watching the directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/myfile"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for all events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The examples below show some events that will be generated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for these two objects."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fd = open(\"dir/myfile\", O_RDWR);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_OPEN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/myfile ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "read(fd, buf, count);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ACCESS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/myfile ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "write(fd, buf, count);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MODIFY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/myfile ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fchmod(fd, mode);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ATTRIB"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/myfile ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "close(fd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_WRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for both"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/myfile ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose an application is watching the directories"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2 ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1/myfile ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The following examples show some events that may be generated."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "link(\"dir1/myfile\", \"dir2/new\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ATTRIB"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " myfile"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CREATE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2 ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "rename(\"dir1/myfile\", \"dir2/myfile\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1 ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2 ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVE_SELF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " myfile ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events will have the same"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cookie"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose that"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1/xx"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2/yy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are (the only) links to the same file, and an application is watching"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1 ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2 ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1/xx ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2/yy ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Executing the following calls in the order given below will generate"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following events:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "unlink(\"dir2/yy\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ATTRIB"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xx"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(because its link count changes)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DELETE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir2 ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "unlink(\"dir1/xx\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ATTRIB ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DELETE_SELF ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xx ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DELETE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir1 ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose an application is watching the directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and (the empty) directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir/subdir ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The following examples show some events that may be generated."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "mkdir(\"dir/new\", mode);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"IN_CREATE | IN_ISDIR\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "rmdir(\"dir/subdir\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generates"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_DELETE_SELF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " subdir ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"IN_DELETE | IN_ISDIR\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dir ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc interfaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following interfaces can be used to limit the amount of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel memory consumed by inotify:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/fs/inotify/max_queued_events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value in this file is used when an application calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_init (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to set an upper limit on the number of events that can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "queued to the corresponding inotify instance."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Events in excess of this limit are dropped, but an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_Q_OVERFLOW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event is always generated."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/fs/inotify/max_user_instances"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This specifies an upper limit on the number of inotify instances"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that can be created per real user ID."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/fs/inotify/max_user_watches"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This specifies an upper limit on the number of watches"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that can be created per real user ID."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Inotify was merged into the 2.6.13 Linux kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The required library interfaces were added to glibc in version 2.4."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( IN_DONT_FOLLOW ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MASK_ADD ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ONLYDIR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "were added in glibc version 2.5.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The inotify API is Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Inotify file descriptors can be monitored using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When an event is available, the file descriptor indicates as readable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.25,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal-driven I/O notification is available for inotify file descriptors;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "see the discussion of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " F_SETFL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(for setting the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_ASYNC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " F_SETOWN ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " F_SETSIG"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " siginfo_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure (described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is passed to the signal handler has the following fields set:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " si_fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to the inotify file descriptor number;"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " si_signo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to the signal number;"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " si_code"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " POLL_IN ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " POLLIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " si_band ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If successive output inotify events produced on the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inotify file descriptor are identical (same"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wd ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cookie ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " name ),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then they are coalesced into a single event if the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "older event has not yet been read (but see BUGS)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This reduces the amount of kernel memory required for the event queue,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but also means that an application can't use inotify to reliably count"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file events."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The events returned by reading from an inotify file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "form an ordered queue."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, for example, it is guaranteed that when renaming from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "one directory to another, events will be produced in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "correct order on the inotify file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The set of watch descriptors that is being monitored via"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an inotify file descriptor can be viewed via the entry for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the inotify file descriptor in the process's"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/fdinfo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further details."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FIONREAD"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns the number of bytes available to read from an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inotify file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Limitations and caveats"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The inotify API provides no information about the user or process that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "triggered the inotify event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, there is no easy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "way for a process that is monitoring events via inotify"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to distinguish events that it triggers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "itself from those that are triggered by other processes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Inotify reports only events that a user-space program triggers through"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the filesystem API."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As a result, it does not catch remote events that occur"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on network filesystems."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Applications must fall back to polling the filesystem"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to catch such events.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Furthermore, various pseudo-filesystems such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /sys ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/pts"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are not monitorable with inotify."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The inotify API does not report file accesses and modifications that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may occur because of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " msync (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " munmap (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The inotify API identifies affected files by filename."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, by the time an application processes an inotify event,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the filename may already have been deleted or renamed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The inotify API identifies events via watch descriptors."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is the application's responsibility to cache a mapping"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(if one is needed) between watch descriptors and pathnames."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Be aware that directory renamings may affect multiple cached pathnames."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Inotify monitoring of directories is not recursive:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to monitor subdirectories under a directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "additional watches must be created."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This can take a significant amount time for large directory trees."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If monitoring an entire directory subtree,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and a new subdirectory is created in that tree or an existing directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is renamed into that tree,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be aware that by the time you create a watch for the new subdirectory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "new files (and subdirectories) may already exist inside the subdirectory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Therefore, you may want to scan the contents of the subdirectory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "immediately after adding the watch (and, if desired,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "recursively add watches for any subdirectories that it contains)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the event queue can overflow."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this case, events are lost."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Robust applications should handle the possibility of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lost events gracefully."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, it may be necessary to rebuild part or all of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the application cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(One simple, but possibly expensive,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "approach is to close the inotify file descriptor, empty the cache,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "create a new inotify file descriptor,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and then re-create watches and cache entries"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the objects to be monitored.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If a filesystem is mounted on top of a monitored directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "no event is generated, and no events are generated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for objects immediately under the new mount point."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the filesystem is subsequently unmounted,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events will subsequently be generated for the directory and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the objects it contains."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Dealing with rename() events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As noted above, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event pair that is generated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rename (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be matched up via their shared cookie value."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, the task of matching has some challenges."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These two events are usually consecutive in the event stream available"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when reading from the inotify file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, this is not guaranteed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If multiple processes are triggering events for monitored objects,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then (on rare occasions) an arbitrary number of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "other events may appear between the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Furthermore, it is not guaranteed that the event pair is atomically"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inserted into the queue: there may be a brief interval where the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has appeared, but the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has not."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Matching up the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event pair generated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rename (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is thus inherently racy."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Don't forget that if an object is renamed outside of a monitored directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "there may not even be an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Heuristic approaches (e.g., assume the events are always consecutive)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be used to ensure a match in most cases,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but will inevitably miss some cases,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "causing the application to perceive the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events as being unrelated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If watch descriptors are destroyed and re-created as a result,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then those watch descriptors will be inconsistent with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the watch descriptors in any pending events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Re-creating the inotify file descriptor and rebuilding the cache may"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be useful to deal with this scenario.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications should also allow for the possibility that the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event was the last event that could fit in the buffer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returned by the current call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the accompanying"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event might be fetched only on the next"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which should be done with a (small) timeout to allow for the fact that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "insertion of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_FROM - IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event pair is not atomic,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and also the possibility that there may not be any"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MOVED_TO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Before Linux 3.19,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fallocate (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "did not create any inotify events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 3.19,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 820c12d5d6c0890bc93dd63893924a13041fdc35"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fallocate (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "generate"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_MODIFY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . kernel commit 611da04f7a31b2208e838be55a42c7a1310ae321"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" implies that unmount events were buggy 2.6.11 to 2.6.36"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In kernels before 2.6.16, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ONESHOT"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag does not work."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As originally designed and implemented, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_ONESHOT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag did not cause an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event to be generated when the watch was dropped after one event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, as an unintended effect of other changes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "since Linux 2.6.36, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_IGNORED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event is generated in this case."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Before kernel 2.6.25,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 1c17d18e3775485bf1e0ce79575eb637a94494a2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel code that was intended to coalesce successive identical events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the two most recent events could potentially be coalesced"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the older had not yet been read)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead checked if the most recent event could be coalesced with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " oldest"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unread event."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When a watch descriptor is removed by calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_rm_watch (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or because a watch file is deleted or the filesystem"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that contains it is unmounted),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "any pending unread events for that watch descriptor remain available to read."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As watch descriptors are subsequently allocated with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel cycles through the range of possible watch descriptors (0 to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " INT_MAX )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "incrementally."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When allocating a free watch descriptor, no check is made to see whether that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "watch descriptor number has any pending unread events in the inotify queue."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, it can happen that a watch descriptor is reallocated even"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when pending unread events exist for a previous incarnation of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that watch descriptor number, with the result that the application"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "might then read those events and interpret them as belonging to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the file associated with the newly recycled watch descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In practice, the likelihood of hitting this bug may be extremely low,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "since it requires that an application cycle through"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " INT_MAX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "watch descriptors,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "release a watch descriptor while leaving unread events for that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "watch descriptor in the queue,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and then recycle that watch descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For this reason, and because there have been no reports"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the bug occurring in real-world applications,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as of Linux 3.15,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . https://bugzilla.kernel.org/show_bug.cgi?id=77111"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "no kernel changes have yet been made to eliminate this possible bug."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following program demonstrates the usage of the inotify API."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It marks the directories passed as a command-line arguments"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and waits for events of type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_OPEN ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_NOWRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_WRITE ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following output was recorded while editing the file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /home/user/temp/foo"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and listing directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /tmp ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Before the file and the directory were opened,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_OPEN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After the file was closed, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_WRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After the directory was closed, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IN_CLOSE_NOWRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Execution of the program ended when the user pressed the ENTER key."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Example output"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "$ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B./a.out /tmp /home/user/temp"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Press enter key to terminate."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Listening for events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IN_OPEN: /home/user/temp/foo [file]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IN_CLOSE_WRITE: /home/user/temp/foo [file]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IN_OPEN: /tmp/ [directory]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IN_CLOSE_NOWRITE: /tmp/ [directory]"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Listening for events stopped."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Program source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <errno.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <poll.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdlib.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/inotify.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <unistd.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "/* Read all available inotify events from the file descriptor 'fd'."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   wd is the table of watch descriptors for the directories in argv."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   argc is the length of wd and argv."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   argv is the list of watched directories."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "   Entry 0 of wd and argv is unused. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static void"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "handle_events(int fd, int *wd, int argc, char* argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Some systems cannot read integer variables if they are not"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       properly aligned. On other systems, incorrect alignment may"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       decrease performance. Hence, the buffer used for reading from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       the inotify file descriptor should have the same alignment as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       struct inotify_event. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    char buf[4096]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        __attribute__ ((aligned(__alignof__(struct inotify_event))));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    const struct inotify_event *event;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int i;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ssize_t len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char *ptr;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Loop while events can be read from inotify file descriptor. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    for (;;) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Read some events. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        len = read(fd, buf, sizeof buf);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (len == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 && errno != EAGAIN) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            perror(\"read\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* If the nonblocking read() found no events to read, then"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           it returns "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 with errno set to EAGAIN. In that case,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           we exit the loop. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (len <= 0)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            break;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Loop over all events in the buffer */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        for (ptr = buf; ptr < buf + len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                ptr += sizeof(struct inotify_event) + event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">len) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            event = (const struct inotify_event *) ptr;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* Print event type */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">mask & IN_OPEN)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\"IN_OPEN: \");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">mask & IN_CLOSE_NOWRITE)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\"IN_CLOSE_NOWRITE: \");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">mask & IN_CLOSE_WRITE)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\"IN_CLOSE_WRITE: \");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* Print the name of the watched directory */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            for (i = 1; i < argc; ++i) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                if (wd[i] == event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">wd) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"%s/\", argv[i]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* Print the name of the file */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">len)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\"%s\", event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">name);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* Print type of filesystem object */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (event"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">mask & IN_ISDIR)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\" [directory]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            else"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\" [file]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(int argc, char* argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char buf;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int fd, i, poll_num;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int *wd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    nfds_t nfds;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct pollfd fds[2];"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (argc < 2) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"Usage: %s PATH [PATH ...]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[0]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Press ENTER key to terminate."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Create the file descriptor for accessing the inotify API */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    fd = inotify_init1(IN_NONBLOCK);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (fd == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        perror(\"inotify_init1\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Allocate memory for watch descriptors */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    wd = calloc(argc, sizeof(int));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (wd == NULL) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        perror(\"calloc\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Mark directories for events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " file was opened"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " file was closed */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    for (i = 1; i < argc; i++) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        wd[i] = inotify_add_watch(fd, argv[i],"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                                  IN_OPEN | IN_CLOSE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (wd[i] == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            fprintf(stderr, \"Cannot watch '%s'"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[i]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            perror(\"inotify_add_watch\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Prepare for polling */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    nfds = 2;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Console input */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[0].fd = STDIN_FILENO;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[0].events = POLLIN;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Inotify input */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[1].fd = fd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[1].events = POLLIN;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Wait for events and/or terminal input */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Listening for events."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    while (1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        poll_num = poll(fds, nfds, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (poll_num == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (errno == EINTR)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                continue;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            perror(\"poll\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (poll_num > 0) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (fds[0].revents & POLLIN) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Console input is available. Empty stdin and quit */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                while (read(STDIN_FILENO, &buf, 1) > 0 && buf != '"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n')"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    continue;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (fds[1].revents & POLLIN) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Inotify events are available */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                handle_events(fd, wd, argc, argv);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Listening for events stopped."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Close inotify file descriptor */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    close(fd);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    free(wd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_SUCCESS);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotifywait (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotifywatch (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_add_watch (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_init (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_init1 (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify_rm_watch (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stat (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify (7)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/filesystems/inotify.txt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the Linux kernel source tree"
+        }
+      ]
+    ]
+  }
+]

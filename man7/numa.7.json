@@ -1,0 +1,1775 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2008, Linux Foundation, written by Michael Kerrisk"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright 2003,2004 Andi Kleen, SuSE Labs."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" numa_maps material Copyright (c) 2005 Silicon Graphics Incorporated."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     Christoph Lameter, <cl@linux-foundation.org>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NUMA 7 2012-08-05 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "numa "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " overview of Non-Uniform Memory Architecture"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Non-Uniform Memory Access (NUMA) refers to multiprocessor systems"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "whose memory is divided into multiple memory nodes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The access time of a memory node depends on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the relative locations of the accessing CPU and the accessed node."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This contrasts with a symmetric multiprocessor system,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "where the access time for all of the memory is the same for all CPUs.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Normally, each CPU on a NUMA system has a local memory node whose"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contents can be accessed faster than the memory in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the node local to another CPU"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the memory on a bus shared by all CPUs."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NUMA system calls"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux kernel implements the following NUMA-related system calls:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " get_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " migrate_pages (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " move_pages (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, applications should normally use the interface provided by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libnuma ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "see \"Library Support\" below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[number]/numa_maps  (since Linux 2.6.14)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See also Changelog-2.6.14"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This file displays information about a process's"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NUMA memory policy and allocation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each line contains information about a memory range used by the process,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "displaying"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "among other information"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "the effective memory policy for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that memory range and on which nodes the pages have been allocated."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa_maps"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a read-only file."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/<pid>/numa_maps"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is read, the kernel will scan the virtual address space of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process and report how memory is used."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "One line is displayed for each unique memory range of the process."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The first field of each line shows the starting address of the memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field allows a correlation with the contents of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/<pid>/maps"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which contains the end address of the range and other information,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "such as the access permissions and sharing."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The second field shows the memory policy currently in effect for the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the effective policy is not necessarily the policy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "installed by the process for that memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Specifically, if the process installed a \"default\" policy for that range,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the effective policy for that range will be the process policy,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which may or may not be \"default\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The rest of the line contains information about the pages allocated in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the memory range, as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " N<node>=<nr_pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of pages allocated on"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <node> ."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <nr_pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "includes only pages currently mapped by the process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Page migration and memory reclaim may have temporarily unmapped pages"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "associated with this memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These pages may show up again only after the process has"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "attempted to reference them."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the memory range represents a shared memory area or file mapping,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "other processes may currently have additional pages mapped in a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "corresponding memory range."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " file=<filename>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file backing the memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the file is mapped as private, write accesses may have generated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "COW (Copy-On-Write) pages in this memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These pages are displayed as anonymous pages."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " heap"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Memory range is used for the heap."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stack"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Memory range is used for the stack."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " huge"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Huge memory range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The page counts shown are huge pages and not regular sized pages."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " anon=<pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of anonymous page in the range."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dirty=<pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Number of dirty pages."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mapped=<pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Total number of mapped pages, if different from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " dirty"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " anon"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pages."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mapmax=<count>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Maximum mapcount (number of processes mapping a single page) encountered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "during the scan."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This may be used as an indicator of the degree of sharing occurring in a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "given memory range."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " swapcache=<count>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Number of pages that have an associated entry on a swap device."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " active=<pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of pages on the active list."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is shown only if different from the number of pages in this range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This means that some inactive pages exist in the memory range that may be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "removed from memory by the swapper soon."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " writeback=<pages>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Number of pages that are currently being written out to disk."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "No standards govern NUMA interfaces."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux NUMA system calls and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface are available only"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the kernel was configured and built with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_NUMA"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "option."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Library support"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Link with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "lnuma"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to get the system call definitions."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libnuma"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the required"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <numaif.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "header are available in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numactl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "package."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "However, applications should not use these system calls directly."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Instead, the higher level interface provided by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "functions in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numactl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "package is recommended."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numactl"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "package is available at"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ftp://oss.sgi.com"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/www"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/projects"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/libnuma"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/download/"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The package is also included in some Linux distributions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some distributions include the development library and header"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the separate"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numactl-devel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "package."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " get_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mbind (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " move_pages (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " set_mempolicy (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numa (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cpuset (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " numactl (8)"
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,1415 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2008, 2014, Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Created   Sat Aug 21 1995     Thomas K. Dyas <tdyas@eden.rutgers.edu>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified Tue Oct 22 22:09:03 1996 by Eric S. Raymond <esr@thyrsus.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2008-06-26, mtk, added some more detail on the work done by sigreturn()"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2014-12-05, mtk, rewrote all of the rest of the original page"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGRETURN 2 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "sigreturn, rt_sigreturn "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " return from signal handler and cleanup stack frame"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int sigreturn(...);\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the Linux kernel determines that an unblocked"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal is pending for a process, then,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at the next transition back to user mode in that process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g., upon return from a system call or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when the process is rescheduled onto the CPU),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it creates a new frame on the user-space stack where it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "saves various pieces of process context"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(processor status word, registers, signal mask, and signal stack settings)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See arch/x86/kernel/signal.c::__setup_frame() [in 3.17 source code]"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel also arranges that, during the transition back to user mode,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the signal handler is called, and that, upon return from the handler,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "control passes to a piece of user-space code commonly called"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the \"signal trampoline\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The signal trampoline code in turn calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "call undoes everything that was"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "done"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "changing the process's signal mask, switching signal stacks (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaltstack \"(2))"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "in \""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "order to invoke the signal handler."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Using the information that was earlier saved on the user-space stack"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "restores the process's signal mask, switches stacks,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and restores the process's context"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(processor flags and registers,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "including the stack pointer and instruction pointer),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that the process resumes execution"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at the point where it was interrupted by the signal."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "never returns."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Many UNIX-type systems have a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call or near equivalent."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, this call is not specified in POSIX,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and details of its behavior vary across systems."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "exists only to allow the implementation of signal handlers."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It should"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " never"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be called directly."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Indeed, a simple"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See sysdeps/unix/sysv/linux/sigreturn.c and"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" signal/sigreturn.c in the glibc source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "wrapper in the GNU C library simply returns -1, with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOSYS .)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Details of the arguments (if any) passed to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "vary depending on the architecture."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(On some architectures, such as x86-64,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "takes no arguments, since all of the information that it requires"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is available in the stack frame that was previously created by the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel on the user-space stack.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Once upon a time, UNIX systems placed the signal trampoline code"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "onto the user stack."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Nowadays, pages of the user stack are protected so as to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "disallow code execution."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, on contemporary Linux systems, depending on the architecture,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the signal trampoline code lives either in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vdso (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or in the C library."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the latter case,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See, for example, sysdeps/unix/sysv/linux/i386/sigaction.c and"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" sysdeps/unix/sysv/linux/x86_64/sigaction.c in the glibc (2.20) source."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the C library's"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wrapper function informs the kernel of the location of the trampoline code"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by placing its address in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sa_restorer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and sets the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SA_RESTORER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sa_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The saved process context information is placed in a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ucontext_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <sys/ucontext.h> )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That structure is visible within the signal handler"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as the third argument of a handler established via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SA_SIGINFO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On some other UNIX systems,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the operation of the signal trampoline differs a little."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, on some systems, upon transitioning back to user mode,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel passes control to the trampoline (rather than the signal handler),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the trampoline code calls the signal handler (and then calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "once the handler returns)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " C library/kernel differences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The original Linux system call was named"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigreturn ()."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, with the addition of real-time signals in Linux 2.2,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a new system call,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rt_sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was added to support an enlarged"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigset_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "type."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The GNU C library"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "hides these details from us, transparently employing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rt_sigreturn ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when the kernel provides it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " kill (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " restart_syscall (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaltstack (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getcontext (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vdso (7)"
+        }
+      ]
+    ]
+  }
+]

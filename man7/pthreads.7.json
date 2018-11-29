@@ -1,0 +1,7934 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2005 by Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PTHREADS 7  2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "pthreads "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " POSIX threads"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1 specifies a set of interfaces (functions, header files) for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threaded programming commonly known as POSIX threads, or Pthreads."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A single process can contain multiple threads,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all of which are executing the same program."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These threads share the same global memory (data and heap segments),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but each thread has its own stack (automatic variables)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1 also requires that threads share a range of other attributes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., these attributes are process-wide rather than per-thread):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "process ID"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "parent process ID"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "process group ID and session ID"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "controlling terminal"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "user and group IDs"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "open file descriptors"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "record locks (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "signal dispositions"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "file mode creation mask"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( umask (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "current directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( chdir (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "root directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( chroot (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "interval timers"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( setitimer (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and POSIX timers"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( timer_create (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "nice value"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( setpriority (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limits"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( setrlimit (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "measurements of the consumption of CPU time"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( times (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and resources"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( getrusage (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As well as the stack, POSIX.1 specifies that various other"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "attributes are distinct for each thread, including:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "thread ID (the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "data type)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "signal mask"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( pthread_sigmask (3))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "variable"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "alternate signal stack"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( sigaltstack (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "real-time scheduling policy and priority"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( sched (7))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following Linux-specific features are also per-thread:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "capabilities (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "CPU affinity"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( sched_setaffinity (2))"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Pthreads function return values"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Most pthreads functions return 0 on success, and an error number on failure."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the pthreads functions do not set"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For each of the pthreads functions that can return an error,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001 specifies that the function can never fail with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINTR ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Thread IDs"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each of the threads in a process has a unique thread identifier"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(stored in the type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_t )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This identifier is returned to the caller of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_create (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and a thread can obtain its own thread identifier using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_self (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Thread IDs are guaranteed to be unique only within a process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(In all pthreads functions that accept a thread ID as an argument,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that ID by definition refers to a thread in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the same process as the caller.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The system may reuse a thread ID after a terminated thread has been joined,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a detached thread has terminated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX says: \"If an application attempts to use a thread ID whose"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lifetime has ended, the behavior is undefined.\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Thread-safe functions"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A thread-safe function is one that can be safely"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., it will deliver the same results regardless of whether it is)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "called from multiple threads at the same time."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001 and POSIX.1-2008 require that all functions specified"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the standard shall be thread-safe,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "except for the following functions:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "asctime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "basename()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "catgets()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "crypt()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ctermid() if passed a non-NULL argument"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ctime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_clearerr()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_close()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_delete()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_error()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_fetch()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_firstkey()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_nextkey()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_open()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_store()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dirname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dlerror()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "drand48()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ecvt() [POSIX.1-2001 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "encrypt()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endgrent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endpwent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endutxent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fcvt() [POSIX.1-2001 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ftw()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gcvt() [POSIX.1-2001 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getc_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getchar_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getdate()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getenv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrgid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrnam()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostbyaddr() [POSIX.1-2001 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostbyname() [POSIX.1-2001 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getlogin()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnetbyaddr()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnetbyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnetent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getopt()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getprotobyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getprotobynumber()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getprotoent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwnam()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwuid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getservbyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getservbyport()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getservent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getutxent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getutxid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getutxline()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gmtime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "hcreate()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "hdestroy()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "hsearch()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inet_ntoa()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l64a()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lgamma()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lgammaf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lgammal()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "localeconv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "localtime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lrand48()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mrand48()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nftw()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nl_langinfo()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ptsname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putc_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putchar_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putenv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pututxline()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rand()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readdir()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setenv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setgrent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setkey()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setpwent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setutxent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "strerror()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "strsignal() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "strtok()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tmpnam() if passed a non-NULL argument"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ttyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unsetenv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wcrtomb() if its final argument is NULL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wcsrtombs() if its final argument is NULL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wcstombs()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wctomb()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Async-cancel-safe functions"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An async-cancel-safe function is one that can be safely called"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in an application where asynchronous cancelability is enabled (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setcancelstate (3))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Only the following functions are required to be async-cancel-safe by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001 and POSIX.1-2008:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_cancel()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_setcancelstate()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_setcanceltype()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Cancellation points"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1 specifies that certain functions must,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and certain other functions may, be cancellation points."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If a thread is cancelable, its cancelability type is deferred,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and a cancellation request is pending for the thread,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the thread is canceled when it calls a function"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is a cancellation point."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following functions are required to be cancellation points by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001 and/or POSIX.1-2008:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Document the list of all functions that are cancellation points in glibc"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "accept()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "aio_suspend()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "clock_nanosleep()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "close()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "connect()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creat()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fcntl() F_SETLKW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fdatasync()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fsync()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lockf() F_LOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mq_receive()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mq_send()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mq_timedreceive()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mq_timedsend()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "msgrcv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "msgsnd()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "msync()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nanosleep()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "open()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "openat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pause()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "poll()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pread()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pselect()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_cond_timedwait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_cond_wait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_join()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_testcancel()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putpmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pwrite()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "read()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "recv()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "recvfrom()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "recvmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "select()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sem_timedwait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sem_wait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "send()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sendmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sendto()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sigpause() [POSIX.1-2001 only (moves to \"may\" list in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sigsuspend()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sigtimedwait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sigwait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sigwaitinfo()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sleep()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tcdrain()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "usleep() [POSIX.1-2001 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wait()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "waitid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "waitpid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "write()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "writev()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following functions may be cancellation points according to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1-2001 and/or POSIX.1-2008:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "access()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "asctime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "asctime_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "catclose()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "catgets()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "catopen()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "chmod() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "chown() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "closedir()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "closelog()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ctermid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ctime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ctime_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_close()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_delete()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_fetch()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_nextkey()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_open()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dbm_store()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dlclose()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dlopen()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dprintf() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endgrent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endhostent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endnetent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endprotoent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endpwent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endservent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endutxent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "faccessat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fchmod() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fchmodat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fchown() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fchownat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fclose()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fcntl() (for any value of cmd argument)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fflush()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fgetc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fgetpos()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fgets()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fgetwc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fgetws()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fmtmsg()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fopen()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fpathconf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fputc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fputs()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fputwc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fputws()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fread()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "freopen()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fscanf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fseek()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fseeko()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fsetpos()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fstat()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fstatat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ftell()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ftello()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ftw()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "futimens() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fwprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fwrite()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fwscanf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getaddrinfo()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getc_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getchar()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getchar_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getcwd()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getdate()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getdelim() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrgid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrgid_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrnam()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getgrnam_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostbyaddr() [SUSv3 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostbyname() [SUSv3 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gethostname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getline() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getlogin()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getlogin_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnameinfo()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnetbyaddr()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnetbyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getnetent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getopt() (if opterr is nonzero)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getprotobyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getprotobynumber()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getprotoent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwnam()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwnam_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwuid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getpwuid_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "gets()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getservbyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getservbyport()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getservent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getutxent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getutxid()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getutxline()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getwc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getwchar()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "getwd() [SUSv3 only (function removed in POSIX.1-2008)]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "glob()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "iconv_close()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "iconv_open()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ioctl()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "link()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "linkat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lio_listio() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "localtime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "localtime_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lockf() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lseek()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "lstat()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mkdir() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mkdirat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mkdtemp() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mkfifo() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mkfifoat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mknod() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mknodat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mkstemp()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mktime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nftw()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "opendir()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "openlog()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pathconf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pclose()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "perror()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "popen()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_fadvise()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_fallocate()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_madvise()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_openpt()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_spawn()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_spawnp()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_clear()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_close()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_create()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_create_withlog()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_eventtypelist_getnext_id()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_eventtypelist_rewind()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_flush()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_get_attr()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_get_filter()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_get_status()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_getnext_event()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_open()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_rewind()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_set_filter()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_shutdown()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_trace_timedgetnext_event()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posix_typed_mem_open()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "printf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "psiginfo() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "psignal() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_rwlock_rdlock()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_rwlock_timedrdlock()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_rwlock_timedwrlock()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pthread_rwlock_wrlock()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putc_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putchar()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putchar_unlocked()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "puts()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pututxline()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putwc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "putwchar()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readdir()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readdir_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readlink() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readlinkat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "remove()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rename()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "renameat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rewind()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rewinddir()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scandir() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scanf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "seekdir()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "semop()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setgrent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sethostent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setnetent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setprotoent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setpwent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setservent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "setutxent()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sigpause() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "stat()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "strerror()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "strerror_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "strftime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "symlink()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "symlinkat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sync()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "syslog()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tmpfile()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tmpnam()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ttyname()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ttyname_r()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tzset()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ungetc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ungetwc()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unlink()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unlinkat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "utime() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "utimensat() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "utimes() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "vdprintf() [Added in POSIX.1-2008]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "vfprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "vfwprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "vprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "vwprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wcsftime()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wordexp()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wprintf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "wscanf()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An implementation may also mark other functions"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "not specified in the standard as cancellation points."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, an implementation is likely to mark"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "any nonstandard function that may block as a cancellation point."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This includes most functions that can touch files.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" So, scanning \"cancellation point\" comments in the glibc 2.8 header"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" files, it looks as though at least the following nonstandard"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" functions are cancellation points:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" endnetgrent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" endspent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" epoll_pwait"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" epoll_wait"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fcloseall"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fdopendir"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fflush_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetc_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetgrent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetgrent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetpwent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetpwent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgets_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetspent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetspent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetwc_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fgetws_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fputc_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fputs_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fputwc_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fputws_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fread_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fwrite_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" gai_suspend"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getaddrinfo_a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getdate_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getgrent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getgrouplist"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" gethostbyaddr_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" gethostbyname2"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" gethostbyname2_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" gethostbyname_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" gethostent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getnetbyaddr_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getnetbyname_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getnetent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getnetgrent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getnetgrent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getprotobyname_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getprotobynumber_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getprotoent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getpw"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getpwent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getservbyname_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getservbyport_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getservent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getspent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getspent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getspnam"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getspnam_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getutmp"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getutmpx"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getw"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getwc_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" getwchar_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" initgroups"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" innetgr"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" mkostemp"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" mkostemp64"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" mkstemp64"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ppoll"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" pthread_timedjoin_np"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" putgrent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" putpwent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" putspent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" putw"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" putwc_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" putwchar_unlocked"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" rcmd"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" rcmd_af"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" rexec"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" rexec_af"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" rresvport"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" rresvport_af"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ruserok"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ruserok_af"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" setnetgrent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" setspent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" sgetspent"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" sgetspent_r"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" updwtmpx"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" utmpxname"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" vfscanf"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" vfwscanf"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" vscanf"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" vsyslog"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" vwscanf"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Compiling on Linux"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On Linux, programs that use the Pthreads API should be compiled using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"cc "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "pthread\" ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Linux implementations of POSIX threads"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Over time, two threading implementations have been provided by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the GNU C library on Linux:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " LinuxThreads"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the original Pthreads implementation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since glibc 2.4, this implementation is no longer supported."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NPTL \" (Native POSIX Threads Library)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the modern Pthreads implementation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "By comparison with LinuxThreads, NPTL provides closer conformance to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the requirements of the POSIX.1 specification and better performance"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when creating large numbers of threads."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NPTL is available since glibc 2.3.2,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and requires features that are present in the Linux 2.6 kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Both of these are so-called 1:1 implementations, meaning that each"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread maps to a kernel scheduling entity."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Both threading implementations employ the Linux"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In NPTL, thread synchronization primitives (mutexes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread joining, and so on) are implemented using the Linux"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " futex (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " LinuxThreads"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The notable features of this implementation are the following:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition to the main (initial) thread,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the threads that the program creates using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_create (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the implementation creates a \"manager\" thread."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This thread handles thread creation and termination."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Problems can result if this thread is inadvertently killed.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Signals are used internally by the implementation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On Linux 2.2 and later, the first three real-time signals are used"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see also"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (7))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On older Linux kernels,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGUSR1"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGUSR2"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are used."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Applications must avoid the use of whichever set of signals is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "employed by the implementation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share process IDs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(In effect, LinuxThreads threads are implemented as processes which share"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "more information than usual, but which do not share a common process ID.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "LinuxThreads threads (including the manager thread)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are visible as separate processes using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ps (1)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The LinuxThreads implementation deviates from the POSIX.1"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specification in a number of ways, including the following:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "return a different value in each thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getppid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in threads other than the main thread return the process ID of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "manager thread; instead"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getppid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in these threads should return the same value as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getppid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the main thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When one thread creates a new child process using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "any thread should be able to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the child."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, the implementation allows only the thread that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created the child to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wait (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When a thread calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all other threads are terminated (as required by POSIX.1)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, the resulting process has the same PID as the thread that called"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2):"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it should have the same PID as the main thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share user and group IDs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This can cause complications with set-user-ID programs and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can cause failures in Pthreads functions if an application"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changes its credentials using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " seteuid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or similar."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share a common session ID and process group ID."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share record locks created using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The information returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " times (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is per-thread rather than process-wide."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share semaphore undo values (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " semop (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share interval timers."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share a common nice value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.1 distinguishes the notions of signals that are directed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the process as a whole and signals that are directed to individual"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "According to POSIX.1, a process-directed signal (sent using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " kill (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for example) should be handled by a single,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arbitrarily selected thread within the process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "LinuxThreads does not support the notion of process-directed signals:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signals may be sent only to specific threads."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads have distinct alternate signal stack settings."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, a new thread's alternate signal stack settings"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are copied from the thread that created it, so that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the threads initially share an alternate signal stack."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(A new thread should start with no alternate signal stack defined."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If two threads handle signals on their shared alternate signal"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "stack at the same time, unpredictable program failures are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "likely to occur.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NPTL"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "With NPTL, all of the threads in a process are placed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the same thread group;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all members of a thread group share the same PID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NPTL does not employ a manager thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "NPTL makes internal use of the first two real-time signals;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "these signals cannot be used in applications."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nptl (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "NPTL still has at least one nonconformance with POSIX.1:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share a common nice value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . bug report filed for NPTL nice nonconformance"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" http://bugzilla.kernel.org/show_bug.cgi?id=6258"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Sep 08: there is a patch by Denys Vlasenko to address this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \"make setpriority POSIX compliant; introduce PRIO_THREAD extension\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Monitor this to see if it makes it into mainline."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some NPTL nonconformances occur only with older kernels:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The information returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " times (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrusage (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is per-thread rather than process-wide (fixed in kernel 2.6.9)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share resource limits (fixed in kernel 2.6.10)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads do not share interval timers (fixed in kernel 2.6.12)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Only the main thread is permitted to start a new session using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(fixed in kernel 2.6.16)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Only the main thread is permitted to make the process into a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process group leader using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setpgid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(fixed in kernel 2.6.16)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads have distinct alternate signal stack settings."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, a new thread's alternate signal stack settings"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are copied from the thread that created it, so that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the threads initially share an alternate signal stack"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(fixed in kernel 2.6.16)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note the following further points about the NPTL implementation:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the stack size soft resource limit (see the description of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_STACK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setrlimit (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to a value other than"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unlimited ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then this value defines the default stack size for new threads."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To be effective, this limit must be set before the program"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is executed, perhaps using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ulimit -s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "shell built-in command"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( \"limit stacksize\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the C shell)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Determining the threading implementation"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since glibc 2.3.2, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getconf (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "command can be used to determine"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the system's threading implementation, for example:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bash$ getconf GNU_LIBPTHREAD_VERSION"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NPTL 2.3.4"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "With older glibc versions, a command such as the following should"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be sufficient to determine the default threading implementation:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bash$ $( ldd /bin/ls | grep libc.so | awk "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "{print $3}"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " ) | "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                egrep "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "i "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "threads|nptl"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        Native POSIX Threads Library by Ulrich Drepper et al"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Selecting the threading implementation: LD_ASSUME_KERNEL"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On systems with a glibc that supports both LinuxThreads and NPTL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., glibc 2.3."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ix"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P), the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " LD_ASSUME_KERNEL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "environment variable can be used to override"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the dynamic linker's default choice of threading implementation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This variable tells the dynamic linker to assume that it is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "running on top of a particular kernel version."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "By specifying a kernel version that does not"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "provide the support required by NPTL, we can force the use"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of LinuxThreads."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The most likely reason for doing this is to run a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(broken) application that depends on some nonconformant behavior"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in LinuxThreads.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bash$ $( LD_ASSUME_KERNEL=2.2.5 ldd /bin/ls | grep libc.so | "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                awk "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "{print $3}"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " ) | egrep "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "i "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "threads|nptl"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        linuxthreads-0.10 by Xavier Leroy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nh",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " futex (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gettid (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attributes (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " futex (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nptl (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigevent (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (7)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Various Pthreads manual pages, for example:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_atfork (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_attr_init (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_cancel (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_cleanup_push (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_cond_signal (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_cond_wait (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_create (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_detach (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_equal (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_exit (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_key_create (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_kill (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_mutex_lock (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_mutex_unlock (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_mutexattr_destroy (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_mutexattr_init (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_once (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_spin_init (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_spin_lock (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_rwlockattr_setkind_np (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setcancelstate (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setcanceltype (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setspecific (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_sigmask (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_sigqueue (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_testcancel (3)"
+        }
+      ]
+    ]
+  }
+]

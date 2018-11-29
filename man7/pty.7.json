@@ -1,0 +1,1576 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2005 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PTY 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "pty "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " pseudoterminal interfaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A pseudoterminal (sometimes abbreviated \"pty\")"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a pair of virtual character devices that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "provide a bidirectional communication channel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "One end of the channel is called the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " master ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the other end is called the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " slave ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The slave end of the pseudoterminal provides an interface"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that behaves exactly like a classical terminal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A process that expects to be connected to a terminal,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can open the slave end of a pseudoterminal and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then be driven by a program that has opened the master end."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Anything that is written on the master end is provided to the process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the slave end as though it was input typed on a terminal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, writing the interrupt character (usually control-C)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the master device would cause an interrupt signal"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( SIGINT )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to be generated for the foreground process group"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is connected to the slave."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Conversely, anything that is written to the slave end of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pseudoterminal can be read by the process that is connected to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the master end."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Pseudoterminals are used by applications such as network login services"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( ssh \"(1), \" rlogin \"(1), \" telnet (1)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "terminal emulators such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xterm (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " script (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " screen (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tmux (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unbuffer (1),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " expect (1)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Data flow between master and slave is handled asynchronously,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "much like data flow with a physical terminal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Data written to the slave will be available at the master promptly,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but may not be available immediately."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Similarly, there may be a small processing delay between"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a write to the master, and the effect being visible at the slave."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Historically, two pseudoterminal APIs have evolved: BSD and System V."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "SUSv1 standardized a pseudoterminal API based on the System V API,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and this API should be employed in all new programs that use"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pseudoterminals."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux provides both BSD-style and (standardized) System V-style"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pseudoterminals."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "System V-style terminals are commonly called UNIX 98 pseudoterminals"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on Linux systems."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since kernel 2.6.4, BSD-style pseudoterminals are considered deprecated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(they can be disabled when configuring the kernel);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "UNIX 98 pseudoterminals should be used in new applications."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " UNIX 98 pseudoterminals"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An unused UNIX 98 pseudoterminal master is opened by calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " posix_openpt (3)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This function opens the master clone device,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/ptmx ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pts (4).)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After performing any program-specific initializations,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changing the ownership and permissions of the slave device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " grantpt (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and unlocking the slave using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unlockpt (3)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the corresponding slave device can be opened by passing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the name returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ptsname (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in a call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux kernel imposes a limit on the number of available"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "UNIX 98 pseudoterminals."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In kernels up to and including 2.6.3, this limit is configured"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at kernel compilation time"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CONFIG_UNIX98_PTYS ),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the permitted number of pseudoterminals can be up to 2048,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with a default setting of 256."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since kernel 2.6.4, the limit is dynamically adjustable via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/kernel/pty/max ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and a corresponding file,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/kernel/pty/nr ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicates how many pseudoterminals are currently in use."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For further details on these two files, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BSD pseudoterminals"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "BSD-style pseudoterminals are provided as precreated pairs, with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "names of the form"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/ptyXY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(master) and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/ttyXY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(slave),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "where X is a letter from the 16-character set [p"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "za"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "e],"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and Y is a letter from the 16-character set [0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "9a"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "f]."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The precise range of letters in these two sets varies across UNIX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "implementations.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/ptyp1"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/ttyp1"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "constitute a BSD pseudoterminal pair."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A process finds an unused pseudoterminal pair by trying to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "each pseudoterminal master until an open succeeds."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The corresponding pseudoterminal slave (substitute \"tty\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for \"pty\" in the name of the master) can then be opened."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " FILES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/ptmx"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "UNIX 98 master clone device"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/pts/*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "UNIX 98 slave devices"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/pty[p"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "za"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "e][0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "9a"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "f]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "BSD master devices"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/tty[p"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "za"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "e][0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "9a"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "f]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "BSD slave devices"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A description of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TIOCPKT"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which controls packet mode operation, can be found in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_tty (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The BSD"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TIOCSTOP ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TIOCSTART ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TIOCUCNTL ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TIOCREMOTE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "have not been implemented under Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_tty (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsid (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " forkpty (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " openpty (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " termios (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pts (4),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tty (4)"
+        }
+      ]
+    ]
+  }
+]

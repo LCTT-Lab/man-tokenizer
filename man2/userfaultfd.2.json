@@ -1,0 +1,6773 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2016, IBM Corporation."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Written by Mike Rapoport <rppt@linux.vnet.ibm.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright (C) 2017 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " USERFAULTFD 2 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "userfaultfd "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " create a file descriptor for handling page faults in user space"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/types.h>"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <linux/userfaultfd.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"int userfaultfd(int \" flags );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Note :"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is no glibc wrapper for this system call; see NOTES."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " userfaultfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creates a new userfaultfd object that can be used for delegation of page-fault"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "handling to a user-space application,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and returns a file descriptor that refers to the new object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The new userfaultfd object is configured using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Once the userfaultfd object is configured, the application can use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to receive userfaultfd notifications."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The reads from userfaultfd may be blocking or non-blocking,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "depending on the value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "used for the creation of the userfaultfd or subsequent calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following values may be bitwise ORed in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to change the behavior of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " userfaultfd ():"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_CLOEXEC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Enable the close-on-exec flag for the new userfaultfd file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the description of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_CLOEXEC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_NONBLOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Enables non-blocking operation for the userfaultfd object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the description of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_NONBLOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When the last file descriptor referring to a userfaultfd object is closed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all memory ranges that were registered with the object are unregistered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and unread events are flushed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Usage"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The userfaultfd mechanism is designed to allow a thread in a multithreaded"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "program to perform user-space paging for the other threads in the process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When a page fault occurs for one of the regions registered"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the userfaultfd object,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the faulting thread is put to sleep and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an event is generated that can be read via the userfaultfd file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The fault-handling thread reads events from this file descriptor and services"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "them using the operations described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_userfaultfd (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When servicing the page fault events,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the fault-handling thread can trigger a wake-up for the sleeping thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It is possible for the faulting threads and the fault-handling threads"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to run in the context of different processes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this case, these threads may belong to different programs,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the program that executes the faulting threads"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will not necessarily cooperate with the program that handles the page faults."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In such non-cooperative mode,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the process that monitors userfaultfd and handles page faults"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "needs to be aware of the changes in the virtual memory layout"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the faulting process to avoid memory corruption."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Starting from Linux 4.11,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "userfaultfd can also notify the fault-handling threads about changes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the virtual memory layout of the faulting process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, if the faulting process invokes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the userfaultfd objects associated with the parent may be duplicated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "into the child process and the userfaultfd monitor will be notified"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(via the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_FORK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "described below)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "about the file descriptor associated with the userfault objects"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created for the child process,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which allows the userfaultfd monitor to perform user-space paging"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the child process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unlike page faults which have to be synchronous and require an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "explicit or implicit wakeup,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all other events are delivered asynchronously and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the non-cooperative process resumes execution as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "soon as the userfaultfd manager executes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The userfaultfd manager should carefully synchronize calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_COPY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the processing of events."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The current asynchronous model of the event delivery is optimal for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "single threaded non-cooperative userfaultfd manager implementations."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Regarding the preceding sentence, Mike Rapoport says:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     The major point here is that current events delivery model could be"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     problematic for multi-threaded monitor. I even suspect that it would be"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     impossible to ensure synchronization between page faults and non-page"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     fault events in multi-threaded monitor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME elaborate about non-cooperating mode, describe its limitations"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" for kernels before 4.11, features added in 4.11"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and limitations remaining in 4.11"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Maybe it's worth adding a dedicated sub-section..."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Userfaultfd operation"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After the userfaultfd object is created with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " userfaultfd (),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the application must enable it using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_API"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This operation allows a handshake between the kernel and user space"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to determine the API version and supported features."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This operation must be performed before any of the other"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations described below (or those operations fail with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After a successful"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_API"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the application then registers memory address ranges using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_REGISTER"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After successful completion of a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_REGISTER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a page fault occurring in the requested memory range, and satisfying"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the mode defined at the registration time, will be forwarded by the kernel to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the user-space application."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The application can then use the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_COPY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_ZEROPAGE"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations to resolve the page fault."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Starting from Linux 4.14, if the application sets the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_FEATURE_SIGBUS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "feature bit using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_API"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "no page-fault notification will be forwarded to user space."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Instead a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGBUS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal is delivered to the faulting process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "With this feature,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "userfaultfd can be used for robustness purposes to simply catch"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "any access to areas within the registered address range that do not"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "have pages allocated, without having to listen to userfaultfd events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No userfaultfd monitor will be required for dealing with such memory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "accesses."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, this feature can be useful for applications that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "want to prevent the kernel from automatically allocating pages and filling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "holes in sparse files when the hole is accessed through a memory mapping."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_FEATURE_SIGBUS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "feature is implicitly inherited through"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if used in combination with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_FEATURE_FORK ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Details of the various"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations can be found in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_userfaultfd (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 4.11, events other than page-fault may enabled during"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_API"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Up to Linux 4.11,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "userfaultfd can be used only with anonymous private memory mappings."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 4.11,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "userfaultfd can be also used with hugetlbfs and shared memory mappings."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Reading from the userfaultfd structure"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the userfaultfd file descriptor returns one or more"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " uffd_msg"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structures, each of which describes a page-fault event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or an event required for the non-cooperative userfaultfd usage:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct uffd_msg {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u8  event;            /* Type of event */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ..."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    union {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 flags;    /* Flags describing fault */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 address;  /* Faulting address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        } pagefault;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct {            /* Since Linux 4.11 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u32 ufd;      /* Userfault file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                               of the child process */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        } fork;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct {            /* Since Linux 4.11 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 from;     /* Old address of remapped area */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 to;       /* New address of remapped area */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 len;      /* Original mapping length */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        } remap;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct {            /* Since Linux 4.11 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 start;    /* Start address of removed area */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            __u64 end;      /* End address of removed area */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        } remove;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        ..."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    } arg;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Padding fields omitted */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "} __packed;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If multiple events are available and the supplied buffer is large enough,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns as many events as will fit in the supplied buffer."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the buffer supplied to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is smaller than the size of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " uffd_msg"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fields set in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " uffd_msg"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The type of event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Depending of the event type,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "different fields of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arg"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "union represent details required for the event processing."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The non-page-fault events are generated only when appropriate feature"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is enabled during API handshake with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_API"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following values can appear in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_PAGEFAULT \" (since Linux 4.3)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A page-fault event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The page-fault details are available in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pagefault"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_FORK \" (since Linux 4.11)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generated when the faulting process invokes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "without the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_VM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The event details are available in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME describe duplication of userfault file descriptor during fork"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_REMAP \" (since Linux 4.11)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generated when the faulting process invokes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mremap (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The event details are available in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remap"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_REMOVE \" (since Linux 4.11)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generated when the faulting process invokes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " madvise (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MADV_DONTNEED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MADV_REMOVE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "advice."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The event details are available in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remove"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_UNMAP \" (since Linux 4.11)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Generated when the faulting process unmaps a memory range,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "either explicitly using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " munmap (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or implicitly during"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mremap (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The event details are available in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remove"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pagefault.address"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The address that triggered the page fault."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pagefault.flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A bit mask of flags that describe the event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_PAGEFAULT ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following flag may appear:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_PAGEFAULT_FLAG_WRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the address is in a range that was registered with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_REGISTER_MODE_MISSING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_userfaultfd (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and this flag is set, this a write fault;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "otherwise it is a read fault."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" UFFD_PAGEFAULT_FLAG_WP is not yet supported."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork.ufd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor associated with the userfault object"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created for the child created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remap.from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The original address of the memory range that was remapped using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mremap (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remap.to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The new address of the memory range that was remapped using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mremap (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remap.len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The original length of the memory range that was remapped using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mremap (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remove.start"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The start address of the memory range that was freed using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " madvise (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or unmapped"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " remove.end"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The end address of the memory range that was freed using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " madvise (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or unmapped"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on a userfaultfd file descriptor can fail with the following errors:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The userfaultfd object has not yet been enabled using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_API"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_NONBLOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is enabled in the associated open file description,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the userfaultfd file descriptor can be monitored with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When events are available, the file descriptor indicates as readable."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_NONBLOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is not enabled, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(always) indicates the file as having a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " POLLERR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "condition, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicates the file descriptor as both readable and writable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME What is the reason for this seemingly odd behavior with respect"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" to the O_NONBLOCK flag? (see userfaultfd_poll() in fs/userfaultfd.c)."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Something needs to be said about this."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " RETURN VALUE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On success,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " userfaultfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns a new file descriptor that refers to the userfaultfd object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On error, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 is returned, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set appropriately."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An unsupported value was specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EMFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The per-process limit on the number of open file descriptors has been"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reached"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The system-wide limit on the total number of open files has been"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reached."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOMEM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Insufficient kernel memory was available."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " userfaultfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call first appeared in Linux 4.3."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The support for hugetlbfs and shared memory areas and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "non-page-fault events was added in Linux 4.11"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " userfaultfd ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is Linux-specific and should not be used in programs intended to be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "portable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Glibc does not provide a wrapper for this system call; call it using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " syscall (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The userfaultfd mechanism can be used as an alternative to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "traditional user-space paging techniques based on the use of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGSEGV"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It can also be used to implement lazy restore"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for checkpoint/restore mechanisms,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as well as post-copy migration to allow (nearly) uninterrupted execution"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when transferring virtual machines and Linux containers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from one host to another."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_FEATURE_EVENT_FORK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is enabled and a system call from the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "family is interrupted by a signal or failed, a stale userfaultfd descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "might be created."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this case, a spurious"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_FORK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be delivered to the userfaultfd monitor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The program below demonstrates the use of the userfaultfd mechanism."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The program creates two threads, one of which acts as the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "page-fault handler for the process, for the pages in a demand-page zero"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "region created using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The program takes one command-line argument,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which is the number of pages that will be created in a mapping"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "whose page faults will be handled via userfaultfd."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After creating a userfaultfd object,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the program then creates an anonymous private mapping of the specified size"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and registers the address range of that mapping using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_REGISTER"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The program then creates a second thread that will perform the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "task of handling page faults."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The main thread then walks through the pages of the mapping fetching"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bytes from successive pages."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Because the pages have not yet been accessed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the first access of a byte in each page will trigger a page-fault event"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the userfaultfd file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each of the page-fault events is handled by the second thread,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which sits in a loop processing input from the userfaultfd file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In each loop iteration, the second thread first calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to check the state of the file descriptor,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and then reads an event from the file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All such events should be"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFD_EVENT_PAGEFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which the thread handles by copying a page of data into"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the faulting region using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " UFFDIO_COPY"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following is an example of what we see when running the program:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "$ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B./userfaultfd_demo 3"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Address returned by mmap() = 0x7fd30106c000"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fault_handler_thread():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    poll() returns: nready = 1; POLLIN = 1; POLLERR = 0"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    UFFD_EVENT_PAGEFAULT event: flags = 0; address = 7fd30106c00f"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        (uffdio_copy.copy returned 4096)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106c00f in main(): A"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106c40f in main(): A"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106c80f in main(): A"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106cc0f in main(): A"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fault_handler_thread():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    poll() returns: nready = 1; POLLIN = 1; POLLERR = 0"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    UFFD_EVENT_PAGEFAULT event: flags = 0; address = 7fd30106d00f"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        (uffdio_copy.copy returned 4096)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106d00f in main(): B"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106d40f in main(): B"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106d80f in main(): B"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106dc0f in main(): B"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fault_handler_thread():"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    poll() returns: nready = 1; POLLIN = 1; POLLERR = 0"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    UFFD_EVENT_PAGEFAULT event: flags = 0; address = 7fd30106e00f"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        (uffdio_copy.copy returned 4096)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106e00f in main(): C"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106e40f in main(): C"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106e80f in main(): C"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Read address 0x7fd30106ec0f in main(): C"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Program source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "/* userfaultfd_demo.c"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "   Licensed under the GNU General Public License version 2 or later."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "*/"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _GNU_SOURCE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/types.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <linux/userfaultfd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <pthread.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <errno.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <unistd.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdlib.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <fcntl.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <signal.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <poll.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <string.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/mman.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/syscall.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/ioctl.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <poll.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "#define errExit(msg)    do { perror(msg); exit(EXIT_FAILURE); "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        } while (0)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static int page_size;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static void *"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fault_handler_thread(void *arg)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    static struct uffd_msg msg;   /* Data read from userfaultfd */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    static int fault_cnt = 0;     /* Number of faults so far handled */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long uffd;                    /* userfaultfd file descriptor */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    static char *page = NULL;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct uffdio_copy uffdio_copy;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ssize_t nread;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffd = (long) arg;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Create a page that will be copied into the faulting region */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (page == NULL) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        page = mmap(NULL, page_size, PROT_READ | PROT_WRITE,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    MAP_PRIVATE | MAP_ANONYMOUS, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (page == MAP_FAILED)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"mmap\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Loop, handling incoming events on the userfaultfd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       file descriptor */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    for (;;) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* See what poll() tells us about the userfaultfd */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct pollfd pollfd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        int nready;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        pollfd.fd = uffd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        pollfd.events = POLLIN;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        nready = poll(&pollfd, 1, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (nready == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"poll\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "nfault_handler_thread():"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"    poll() returns: nready = %d; \""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                \"POLLIN = %d; POLLERR = %d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", nready,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                (pollfd.revents & POLLIN) != 0,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                (pollfd.revents & POLLERR) != 0);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Read an event from the userfaultfd */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        nread = read(uffd, &msg, sizeof(msg));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (nread == 0) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            printf(\"EOF on userfaultfd!"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (nread == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"read\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* We expect only one kind of event; verify that assumption */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (msg.event != UFFD_EVENT_PAGEFAULT) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            fprintf(stderr, \"Unexpected event on userfaultfd"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Display info about the page"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "fault event */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"    UFFD_EVENT_PAGEFAULT event: \");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"flags = %llx; \", msg.arg.pagefault.flags);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"address = %llx"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", msg.arg.pagefault.address);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Copy the page pointed to by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "page"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " into the faulting"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           region. Vary the contents that are copied in, so that it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           is more obvious that each fault is handled separately. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        memset(page, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "A"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " + fault_cnt % 20, page_size);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fault_cnt++;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        uffdio_copy.src = (unsigned long) page;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* We need to handle page faults in units of pages(!)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "           So, round faulting address down to page boundary */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        uffdio_copy.dst = (unsigned long) msg.arg.pagefault.address &"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                                           ~(page_size "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uffdio_copy.len = page_size;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uffdio_copy.mode = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uffdio_copy.copy = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (ioctl(uffd, UFFDIO_COPY, &uffdio_copy) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            errExit(\"ioctl"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "UFFDIO_COPY\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"        (uffdio_copy.copy returned %lld)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                uffdio_copy.copy);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(int argc, char *argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    long uffd;          /* userfaultfd file descriptor */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char *addr;         /* Start of region handled by userfaultfd */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned long len;  /* Length of region handled by userfaultfd */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    pthread_t thr;      /* ID of thread that handles page faults */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct uffdio_api uffdio_api;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct uffdio_register uffdio_register;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int s;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (argc != 2) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fprintf(stderr, \"Usage: %s num"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "pages"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[0]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    page_size = sysconf(_SC_PAGE_SIZE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    len = strtoul(argv[1], NULL, 0) * page_size;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Create and enable userfaultfd object */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffd = syscall(__NR_userfaultfd, O_CLOEXEC | O_NONBLOCK);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (uffd == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"userfaultfd\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffdio_api.api = UFFD_API;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffdio_api.features = 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (ioctl(uffd, UFFDIO_API, &uffdio_api) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"ioctl"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "UFFDIO_API\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Create a private anonymous mapping. The memory will be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       demand"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "zero paged"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "that is, not yet allocated. When we"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       actually touch the memory, it will be allocated via"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       the userfaultfd. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    addr = mmap(NULL, len, PROT_READ | PROT_WRITE,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                MAP_PRIVATE | MAP_ANONYMOUS, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, 0);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (addr == MAP_FAILED)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"mmap\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Address returned by mmap() = %p"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", addr);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Register the memory range of the mapping we just created for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       handling by the userfaultfd object. In mode, we request to track"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       missing pages (i.e., pages that have not yet been faulted in). */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffdio_register.range.start = (unsigned long) addr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffdio_register.range.len = len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uffdio_register.mode = UFFDIO_REGISTER_MODE_MISSING;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (ioctl(uffd, UFFDIO_REGISTER, &uffdio_register) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"ioctl"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "UFFDIO_REGISTER\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Create a thread that will process the userfaultfd events */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    s = pthread_create(&thr, NULL, fault_handler_thread, (void *) uffd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (s != 0) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errno = s;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        errExit(\"pthread_create\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Main thread now touches memory in the mapping, touching"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       locations 1024 bytes apart. This will trigger userfaultfd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       events for all pages in the region. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    int l;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    l = 0xf;    /* Ensure that faulting address is not on a page"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                   boundary, in order to test that we correctly"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                   handle that case in fault_handling_thread() */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    while (l < len) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        char c = addr[l];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"Read address %p in main(): \", addr + l);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        printf(\"%c"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", c);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        l += 1024;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        usleep(100000);         /* Slow things down a little */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_SUCCESS);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fcntl (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_userfaultfd (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " madvise (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/admin-guide/mm/userfaultfd.rst"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the Linux kernel source tree"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  }
+]

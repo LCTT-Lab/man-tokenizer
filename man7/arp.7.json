@@ -1,0 +1,2857 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page is Copyright (C) 1999 Matthew Wilcox <willy@bofh.ai>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_ONE_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to distribute possibly modified copies"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of this page provided the header is included verbatim,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and in case of nontrivial modification author and date"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of the modification is added to the header."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified June 1999 Andi Kleen"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" $Id: arp.7,v 1.10 2000/04/27 19:31:38 ak Exp $"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ARP 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "arp "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " Linux ARP kernel module."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This kernel protocol module implements the Address Resolution"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Protocol defined in RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "826."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is used to convert between Layer2 hardware addresses"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and IPv4 protocol addresses on directly connected networks."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The user normally doesn't interact directly with this module except to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "configure it;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead it provides a service for other protocols in the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A user process can receive ARP packets by using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " packet (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sockets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is also a mechanism for managing the ARP cache"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in user-space by using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netlink (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sockets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The ARP table can also be controlled via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on any"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The ARP module maintains a cache of mappings between hardware addresses"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and protocol addresses."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The cache has a limited size so old and less"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "frequently used entries are garbage-collected."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Entries which are marked"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as permanent are never deleted by the garbage-collector."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The cache can"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be directly manipulated by the use of ioctls and its behavior can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "tuned by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interfaces described below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When there is no positive feedback for an existing mapping after some"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "time (see the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interfaces below), a neighbor cache entry is considered stale."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Positive feedback can be gotten from a higher layer; for example from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a successful TCP ACK."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Other protocols can signal forward progress"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MSG_CONFIRM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sendmsg (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When there is no forward progress, ARP tries to reprobe."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It first tries to ask a local arp daemon"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " app_solicit"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "times for an updated MAC address."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If that fails and an old MAC address is known, a unicast probe is sent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ucast_solicit"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "times."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If that fails too, it will broadcast a new ARP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "request to the network."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Requests are sent only when there is data queued"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for sending."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux will automatically add a nonpermanent proxy arp entry when it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "receives a request for an address it forwards to and proxy arp is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enabled on the receiving interface."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When there is a reject route for the target, no proxy arp entry is added."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Ioctls"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Three ioctls are available on all"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sockets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They take a pointer to a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct arpreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as their argument."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct arpreq {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct sockaddr arp_pa;      /* protocol address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct sockaddr arp_ha;      /* hardware address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int             arp_flags;   /* flags */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct sockaddr arp_netmask; /* netmask of protocol address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char            arp_dev[16];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCSARP \", \" SIOCDARP \" and \" SIOCGARP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "respectively set, delete and get an ARP mapping."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting and deleting ARP maps are privileged operations and may"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be performed only by a process with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_NET_ADMIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability or an effective UID of 0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arp_pa"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must be an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "address and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arp_ha"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must have the same type as the device which is specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arp_dev ."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arp_dev"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a zero-terminated string which names a device."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "tab(:) allbox;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "c s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iarp_flags"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag:meaning"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ATF_COM:Lookup complete"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ATF_PERM:Permanent entry"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ATF_PUBL:Publish entry"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ATF_USETRAILERS:Trailers requested"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ATF_NETMASK:Use a netmask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ATF_DONTPUB:Don't answer"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ATF_NETMASK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is set, then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arp_netmask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should be valid."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux 2.2 does not support proxy network ARP entries, so this"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should be set to 0xffffffff, or 0 to remove an existing proxy arp entry."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ATF_USETRAILERS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is obsolete and should not be used."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc interfaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ARP supports a range of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interfaces to configure parameters on a global or per-interface basis."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The interfaces can be accessed by reading or writing the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/net/ipv4/neigh/*/*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "files."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each interface in the system has its own directory in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/net/ipv4/neigh/ ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The setting in the \"default\" directory is used for all newly created"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "devices."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unless otherwise specified, time-related interfaces are specified"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " anycast_delay \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum number of jiffies to delay before replying to a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IPv6 neighbor solicitation message."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Anycast support is not yet implemented."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 1 second."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " app_solicit \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum number of probes to send to the user space ARP daemon via"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "netlink before dropping back to multicast probes (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mcast_solicit )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " base_reachable_time \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Once a neighbor has been found, the entry is considered to be valid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for at least a random value between"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " base_reachable_time \"/2 and 3*\" base_reachable_time /2."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An entry's validity will be extended if it receives positive feedback"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from higher level protocols."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 30 seconds."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This file is now obsolete in favor of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " base_reachable_time_ms ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " base_reachable_time_ms \" (since Linux 2.6.12)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " base_reachable_time ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but measures time in milliseconds."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 30000 milliseconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " delay_first_probe_time \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Delay before first probe after it has been decided that a neighbor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is stale."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 5 seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gc_interval \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "How frequently the garbage collector for neighbor entries"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should attempt to run."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 30 seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gc_stale_time \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Determines how often to check for stale neighbor entries."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When a neighbor entry is considered stale, it is resolved again before"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sending data to it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 60 seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gc_thresh1 \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The minimum number of entries to keep in the ARP cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The garbage collector will not run if there are fewer than"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this number of entries in the cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 128."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gc_thresh2 \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The soft maximum number of entries to keep in the ARP cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The garbage collector will allow the number of entries to exceed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this for 5 seconds before collection will be performed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 512."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gc_thresh3 \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The hard maximum number of entries to keep in the ARP cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The garbage collector will always run if there are more than"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this number of entries in the cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 1024."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " locktime \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The minimum number of jiffies to keep an ARP entry in the cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This prevents ARP cache thrashing if there is more than one potential"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mapping (generally due to network misconfiguration)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 1 second."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mcast_solicit \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum number of attempts to resolve an address by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "multicast/broadcast before marking the entry as unreachable."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 3."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proxy_delay \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When an ARP request for a known proxy-ARP address is received, delay up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proxy_delay"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "jiffies before replying."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is used to prevent network flooding in some cases."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 0.8 seconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proxy_qlen \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum number of packets which may be queued to proxy-ARP addresses."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 64."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " retrans_time \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of jiffies to delay before retransmitting a request."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 1 second."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This file is now obsolete in favor of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " retrans_time_ms ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " retrans_time_ms \" (since Linux 2.6.12)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The number of milliseconds to delay before retransmitting a request."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 1000 milliseconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ucast_solicit \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum number of attempts to send unicast probes before asking"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the ARP daemon (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " app_solicit )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 3."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unres_qlen \" (since Linux 2.2)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Precisely: 2.1.79"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The maximum number of packets which may be queued for each unresolved"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "address by other network layers."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Defaults to 3."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct arpreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changed in Linux 2.0 to include the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arp_dev"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "member and the ioctl numbers changed at the same time."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Support for the old ioctls was dropped in Linux 2.2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Support for proxy arp entries for networks (netmask not equal 0xffffffff)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was dropped in Linux 2.2."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is replaced by automatic proxy arp setup by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel for all reachable hosts on other interfaces (when"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "forwarding and proxy arp is enabled for the interface)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " neigh/*"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interfaces did not exist before Linux 2.2."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some timer settings are specified in jiffies, which is architecture-"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and kernel version-dependent; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " time (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "There is no way to signal positive feedback from user space."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This means connection-oriented protocols implemented in user space"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will generate excessive ARP traffic, because ndisc will regularly"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reprobe the MAC address."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The same problem applies for some kernel protocols (e.g., NFS over UDP)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This man page mashes together functionality that is IPv4-specific"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with functionality that is shared between IPv4 and IPv6."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " arpd (8)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "826 for a description of ARP."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "2461 for a description of IPv6 neighbor discovery and the base"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "algorithms used."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux 2.2+ IPv4 ARP uses the IPv6 algorithms when applicable."
+        }
+      ]
+    ]
+  }
+]

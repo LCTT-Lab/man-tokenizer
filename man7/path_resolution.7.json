@@ -1,0 +1,2368 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2003 Andries Brouwer (aeb@cwi.nl)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PATH_RESOLUTION 7 2017-11-26 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "path_resolution "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " how a pathname is resolved to a file"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some UNIX/Linux system calls have as parameter one or more filenames."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A filename (or pathname) is resolved as follows."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Step 1: start of the resolution process"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the pathname starts with the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the starting lookup directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the root directory of the calling process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(A process inherits its"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "root directory from its parent."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Usually this will be the root directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the file hierarchy."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A process may get a different root directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by use of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chroot (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A process may get an entirely private mount namespace in case"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "or one of its ancestors"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "was started by an invocation of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call that had the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWNS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag set.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This handles the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " part of the pathname."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the pathname does not start with the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " character, the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "starting lookup directory of the resolution process is the current working"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory of the process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This is also inherited from the parent."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It can be changed by use of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chdir (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Pathnames starting with a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " character are called absolute pathnames."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Pathnames not starting with a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " are called relative pathnames."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Step 2: walk along the path"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the current lookup directory to the starting lookup directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Now, for each nonfinal component of the pathname, where a component"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a substring delimited by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " characters, this component is looked up"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the current lookup directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the process does not have search permission on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the current lookup directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EACCES"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error is returned (\"Permission denied\")."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the component is not found, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOENT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error is returned"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(\"No such file or directory\")."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the component is found, but is neither a directory nor a symbolic link,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOTDIR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error is returned (\"Not a directory\")."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the component is found and is a directory, we set the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "current lookup directory to that directory, and go to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "next component."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the component is found and is a symbolic link (symlink), we first"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resolve this symbolic link (with the current lookup directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as starting lookup directory)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Upon error, that error is returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the result is not a directory, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOTDIR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error is returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the resolution of the symlink is successful and returns a directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "we set the current lookup directory to that directory, and go to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the next component."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the resolution process here can involve recursion if the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "prefix ('dirname') component of a pathname contains a filename"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is a symbolic link that resolves to a directory (where the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "prefix component of that directory may contain a symbolic link, and so on)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In order to protect the kernel against stack overflow, and also"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to protect against denial of service, there are limits on the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "maximum recursion depth, and on the maximum number of symbolic links"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "followed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ELOOP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error is returned when the maximum is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "exceeded (\"Too many levels of symbolic links\")."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" presently: max recursion depth during symlink resolution: 5"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" max total number of symbolic links followed: 40"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" _POSIX_SYMLOOP_MAX is 8"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As currently implemented on Linux, the maximum number"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" MAXSYMLINKS is 40"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "of symbolic links that will be followed while resolving a pathname is 40."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In kernels before 2.6.18, the limit on the recursion depth was 5."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Starting with Linux 2.6.18, this limit"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" MAX_NESTED_LINKS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "was raised to 8."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux 4.2,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 894bc8c4662ba9daceafe943a5ba0dd407da5cd3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel's pathname-resolution code"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was reworked to eliminate the use of recursion,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that the only limit that remains is the maximum of 40"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resolutions for the entire pathname."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Step 3: find the final entry"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The lookup of the final component of the pathname goes just like"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that of all other components, as described in the previous step,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with two differences: (i) the final component need not be a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory (at least as far as the path resolution process is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "concerned"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "it may have to be a directory, or a nondirectory, because of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the requirements of the specific system call), and (ii) it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not necessarily an error if the component is not found"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "maybe"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "we are just creating it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The details on the treatment"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the final entry are described in the manual pages of the specific"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system calls."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " . and .."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By convention, every directory has the entries \".\" and \"..\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which refer to the directory itself and to its parent directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "respectively."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The path resolution process will assume that these entries have"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "their conventional meanings, regardless of whether they are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "actually present in the physical filesystem."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "One cannot walk down past the root: \"/..\" is the same as \"/\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Mount points"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After a \"mount dev path\" command, the pathname \"path\" refers to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the root of the filesystem hierarchy on the device \"dev\", and no"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "longer to whatever it referred to earlier."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "One can walk out of a mounted filesystem: \"path/..\" refers to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the parent directory of \"path\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "outside of the filesystem hierarchy on \"dev\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Trailing slashes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If a pathname ends in a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", that forces resolution of the preceding"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "component as in Step 2: it has to exist and resolve to a directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Otherwise, a trailing "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is ignored."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Or, equivalently, a pathname with a trailing "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "/"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is equivalent to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the pathname obtained by appending "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " to it.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Final symlink"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the last component of a pathname is a symbolic link, then it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "depends on the system call whether the file referred to will be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the symbolic link or the result of path resolution on its contents."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, the system call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lstat (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will operate on the symlink, while"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stat (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operates on the file pointed to by the symlink."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Length limit"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "There is a maximum length for pathnames."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the pathname (or some"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "intermediate pathname obtained while resolving symbolic links)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is too long, an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENAMETOOLONG"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error is returned (\"Filename too long\")."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Empty pathname"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In the original UNIX, the empty pathname referred to the current directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Nowadays POSIX decrees that an empty pathname must not be resolved"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "successfully."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux returns"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOENT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in this case."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Permissions"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The permission bits of a file consist of three groups of three bits; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chmod (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stat (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The first group of three is used when the effective user ID of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the calling process equals the owner ID of the file."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The second group"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of three is used when the group ID of the file either equals the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "effective group ID of the calling process, or is one of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "supplementary group IDs of the calling process (as set by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setgroups (2))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When neither holds, the third group is used."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Of the three bits used, the first bit determines read permission,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the second write permission, and the last execute permission"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in case of ordinary files, or search permission in case of directories."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux uses the fsuid instead of the effective user ID in permission checks."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Ordinarily the fsuid will equal the effective user ID, but the fsuid can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changed by the system call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setfsuid (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(Here \"fsuid\" stands for something like \"filesystem user ID\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The concept was required for the implementation of a user space"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "NFS server at a time when processes could send a signal to a process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the same effective user ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is obsolete now."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Nobody should use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setfsuid (2).)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Similarly, Linux uses the fsgid (\"filesystem group ID\")"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead of the effective group ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setfsgid (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . say something about filesystem mounted read-only ?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Bypassing permission checks: superuser and capabilities"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On a traditional UNIX system, the superuser"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( root ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "user ID 0) is all-powerful, and bypasses all permissions restrictions"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when accessing files."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" (but for exec at least one x bit must be set) -- AEB"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" but there is variation across systems on this point: for"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" example, HP-UX and Tru64 are as described by AEB.  However,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" on some implementations (e.g., Solaris, FreeBSD),"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" access(X_OK) by superuser will report success, regardless"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of the file's execute permission bits. -- MTK (Oct 05)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On Linux, superuser privileges are divided into capabilities (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Two capabilities are relevant for file permissions checks:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_DAC_OVERRIDE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_DAC_READ_SEARCH ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(A process has these capabilities if its fsuid is 0.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_DAC_OVERRIDE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability overrides all permission checking,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but grants execute permission only when at least one"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the file's three execute permission bits is set."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_DAC_READ_SEARCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability grants read and search permission"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on directories, and read permission on ordinary files."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . say something about immutable files"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . say something about ACLs"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " readlink (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " credentials (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " symlink (7)"
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,6945 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2013, Heinrich Schuchardt <xypron.glpk@gmx.de>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright (C) 2014, Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" this manual under the conditions for verbatim copying, provided that"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the entire resulting derived work is distributed under the terms of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" a permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" no responsibility for errors or omissions, or for damages resulting."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" from the use of the information contained herein.  The author(s) may."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" not have taken the same level of care in the production of this."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual, which is licensed free of charge, as they might when working."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FANOTIFY 7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fanotify "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " monitoring filesystem events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fanotify API provides notification and interception of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Use cases include virus scanning and hierarchical storage management."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Currently, only a limited set of events is supported."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, there is no support for create, delete, and move events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for details of an API that does notify those events.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Additional capabilities compared to the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "API include the ability to monitor all of the objects"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in a mounted filesystem,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the ability to make access permission decisions, and the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "possibility to read or modify files before access by other applications."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following system calls are used with this API:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_mark (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " close (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init(), fanotify_mark(), and notification groups"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call creates and initializes an fanotify notification group"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and returns a file descriptor referring to it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An fanotify notification group is a kernel-internal object that holds"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a list of files, directories, and mount points for which events shall be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For each entry in an fanotify notification group, two bit masks exist: the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mark"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mask and the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ignore"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mask."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The mark mask defines file activities for which an event shall be created."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The ignore mask defines activities for which no event shall be generated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Having these two types of masks permits a mount point or directory to be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "marked for receiving events, while at the same time ignoring events for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specific objects under that mount point or directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_mark (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call adds a file, directory, or mount to a notification group"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and specifies which events"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "shall be reported (or ignored), or removes or modifies such an entry."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A possible usage of the ignore mask is for a file cache."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Events of interest for a file cache are modification of a file and closing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the same."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Hence, the cached directory or mount point is to be marked to receive these"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After receiving the first event informing that a file has been modified,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the corresponding cache entry will be invalidated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No further modification events for this file are of interest until the file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is closed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Hence, the modify event can be added to the ignore mask."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Upon receiving the close event, the modify event can be removed from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ignore mask and the file cache entry can be updated."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The entries in the fanotify notification groups refer to files and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directories via their inode number and to mounts via their mount ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If files or directories are renamed or moved within the same mount,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the respective entries survive."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If files or directories are deleted or moved to another mount or if mounts are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unmounted, the corresponding entries are deleted."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The event queue"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As events occur on the filesystem objects monitored by a notification group,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the fanotify system generates events that are collected in a queue."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These events can then be read (using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or similar)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the fanotify file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Two types of events are generated:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " notification"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " permission"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Notification events are merely informative"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and require no action to be taken by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the receiving application except for closing the file descriptor passed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the event (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Permission events are requests to the receiving application to decide"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "whether permission for a file access shall be granted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For these events, the recipient must write a response which decides whether"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "access is granted or not."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An event is removed from the event queue of the fanotify group"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when it has been read."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Permission events that have been read are kept in an internal list of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fanotify group until either a permission decision has been taken by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "writing to the fanotify file descriptor or the fanotify file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Reading fanotify events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the file descriptor returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "blocks (if the flag"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_NONBLOCK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not specified in the call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "until either a file event occurs or the call is interrupted by a signal"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (7))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After a successful"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the read buffer contains one or more of the following structures:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fanotify_event_metadata {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 event_len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u8 vers;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u8 reserved;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 metadata_len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __aligned_u64 mask;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __s32 fd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __s32 pid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For performance reasons, it is recommended to use a large"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "buffer size (for example, 4096 bytes),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that multiple events can be retrieved by a single"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The return value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the number of bytes placed in the buffer,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 in case of an error (but see BUGS)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fields of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_event_metadata"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the length of the data for the current event and the offset"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the next event in the buffer."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the current implementation, the value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is always"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_EVENT_METADATA_LEN ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, the API is designed to allow"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "variable-length structures to be returned in the future."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field holds a version number for the structure."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It must be compared to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FANOTIFY_METADATA_VERSION"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to verify that the structures returned at run time match"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the structures defined at compile time."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In case of a mismatch, the application should abandon trying to use the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fanotify file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " reserved"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field is not used."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " metadata_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the length of the structure."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The field was introduced to facilitate the implementation of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "optional headers per event type."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No such optional headers exist in the current implementation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is a bit mask describing the event (see below)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is an open file descriptor for the object being accessed, or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_NOFD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if a queue overflow occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor can be used to access the contents"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the monitored file or directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The reading application is responsible for closing this file descriptor."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the caller may specify (via the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event_f_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument) various file status flags that are to be set"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the open file description that corresponds to this file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, the (kernel-internal)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FMODE_NONOTIFY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file status flag is set on the open file description."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This flag suppresses fanotify event generation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Hence, when the receiver of the fanotify event accesses the notified file or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory using this file descriptor, no additional events will be created."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the ID of the process that caused the event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A program listening to fanotify events can compare this PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the PID returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpid (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to determine whether the event is caused by the listener itself,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or is due to a file access by another process."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The bit mask in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicates which events have occurred for a single filesystem object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Multiple bits may be set in this mask,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if more than one event occurred for the monitored filesystem object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "consecutive events for the same filesystem object and originating from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "same process may be merged into a single event, with the exception that two"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "permission events are never merged into one queue entry."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The bits that may appear in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mask"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_ACCESS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file or a directory (but see BUGS) was accessed (read)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_OPEN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file or a directory was opened."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_MODIFY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file was modified."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_CLOSE_WRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file that was opened for writing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( O_WRONLY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_RDWR )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_CLOSE_NOWRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file or directory that was opened read-only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( O_RDONLY )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_Q_OVERFLOW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The event queue exceeded the limit of 16384 entries."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This limit can be overridden by specifying the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_UNLIMITED_QUEUE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_ACCESS_PERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An application wants to read a file or directory, for example using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " readdir (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The reader must write a response (as described below)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that determines whether the permission to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "access the filesystem object shall be granted."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_OPEN_PERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An application wants to open a file or directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The reader must write a response that determines whether the permission to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "open the filesystem object shall be granted."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To check for any close event, the following bit mask may be used:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_CLOSE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A file was closed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is a synonym for:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    FAN_CLOSE_WRITE | FAN_CLOSE_NOWRITE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following macros are provided to iterate over a buffer containing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fanotify event metadata returned by a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from an fanotify file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_EVENT_OK(meta, len)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This macro checks the remaining length"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the buffer"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " meta"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "against the length of the metadata structure and the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of the first metadata structure in the buffer."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_EVENT_NEXT(meta, len)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This macro uses the length indicated in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field of the metadata structure pointed to by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " meta"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to calculate the address of the next metadata structure that follows"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " meta ."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the number of bytes of metadata that currently remain in the buffer."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The macro returns a pointer to the next metadata structure that follows"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " meta ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and reduces"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by the number of bytes in the metadata structure that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has been skipped over (i.e., it subtracts"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " meta"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">event_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len )."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, there is:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_EVENT_METADATA_LEN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This macro returns the size (in bytes) of the structure"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_event_metadata ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the minimum size (and currently the only size) of any event metadata."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Monitoring an fanotify file descriptor for events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When an fanotify event occurs, the fanotify file descriptor indicates as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "readable when passed to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " epoll (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " poll (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " select (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Dealing with permission events"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For permission events, the application must"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a structure of the following form to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fanotify file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fanotify_response {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __s32 fd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 response;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fields of this structure are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the file descriptor from the structure"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_event_metadata ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " response"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This field indicates whether or not the permission is to be granted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Its value must be either"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_ALLOW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to allow the file operation or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_DENY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to deny the file operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If access is denied, the requesting application call will receive an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Closing the fanotify file descriptor"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When all file descriptors referring to the fanotify notification group are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "closed, the fanotify group is released and its resources"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are freed for reuse by the kernel."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Upon"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " close (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "outstanding permission events will be set to allowed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/fdinfo"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/fdinfo/[fd]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains information about fanotify marks for file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of process"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition to the usual errors for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following errors can occur when reading from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fanotify file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The buffer is too small to hold the event."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EMFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The per-process limit on the number of open files has been reached."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the description of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_NOFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENFILE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The system-wide limit on the total number of open files has been reached."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/fs/file-max"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ETXTBSY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This error is returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_RDWR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " O_WRONLY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was specified in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " event_f_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and an event occurred for a monitored file that is currently being executed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition to the usual errors for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following errors can occur when writing to the fanotify file descriptor:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fanotify access permissions are not enabled in the kernel configuration"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the value of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " response"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the response structure is not valid."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOENT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fd"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the response structure is not valid."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This may occur when a response for the permission event has already been"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "written."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fanotify API was introduced in version 2.6.36 of the Linux kernel and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enabled in version 2.6.37."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fdinfo support was added in version 3.8."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fanotify API is Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fanotify API is available only if the kernel was built with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_FANOTIFY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "configuration option enabled."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, fanotify permission handling is available only if the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_FANOTIFY_ACCESS_PERMISSIONS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "configuration option is enabled."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Limitations and caveats"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Fanotify reports only events that a user-space program triggers through the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem API."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As a result,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it does not catch remote events that occur on network filesystems."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fanotify API does not report file accesses and modifications that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may occur because of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mmap (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " msync (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " munmap (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Events for directories are created only if the directory itself is opened,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "read, and closed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Adding, removing, or changing children of a marked directory does not create"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events for the monitored directory itself."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Fanotify monitoring of directories is not recursive:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to monitor subdirectories under a directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "additional marks must be created."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(But note that the fanotify API provides no way of detecting when a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "subdirectory has been created under a marked directory,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which makes recursive monitoring difficult.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Monitoring mounts offers the capability to monitor a whole directory tree."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The event queue can overflow."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this case, events are lost."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Before Linux 3.19,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fallocate (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "did not generate fanotify events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 3.19,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 820c12d5d6c0890bc93dd63893924a13041fdc35"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fallocate (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "generate"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_MODIFY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "events."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "As of Linux 3.17,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following bugs exist:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On Linux, a filesystem object may be accessible through multiple paths,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for example, a part of a filesystem may be remounted using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "bind"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "option of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mount (8)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A listener that marked a mount will be notified only of events that were"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "triggered for a filesystem object using the same mount."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Any other event will pass unnoticed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . A patch was proposed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When an event is generated,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "no check is made to see whether the user ID of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "receiving process has authorization to read or write the file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before passing a file descriptor for that file."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This poses a security risk, when the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SYS_ADMIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability is set for programs executed by unprivileged users."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If a call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "processes multiple events from the fanotify queue and an error occurs,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the return value will be the total length of the events successfully"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "copied to the user-space buffer before the error occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The return value will not be "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " errno"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will not be set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, the reading application has no way to detect the error."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following program demonstrates the usage of the fanotify API."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It marks the mount point passed as a command-line argument"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and waits for events of type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_OPEN_PERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_CLOSE_WRITE ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When a permission event occurs, a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_ALLOW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "response is given."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following output was recorded while editing the file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /home/user/temp/notes ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Before the file was opened, a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_OPEN_PERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After the file was closed, a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FAN_CLOSE_WRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "event occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Execution of the program ends when the user presses the ENTER key."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Example output"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "# ./fanotify_example /home"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Press enter key to terminate."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Listening for events."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "FAN_OPEN_PERM: File /home/user/temp/notes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "FAN_CLOSE_WRITE: File /home/user/temp/notes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Listening for events stopped."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Program source"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define _GNU_SOURCE     /* Needed to get O_LARGEFILE definition */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <errno.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <fcntl.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <limits.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <poll.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdio.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <stdlib.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <sys/fanotify.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#include <unistd.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "/* Read all available fanotify events from the file descriptor 'fd' */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "static void"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "handle_events(int fd)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    const struct fanotify_event_metadata *metadata;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct fanotify_event_metadata buf[200];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ssize_t len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char path[PATH_MAX];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    ssize_t path_len;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char procfd_path[PATH_MAX];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct fanotify_response response;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Loop while events can be read from fanotify file descriptor */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    for(;;) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Read some events */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        len = read(fd, (void *) &buf, sizeof(buf));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (len == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 && errno != EAGAIN) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            perror(\"read\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Check if end of available data reached */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (len <= 0)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            break;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Point to the first event in the buffer */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        metadata = buf;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        /* Loop over all events in the buffer */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        while (FAN_EVENT_OK(metadata, len)) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* Check that run"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "time and compile"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "time structures match */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">vers != FANOTIFY_METADATA_VERSION) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                fprintf(stderr,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                        \"Mismatch of fanotify metadata version."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">fd contains either FAN_NOFD, indicating a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "               queue overflow, or a file descriptor (a nonnegative"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "               integer). Here, we simply ignore queue overflow. */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">fd >= 0) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Handle open permission event */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                if (metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">mask & FAN_OPEN_PERM) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"FAN_OPEN_PERM: \");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                    /* Allow file to be opened */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                    response.fd = metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">fd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    response.response = FAN_ALLOW;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    write(fd, &response,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                          sizeof(struct fanotify_response));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Handle closing of writable file event */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                if (metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">mask & FAN_CLOSE_WRITE)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    printf(\"FAN_CLOSE_WRITE: \");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Retrieve and print pathname of the accessed file */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                snprintf(procfd_path, sizeof(procfd_path),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                         \"/proc/self/fd/%d\", metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">fd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                path_len = readlink(procfd_path, path,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                                    sizeof(path) "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " 1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                if (path_len == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    perror(\"readlink\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                path[path_len] = '"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "0';"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                printf(\"File %s"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", path);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Close the file descriptor of the event */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                close(metadata"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">fd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            /* Advance to next event */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            metadata = FAN_EVENT_NEXT(metadata, len);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "main(int argc, char *argv[])"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char buf;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int fd, poll_num;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    nfds_t nfds;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct pollfd fds[2];"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Check mount point is supplied */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (argc != 2) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        fprintf(stderr, \"Usage: %s MOUNT"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\", argv[0]);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Press enter key to terminate."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Create the file descriptor for accessing the fanotify API */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    fd = fanotify_init(FAN_CLOEXEC | FAN_CLASS_CONTENT | FAN_NONBLOCK,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                       O_RDONLY | O_LARGEFILE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (fd == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        perror(\"fanotify_init\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Mark the mount for:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " permission events before opening files"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "       "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " notification events after closing a write"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "enabled"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "         file descriptor */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    if (fanotify_mark(fd, FAN_MARK_ADD | FAN_MARK_MOUNT,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                      FAN_OPEN_PERM | FAN_CLOSE_WRITE, AT_FDCWD,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                      argv[1]) == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        perror(\"fanotify_mark\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Prepare for polling */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    nfds = 2;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Console input */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[0].fd = STDIN_FILENO;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[0].events = POLLIN;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Fanotify input */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[1].fd = fd;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    fds[1].events = POLLIN;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* This is the loop to wait for incoming events */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Listening for events."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    while (1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        poll_num = poll(fds, nfds, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (poll_num == "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (errno == EINTR)     /* Interrupted by a signal */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                continue;           /* Restart poll() */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            perror(\"poll\");         /* Unexpected error */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            exit(EXIT_FAILURE);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "        if (poll_num > 0) {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (fds[0].revents & POLLIN) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Console input is available: empty stdin and quit */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                while (read(STDIN_FILENO, &buf, 1) > 0 && buf != '"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n')"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                    continue;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                break;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "            if (fds[1].revents & POLLIN) {"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                /* Fanotify events are available */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "                handle_events(fd);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "            }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        }"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    }"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    printf(\"Listening for events stopped."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "n\");"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    exit(EXIT_SUCCESS);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_init (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fanotify_mark (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inotify (7)"
+        }
+      ]
+    ]
+  }
+]

@@ -1,0 +1,3622 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 1986 The Regents of the University of California."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" All rights reserved."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(PERMISSIVE_MISC)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Redistribution and use in source and binary forms are permitted"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" provided that the above copyright notice and this paragraph are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" duplicated in all such forms and that any documentation,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" advertising materials, and other materials related to such"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" distribution and use acknowledge that the software was developed"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" by the University of California, Berkeley.  The name of the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" University may not be used to endorse or promote products derived"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" from this software without specific prior written permission."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\t@(#)resolver.5\t5.9 (Berkeley) 12/14/89"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"\t$Id: resolver.5,v 8.6 1999/05/21 00:01:02 vixie Exp $"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Added ndots remark by Bernhard R. Link - debian bug #182886"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RESOLV.CONF 5 2017-09-15 \"\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".UC",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "resolv.conf "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " resolver configuration file"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/resolv.conf"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " resolver"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a set of routines in the C library"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that provide access to the Internet Domain Name System (DNS)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The resolver configuration file contains information that is read"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by the resolver routines the first time they are invoked by a process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file is designed to be human readable and contains a list of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "keywords with values that provide various types of resolver information."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The configuration file is considered a trusted source of DNS information"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g., DNSSEC AD-bit information will be returned unmodified from this"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "source)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If this file does not exist,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "only the name server on the local machine will be queried;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the domain name is determined from the hostname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the domain search path is constructed from the domain name."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The different configuration options are:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bnameserver"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P Name server IP address"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Internet address of a name server that the resolver should query,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "either an IPv4 address (in dot notation),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or an IPv6 address in colon (and possibly dot) notation as per RFC 2373."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MAXNS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(currently 3, see "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I<resolv.h>"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) name servers may be listed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "one per keyword."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If there are multiple servers,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the resolver library queries them in the order listed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If no "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bnameserver"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P entries are present,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the default is to use the name server on the local machine."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The algorithm used is to try a name server, and if the query times out,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "try the next, until out of name servers,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then repeat trying all the name servers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "until a maximum number of retries are made.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bdomain"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P Local domain name."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Most queries for names within this domain can use short names"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "relative to the local domain."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If set to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", the root domain is considered."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If no "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bdomain"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P entry is present, the domain is determined"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the local hostname returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostname (2);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the domain part is taken to be everything after the first "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Finally, if the hostname does not contain a domain part, the root"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "domain is assumed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bsearch"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P Search list for host-name lookup."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The search list is normally determined from the local domain name;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by default, it contains only the local domain name."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This may be changed by listing the desired domain search path"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "following the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isearch"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P keyword with spaces or tabs separating"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the names."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Resolver queries having fewer than"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ndots"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "dots (default is 1) in them will be attempted using each component"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the search path in turn until a match is found."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For environments with multiple subdomains please read"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"options ndots:\" n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "below to avoid man-in-the-middle attacks and unnecessary"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "traffic for the root-dns-servers."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" When having a resolv.conv with a line"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  search subdomain.domain.tld domain.tld"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and doing a hostlookup, for example by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  ping host.anothersubdomain"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" it sends dns-requests for"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  host.anothersubdomain."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  host.anothersubdomain.subdomain.domain.tld."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  host.anothersubdomain.domain.tld."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" thus not only causing unnecessary traffic for the root-dns-servers"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" but broadcasting information to the outside and making man-in-the-middle"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" attacks possible."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that this process may be slow and will generate a lot of network"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "traffic if the servers for the listed domains are not local,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and that queries will time out if no server is available"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for one of the domains."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The search list is currently limited to six domains"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with a total of 256 characters."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bsortlist"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option allows addresses returned by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostbyname (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to be sorted."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A sortlist is specified by IP-address-netmask pairs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The netmask is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "optional and defaults to the natural netmask of the net."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The IP address"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and optional network pairs are separated by slashes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Up to 10 pairs may"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be specified."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Here is an example:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "sortlist 130.155.160.0/255.255.240.0 130.155.0.0"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Boptions"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Options allows certain internal resolver variables to be modified."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The syntax is"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Boptions"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ioption"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I..."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "where "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ioption"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is one of the following:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bdebug"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since glibc 2.2?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_DEBUG"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(effective only if glibc was built with debug support; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " resolver (3))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ndots: n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since glibc 2.2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets a threshold for the number of dots which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must appear in a name given to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " res_query (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " resolver (3))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before an "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iinitial absolute query"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P will be made."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default for"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is 1, meaning that if there are any dots in a name, the name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be tried first as an absolute name before any "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isearch list"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "elements are appended to it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value for this option is silently capped to 15."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " timeout: n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since glibc 2.2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets the amount of time the resolver will wait for a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "response from a remote name server before retrying the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "query via a different name server. This may"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " not"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "be the total time taken by any resolver API call and there is no"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "guarantee that a single resolver API call maps to a single timeout."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Measured in seconds,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the default is"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_TIMEOUT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(currently 5, see "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I<resolv.h>"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value for this option is silently capped to 30."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attempts: n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets the number of times the resolver will send a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "query to its name servers before giving up and returning"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an error to the calling application."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default is"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_DFLRETRY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(currently 2, see "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I<resolv.h>"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value for this option is silently capped to 5."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rotate"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since glibc 2.2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_ROTATE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which causes round-robin selection of name servers from among those listed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This has the effect of spreading the query load among all listed servers,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rather than having all clients try the first listed server first every time."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " no"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "check"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "names"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" since glibc 2.2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_NOCHECKNAME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which disables the modern BIND checking of incoming hostnames and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mail names for invalid characters such as underscore (_), non-ASCII,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or control characters."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inet6"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since glibc 2.2"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_USE_INET6"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This has the effect of trying an AAAA query before an A query inside the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostbyname (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "function, and of mapping IPv4 responses in IPv6 \"tunneled form\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if no AAAA records are found but an A record set exists."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since glibc 2.25,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" b76e065991ec01299225d9da90a627ebe6c1ac97"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "this option is deprecated; applications should use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getaddrinfo (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rather than"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostbyname (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip6"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "bytestring \" (since glibc 2.3.4)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_USEBSTRING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This causes reverse IPv6 lookups to be made using the bit-label format"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "described in RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "2673;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if this option is not set (which is the default), then nibble format is used."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option was removed in glibc 2.25,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "since it relied on a backward-incompatible"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DNS extension that was never deployed on the Internet."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip6"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "dotint / no"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "ip6"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "dotint \" (glibc 2.3.4 to 2.24)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Clear/set"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_NOIP6DOTINT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When this option is clear"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( ip6"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "dotint ),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reverse IPv6 lookups are made in the (deprecated)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip6.int"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "zone;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when this option is set"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( no"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "ip6"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "dotint ),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reverse IPv6 lookups are made in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip6.arpa"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "zone by default."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These options are available in glibc versions up to 2.24, where"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " no-ip6-dotint"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the default."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip6"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "dotint"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "support long ago ceased to be available on the Internet,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "these options were removed in glibc 2.25."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " edns0 \" (since glibc 2.6)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_USE_EDNSO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This enables support for the DNS extensions described in RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "2671."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " single"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "request \" (since glibc 2.10)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_SNGLKUP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "By default, glibc performs IPv4 and IPv6 lookups in parallel since"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "version 2.9."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some appliance DNS servers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cannot handle these queries properly and make the requests time out."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option disables the behavior and makes glibc perform the IPv6"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and IPv4 requests sequentially (at the cost of some slowdown of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resolving process)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " single"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "request"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "reopen \" (since glibc 2.9)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_SNGLKUPREOP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The resolver uses the same socket for the A and AAAA requests."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some hardware mistakenly sends back only one reply."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When that happens the client system will sit and wait for the second reply."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Turning this option on changes this behavior"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that if two requests from the same port are not handled correctly it will"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "close the socket and open a new one before sending the second request."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " no"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "tld"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "query \" (since glibc 2.14)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_NOTLDQUERY"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option causes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " res_nsearch ()"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to not attempt to resolve an unqualified name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as if it were a top level domain (TLD)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option can cause problems if the site has ``localhost'' as a TLD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rather than having localhost on one or more elements of the search list."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option has no effect if neither RES_DEFNAMES or RES_DNSRCH is set."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " use"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "vc \" (since glibc 2.14)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_USEVC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option forces the use of TCP for DNS resolutions."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" aef16cc8a4c670036d45590877d411a97f01e0cd"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " no"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "reload \" (since glibc 2.26)\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_NORELOAD"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _res.options ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option disables automatic reloading of a changed configuration file."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Idomain"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isearch"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P keywords are mutually exclusive."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If more than one instance of these keywords is present,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the last instance wins."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isearch"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P keyword of a system's "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iresolv.conf"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P file can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "overridden on a per-process basis by setting the environment variable"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " LOCALDOMAIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a space-separated list of search domains."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ioptions"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P keyword of a system's "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iresolv.conf"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P file can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "amended on a per-process basis by setting the environment variable"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RES_OPTIONS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a space-separated list of resolver options"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as explained above under "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Boptions"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The keyword and value must appear on a single line, and the keyword"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g., "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bnameserver"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) must start the line."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value follows the keyword, separated by white space."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Lines that contain a semicolon (;) or hash character (#)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the first column are treated as comments."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " FILES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/resolv.conf ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <resolv.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gethostbyname (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " resolver (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " host.conf (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hosts (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nsswitch.conf (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " hostname (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " named (8)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Name Server Operations Guide for BIND"
+        }
+      ]
+    ]
+  }
+]

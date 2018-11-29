@@ -1,0 +1,2460 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Written by Oron Peled <oron@actcom.co.il>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPL_NOVERSION_ONELINE)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" May be distributed subject to the GPL."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" I tried to be as much generic in the description as possible:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" - General boot sequence is applicable to almost any"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" OS/Machine (DOS/PC, Linux/PC, Solaris/SPARC, CMS/S390)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" - kernel and init(1) is applicable to almost any UNIX/Linux"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" - boot scripts are applicable to SYSV-R4 based UNIX/Linux"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified 2004-11-03 patch from Martin Schulze <joey@infodrom.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " BOOT 7 2015-03-11 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "boot "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " System bootup process based on UNIX System V Release 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bbootup process"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R (or \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bboot sequence"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\") varies in details"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "among systems, but can be roughly divided into phases controlled by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following components:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 1. 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "hardware"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 2. 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "operating system (OS) loader"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 3. 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 4. 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "root user-space process ("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iinit"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iinittab"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 5. 4"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "boot scripts"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each of these is described below in more detail."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Hardware"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After power-on or hard reset, control is given"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a program stored in read-only memory (normally"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "PROM); for historical reasons involving the personal"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "computer, this program is often called \"the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BBIOS"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This program normally performs a basic self-test of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "machine and accesses nonvolatile memory to read"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "further parameters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This memory in the PC is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "battery-backed CMOS memory, so most people"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "refer to it as \"the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BCMOS"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\"; outside"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the PC world, it is usually called \"the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BNVRAM"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(nonvolatile RAM)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The parameters stored in the NVRAM vary among"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "systems, but as a minimum, they should specify"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which device can supply an OS loader, or at least which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "devices may be probed for one; such a device is known as \"the"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bboot device"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The hardware boot stage loads the OS loader from a fixed position on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the boot device, and then transfers control to it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The device from which the OS loader is read may be attached via a network, in which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "case the details of booting are further specified by protocols such as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DHCP, TFTP, PXE, Etherboot, etc."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " OS loader"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The main job of the OS loader is to locate the kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on some device, load it, and run it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Most OS loaders allow"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interactive use, in order to enable specification of an alternative"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel (maybe a backup in case the one last compiled"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "isn't functioning) and to pass optional parameters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In a traditional PC, the OS loader is located in the initial 512-byte block"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the boot device; this block is known as \"the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BMBR"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Master Boot Record)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In most systems, the OS loader is very"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "limited due to various constraints."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Even on non-PC systems,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "there are some limitations on the size and complexity"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of this loader, but the size limitation of the PC MBR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(512 bytes, including the partition table) makes it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "almost impossible to squeeze much functionality into it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Therefore, most systems split the role of loading the OS between"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a primary OS loader and a secondary OS loader; this secondary"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "OS loader may be located within a larger portion of persistent"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "storage, such as a disk partition."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux, the OS loader is often either"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lilo (8)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " grub (8)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Kernel"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When the kernel is loaded, it initializes various components of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the computer and operating system; each portion of software"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "responsible for such a task is usually consider \"a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bdriver"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\" for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the applicable component."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel starts the virtual memory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "swapper (it is a kernel process, called \"kswapd\" in a modern Linux"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel), and mounts some filesystem at the root path,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " / ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some of the parameters that may be passed to the kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "relate to these activities (for example, the default root filesystem"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be overridden); for further information"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on Linux kernel parameters, read"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bootparam (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Only then does the kernel create the initial userland"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process, which is given the number 1 as its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(process ID)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Traditionally, this process executes the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "program"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /sbin/init ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to which are passed the parameters that haven't already been"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "handled by the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Root user-space process"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The following description applies to an OS based on UNIX System V Release 4."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, a number of widely used systems have adopted a related but"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fundamentally different approach known as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " systemd (1),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for which the bootup process is detailed in its associated"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bootup (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /sbin/init"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "starts, it reads"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/inittab"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further instructions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This file defines what should be run when the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /sbin/init"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "program is instructed to enter a particular "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Irun-level"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R, giving"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the administrator an easy way to establish an environment"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for some usage; each run-level is associated with a set of services"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(for example, run-level "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BS"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R is "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isingle-user"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R mode,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and run-level "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B2"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R entails running most network services)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The administrator may change the current"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "run-level via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " init (1),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and query the current run-level via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " runlevel (8)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "However, since it is not convenient to manage individual services"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by editing this file,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/inittab"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "only bootstraps a set of scripts"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that actually start/stop the individual services."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Boot scripts"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The following description applies to an OS based on UNIX System V Release 4."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, a number of widely used systems (Slackware Linux, FreeBSD, OpenBSD)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "have a somewhat different scheme for boot scripts."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For each managed service (mail, nfs server, cron, etc.), there is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a single startup script located in a specific directory"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( /etc/init.d"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in most versions of Linux)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each of these scripts accepts as a single argument"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the word \"start\" (causing it to start the service) or the word"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\&"
+        },
+        {
+          "type": "TEXT",
+          "content": "\"stop\" (causing it to stop the service)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The script may optionally"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "accept other \"convenience\" parameters (e.g., \"restart\" to stop and then"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "start, \"status\" to display the service status, etc.)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Running the script"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "without parameters displays the possible arguments."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Sequencing directories"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To make specific scripts start/stop at specific run-levels and in a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specific order, there are "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isequencing directories"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R, normally"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the form  "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/rc[0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "6S].d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In each of these directories,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "there are links (usually symbolic) to the scripts in the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/init.d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A primary script (usually "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/rc"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R) is called from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inittab (5);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this primary script calls each service's script via a link in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "relevant sequencing directory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each link whose name begins with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "S"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is called with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the argument \"start\" (thereby starting the service)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each link whose name begins with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "K"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is called with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the argument \"stop\" (thereby stopping the service)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To define the starting or stopping order within the same run-level,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the name of a link contains an "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Border-number"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Also, for clarity, the name of a link usually"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ends with the name of the service to which it refers."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the link "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/rc2.d/S80sendmail"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R starts the sendmail service on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "runlevel 2."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This happens after "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/rc2.d/S12syslog"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R is run"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but before "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/rc2.d/S90xfs"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R is run."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To manage these links is to manage the boot order and run-levels;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "under many systems, there are tools to help with this task"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chkconfig (8))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Boot configuration"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A program that provides a service is often called a \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bdaemon"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Usually, a daemon may receive various command-line options"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and parameters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To allow a system administrator to change these"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inputs without editing an entire boot script,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "some separate configuration file is used, and is located in a specific"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directory where an associated boot script may find it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/sysconfig"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R on older Red Hat systems)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In older UNIX systems, such a file contained the actual command line"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "options for a daemon, but in modern Linux systems (and also"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in HP-UX), it just contains shell variables."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A boot script in "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I/etc/init.d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R reads and includes its configuration"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file (that is, it \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bsources"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R\" its configuration file) and then uses"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the variable values."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " FILES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/init.d/ ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/rc[S0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "6].d/ ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /etc/sysconfig/"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " init (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " systemd (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " inittab (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bootparam (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bootup (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " runlevel (8),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " shutdown (8)"
+        }
+      ]
+    ]
+  }
+]

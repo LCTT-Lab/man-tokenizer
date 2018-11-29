@@ -1,0 +1,1198 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2014 Red Hat, Inc. All Rights Reserved."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Written by David Howells (dhowells@redhat.com)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPLv2+_SW_ONEPARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This program is free software; you can redistribute it and/or"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" modify it under the terms of the GNU General Public License"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" as published by the Free Software Foundation; either version"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2 of the License, or (at your option) any later version."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"PERSISTENT-KEYRING\" 7 2017-03-13 Linux \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "persistent-keyring "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " per-user persistent keyring"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring is a keyring used to anchor keys on behalf of a user."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each UID the kernel deals with has its own persistent keyring that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is shared between all threads owned by that UID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring has a name (description) of the form"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _persistent.<UID>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "where"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <UID>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the user ID of the corresponding user."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring may not be accessed directly,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "even by processes with the appropriate UID."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME The meaning of the preceding sentence isn't clear. What is meant?"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Instead, it must first be linked to one of a process's keyrings,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before that keyring can access the persistent keyring"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by virtue of its possessor permits."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This linking is done with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "function."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If a persistent keyring does not exist when it is accessed by the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation, it will be automatically created."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each time the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation is performed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the persistent key's expiration timer is reset to the value in:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    /proc/sys/kernel/keys/persistent_keyring_expiry"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Should the timeout be reached,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the persistent keyring will be removed and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "everything it pins can then be garbage collected."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The key will then be re-created on a subsequent call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring is not directly searched by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " request_key (2);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is searched only if it is linked into one of the keyrings"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is searched by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " request_key (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring is independent of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vfork (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _exit (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It persists until its expiration timer triggers,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at which point it is garbage collected."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This allows the persistent keyring to carry keys beyond the life of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel's record of the corresponding UID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(the destruction of which results in the destruction of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user-keyring (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user-session-keyring (7))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring can thus be used to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "hold authentication tokens for processes that run without user interaction,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "such as programs started by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cron (8)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The persistent keyring is used to store UID-specific objects that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "themselves have limited lifetimes (e.g., kerberos tokens)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If those tokens cease to be used"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the persistent keyring is not accessed),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the timeout of the persistent keyring ensures that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the corresponding objects are automatically discarded."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Special operations"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyutils"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "library provides the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "function for manipulating persistent keyrings."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(This function is an interface to the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " KEYCTL_GET_PERSISTENT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This operation allows the calling thread to get the persistent keyring"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "corresponding to its own UID or, if the thread has the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SETUID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability, the persistent keyring corresponding to some other UID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the same user namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each user namespace owns a keyring called"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " .persistent_register"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that contains links to all of the persistent keys in that namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " .persistent_register"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "keyring can be seen when reading the contents of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/keys"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file for the UID 0 in the namespace.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation looks for a key with a name of the form"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " _persistent.<UID>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in that keyring,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creates the key if it does not exist, and links it into the keyring."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nh",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyctl_get_persistent (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " keyrings (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " process"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "keyring (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " session"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "keyring (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " thread"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "keyring (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "keyring (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "session"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "keyring (7)"
+        }
+      ]
+    ]
+  }
+]

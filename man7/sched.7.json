@@ -1,0 +1,9529 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (C) 2014 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright (C) 2014 Peter Zijlstra <peterz@infradead.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright (C) 2014 Juri Lelli <juri.lelli@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Various pieces from the old sched_setscheduler(2) page"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \tCopyright (C) Tom Bjorkholm, Markus Kuhn & David A. Wheeler 1996-1999"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \tand Copyright (C) 2007 Carsten Emde <Carsten.Emde@osadl.org>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \tand Copyright (C) 2008 Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPLv2+_DOC_FULL)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This is free documentation; you can redistribute it and/or"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" modify it under the terms of the GNU General Public License as"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" published by the Free Software Foundation; either version 2 of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the License, or (at your option) any later version."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The GNU General Public License's references to \"object code\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and \"executables\" are to be interpreted as the output of any"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" document formatting or typesetting system, including"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" intermediate and printed output."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This manual is distributed in the hope that it will be useful,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" but WITHOUT ANY WARRANTY; without even the implied warranty of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" GNU General Public License for more details."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" You should have received a copy of the GNU General Public"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" License along with this manual; if not, see"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" <http://www.gnu.org/licenses/>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Worth looking at: http://rt.wiki.kernel.org/index.php"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED 7 2018-02-02 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "sched "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " overview of CPU scheduling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.23, the default scheduler is CFS,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the \"Completely Fair Scheduler\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The CFS scheduler replaced the earlier \"O(1)\" scheduler."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " API summary"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux provides the following system calls for controlling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the CPU scheduling behavior, policy, and priority of processes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(or, more precisely, threads)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nice (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set a new nice value for the calling thread,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and return the new nice value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpriority (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return the nice value of a thread, a process group,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the set of threads owned by a specified user."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setpriority (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the nice value of a thread, a process group,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the set of threads owned by a specified user."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setscheduler (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the scheduling policy and parameters of a specified thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getscheduler (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return the scheduling policy of a specified thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setparam (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the scheduling parameters of a specified thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getparam (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fetch the scheduling parameters of a specified thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_get_priority_max (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return the maximum priority available in a specified scheduling policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_get_priority_min (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return the minimum priority available in a specified scheduling policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_rr_get_interval (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fetch the quantum used for threads that are scheduled under"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the \"round-robin\" scheduling policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_yield (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Cause the caller to relinquish the CPU,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that some other thread be executed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setaffinity (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Linux-specific)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the CPU affinity of a specified thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getaffinity (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Linux-specific)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get the CPU affinity of a specified thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the scheduling policy and parameters of a specified thread."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This (Linux-specific) system call provides a superset of the functionality of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setscheduler (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setparam (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getattr (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fetch the scheduling policy and parameters of a specified thread."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This (Linux-specific) system call provides a superset of the functionality of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getscheduler (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getparam (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Scheduling policies"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The scheduler is the kernel component that decides which runnable thread"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be executed by the CPU next."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each thread has an associated scheduling policy and a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Istatic"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scheduling priority,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_priority ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The scheduler makes its decisions based on knowledge of the scheduling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy and static priority of all threads on the system."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For threads scheduled under one of the normal scheduling policies"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_OTHER"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_IDLE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_BATCH"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P),"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isched_priority"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is not used in scheduling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "decisions (it must be specified as 0)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Processes scheduled under one of the real-time policies"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_RR"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) have a"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isched_priority"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P value in the range 1 (low) to 99 (high)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(As the numbers imply, real-time threads always have higher priority"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "than normal threads.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note well: POSIX.1 requires an implementation to support only a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "minimum 32 distinct priority levels for the real-time policies,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and some systems supply just this minimum."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Portable programs should use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_get_priority_min (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_get_priority_max (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to find the range of priorities supported for a particular policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Conceptually, the scheduler maintains a list of runnable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads for each possible "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Isched_priority"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P value."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In order to determine which thread runs next, the scheduler looks for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the nonempty list with the highest static priority and selects the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread at the head of this list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A thread's scheduling policy determines"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "where it will be inserted into the list of threads"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with equal static priority and how it will move inside this list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "All scheduling is preemptive: if a thread with a higher static"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "priority becomes ready to run, the currently running thread"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be preempted and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returned to the wait list for its static priority level."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The scheduling policy determines the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ordering only within the list of runnable threads with equal static"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "priority."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_FIFO: First in-first out scheduling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P can be used only with static priorities higher than"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0, which means that when a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P threads becomes runnable,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it will always immediately preempt any currently running"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_OTHER"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_BATCH"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, or "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_IDLE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P thread."
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is a simple scheduling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "algorithm without time slicing."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For threads scheduled under the"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P policy, the following rules apply:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 1) 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A running "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P thread that has been preempted by another thread of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "higher priority will stay at the head of the list for its priority and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will resume execution as soon as all threads of higher priority are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "blocked again."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 2)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When a blocked "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P thread becomes runnable, it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be inserted at the end of the list for its priority."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 3)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If a call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setscheduler (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setparam (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setschedparam (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setschedprio (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changes the priority of the running or runnable"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_FIFO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread identified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the effect on the thread's position in the list depends on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the direction of the change to threads priority:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(bu"
+        },
+        {
+          "type": "TEXT",
+          "content": " 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the thread's priority is raised,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is placed at the end of the list for its new priority."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As a consequence,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it may preempt a currently running thread with the same priority."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(bu"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the thread's priority is unchanged,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "its position in the run list is unchanged."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(bu"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the thread's priority is lowered,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is placed at the front of the list for its new priority."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "According to POSIX.1-2008,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changes to a thread's priority (or policy) using any mechanism other than"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setschedprio (3)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should result in the thread being placed at the end of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the list for its priority."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" In 2.2.x and 2.4.x, the thread is placed at the front of the queue"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" In 2.0.x, the Right Thing happened: the thread went to the back -- MTK"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " 4)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A thread calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_yield (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be put at the end of the list."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "No other events will move a thread"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scheduled under the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P policy in the wait list of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "runnable threads with equal static priority."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread runs until either it is blocked by an I/O request, it is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "preempted by a higher priority thread, or it calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_yield (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_RR: Round-robin scheduling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_RR"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is a simple enhancement of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Everything"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "described above for "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_FIFO"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P also applies to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_RR"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "except that each thread is allowed to run only for a maximum time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "quantum."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_RR"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P thread has been running for a time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "period equal to or longer than the time quantum, it will be put at the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "end of the list for its priority."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_RR"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P thread that has"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "been preempted by a higher priority thread and subsequently resumes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "execution as a running thread will complete the unexpired portion of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "its round-robin time quantum."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The length of the time quantum can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "retrieved using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_rr_get_interval (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" On Linux 2.4, the length of the RR interval is influenced"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" by the process nice value -- MTK"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE: Sporadic task model deadline scheduling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since version 3.14, Linux provides a deadline scheduling policy"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( SCHED_DEADLINE )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This policy is currently implemented using"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "GEDF (Global Earliest Deadline First)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in conjunction with CBS (Constant Bandwidth Server)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To set and fetch this policy and associated attributes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "one must use the Linux-specific"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getattr (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system calls."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A sporadic task is one that has a sequence of jobs, where each"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "job is activated at most once per period."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each job also has a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"relative deadline\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before which it should finish execution, and a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"computation time\" ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which is the CPU time necessary for executing the job."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The moment when a task wakes up"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "because a new job has to be executed is called the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"arrival time\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(also referred to as the request time or release time)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"start time\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the time at which a task starts its execution."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"absolute deadline\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is thus obtained by adding the relative deadline to the arrival time."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following diagram clarifies these terms:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arrival/wakeup                    absolute deadline"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |    start time                    |"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |        |                         |"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     v        v                         v"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "-----x--------xooooooooooooooooo--------x--------x---"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "              |<- comp. time ->|"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |<------- relative deadline ------>|"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |<-------------- period ------------------->|"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When setting a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy for a thread using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "one can specify three parameters:"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Runtime ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Deadline ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Period ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These parameters do not necessarily correspond to the aforementioned terms:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "usual practice is to set Runtime to something bigger than the average"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "computation time (or worst-case execution time for hard real-time tasks),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Deadline to the relative deadline, and Period to the period of the task."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scheduling, we have:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "arrival/wakeup                    absolute deadline"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |    start time                    |"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |        |                         |"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     v        v                         v"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "-----x--------xooooooooooooooooo--------x--------x---"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "              |<-- Runtime ------->|"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |<----------- Deadline ----------->|"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "     |<-------------- Period ------------------->|"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The three deadline-scheduling parameters correspond to the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_runtime ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_deadline ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_period"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fields of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_attr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These fields express values in nanoseconds."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME It looks as though specifying sched_period as 0 means"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \"make sched_period the same as sched_deadline\"."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This needs to be documented."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_period"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is specified as 0, then it is made the same as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_deadline ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel requires that:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    sched_runtime <= sched_deadline <= sched_period"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" See __checkparam_dl in kernel/sched/core.c"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, under the current implementation,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all of the parameter values must be at least 1024"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., just over one microsecond,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which is the resolution of the implementation), and less than 2^63."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If any of these checks fails,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The CBS guarantees non-interference between tasks, by throttling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads that attempt to over-run their specified Runtime."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To ensure deadline scheduling guarantees,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel must prevent situations where the set of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads is not feasible (schedulable) within the given constraints."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel thus performs an admittance test when setting or changing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy and attributes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This admission test calculates whether the change is feasible;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if it is not,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EBUSY ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, it is required (but not necessarily sufficient) for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the total utilization to be less than or equal to the total number of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "CPUs available, where, since each thread can maximally run for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Runtime per Period, that thread's utilization is its"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Runtime divided by its Period."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In order to fulfill the guarantees that are made when"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a thread is admitted to the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads are the highest priority (user controllable) threads in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system; if any"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread is runnable,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it will preempt any thread scheduled under one of the other policies."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by a thread scheduled under the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy fails with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EAGAIN ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unless the thread has its reset-on-fork flag set (see below)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "thread that calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_yield (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will yield the current job and wait for a new period to begin."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME Calling sched_getparam() on a SCHED_DEADLINE thread"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" fails with EINVAL, but sched_getscheduler() succeeds."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Is that intended? (Why?)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER: Default Linux time-sharing scheduling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_OTHER"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P can be used at only static priority 0"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., threads under real-time policies always have priority over"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "processes)."
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_OTHER"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is the standard Linux time-sharing scheduler that is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "intended for all threads that do not require the special"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "real-time mechanisms."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The thread to run is chosen from the static"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "priority 0 list based on a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Idynamic"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P priority that is determined only"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inside this list."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The dynamic priority is based on the nice value (see below)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and is increased for each time quantum the thread is ready to run,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but denied to run by the scheduler."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This ensures fair progress among all "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_OTHER"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P threads."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In the Linux kernel source code, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy is actually named"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_NORMAL ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The nice value"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The nice value is an attribute"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that can be used to influence the CPU scheduler to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "favor or disfavor a process in scheduling decisions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It affects the scheduling of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_BATCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see below) processes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The nice value can be modified using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nice (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setpriority (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "According to POSIX.1, the nice value is a per-process attribute;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is, the threads in a process should share a nice value."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, on Linux, the nice value is a per-thread attribute:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "different threads in the same process may have different nice values."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The range of the nice value"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "varies across UNIX systems."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On modern Linux, the range is "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "20 (high priority) to +19 (low priority)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On some other systems, the range is "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "20..20."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Very early Linux kernels (Before Linux 2.0) had the range "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "infinity..15."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Linux before 1.3.36 had \\-infinity..15."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since kernel 1.3.43, Linux has the range \\-20..19."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The degree to which the nice value affects the relative scheduling of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "processes likewise varies across UNIX systems and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "across Linux kernel versions."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "With the advent of the CFS scheduler in kernel 2.6.23,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux adopted an algorithm that causes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "relative differences in nice values to have a much stronger effect."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the current implementation, each unit of difference in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "nice values of two processes results in a factor of 1.25"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the degree to which the scheduler favors the higher priority process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This causes very low nice values (+19) to truly provide little CPU"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to a process whenever there is any other"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "higher priority load on the system,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and makes high nice values ("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "20) deliver most of the CPU to applications"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that require it (e.g., some audio applications)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "On Linux, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_NICE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limit can be used to define a limit to which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an unprivileged process's nice value can be raised; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setrlimit (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For further details on the nice value, see the subsections on"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the autogroup feature and group scheduling, below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_BATCH: Scheduling batch processes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(Since Linux 2.6.16.)"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_BATCH"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P can be used only at static priority 0."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This policy is similar to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_OTHER"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P in that it schedules"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the thread according to its dynamic priority"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(based on the nice value)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The difference is that this policy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will cause the scheduler to always assume"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that the thread is CPU-intensive."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Consequently, the scheduler will apply a small scheduling"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "penalty with respect to wakeup behavior,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that this thread is mildly disfavored in scheduling decisions."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following paragraph is drawn largely from the text that"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" accompanied Ingo Molnar's patch for the implementation of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" SCHED_BATCH."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit b0a9499c3dd50d333e2aedb7e894873c58da3785"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This policy is useful for workloads that are noninteractive,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but do not want to lower their nice value,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and for workloads that want a deterministic scheduling policy without"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interactivity causing extra preemptions (between the workload's tasks)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_IDLE: Scheduling very low priority jobs"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(Since Linux 2.6.23.)"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BSCHED_IDLE"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P can be used only at static priority 0;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the process nice value has no influence for this policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This policy is intended for running jobs at extremely low"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "priority (lower even than a +19 nice value with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_BATCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policies)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Resetting scheduling policy for child processes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Each thread has a reset-on-fork scheduling flag."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When this flag is set, children created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "do not inherit privileged scheduling policies."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The reset-on-fork flag can be set by either:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ORing the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_RESET_ON_FORK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag into the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " policy"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setscheduler (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(since Linux 2.6.32);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "specifying the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_FLAG_RESET_ON_FORK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attr.sched_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setattr (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the constants used with these two APIs have different names."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The state of the reset-on-fork flag can analogously be retrieved using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getscheduler (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getattr (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The reset-on-fork feature is intended for media-playback applications,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and can be used to prevent applications evading the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTTIME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limit (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by creating multiple child processes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "More precisely, if the reset-on-fork flag is set,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following rules apply for subsequently created children:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the calling thread has a scheduling policy of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_FIFO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_RR ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the policy is reset to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in child processes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the calling process has a negative nice value,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the nice value is reset to zero in child processes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After the reset-on-fork flag has been enabled,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it can be reset only if the thread has the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SYS_NICE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This flag is disabled in child processes created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Privileges and resource limits"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux kernels before 2.6.12, only privileged"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads can set a nonzero static priority (i.e., set a real-time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scheduling policy)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The only change that an unprivileged thread can make is to set the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy, and this can be done only if the effective user ID of the caller"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches the real or effective user ID of the target thread"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the thread specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pid )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "whose policy is being changed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A thread must be privileged"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in order to set or modify a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.12, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limit defines a ceiling on an unprivileged thread's"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "static priority for the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_RR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_FIFO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policies."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The rules for changing scheduling policy and priority are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If an unprivileged thread has a nonzero"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "soft limit, then it can change its scheduling policy and priority,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "subject to the restriction that the priority cannot be set to a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value higher than the maximum of its current priority and its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "soft limit."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "soft limit is 0, then the only permitted changes are to lower the priority,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or to switch to a non-real-time policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Subject to the same rules,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "another unprivileged thread can also make these changes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as long as the effective user ID of the thread making the change"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches the real or effective user ID of the target thread."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Special rules apply for the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_IDLE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux kernels before 2.6.39,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an unprivileged thread operating under this policy cannot"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "change its policy, regardless of the value of its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limit."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux kernels since 2.6.39,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit c02aa73b1d18e43cfd79c2f193b225e84ca497c8"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "an unprivileged thread can switch to either the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_BATCH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy so long as its nice value falls within the range permitted by its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_NICE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limit (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2))."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Privileged"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( CAP_SYS_NICE )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "threads ignore the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "limit; as with older kernels,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "they can make arbitrary changes to scheduling policy and priority."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for further information on"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTPRIO ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Limiting the CPU usage of real-time and deadline processes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A nonblocking infinite loop in a thread scheduled under the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_FIFO ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_RR ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_DEADLINE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policy can potentially block all other threads from accessing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the CPU forever."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Prior to Linux 2.6.25, the only way of preventing a runaway real-time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process from freezing the system was to run (at the console)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a shell scheduled under a higher static priority than the tested application."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This allows an emergency kill of tested"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "real-time applications that do not block or terminate as expected."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.25, there are other techniques for dealing with runaway"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "real-time and deadline processes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "One of these is to use the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RLIMIT_RTTIME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "resource limit to set a ceiling on the CPU time that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a real-time process may consume."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getrlimit (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since version 2.6.25, Linux also provides two"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "files that can be used to reserve a certain amount of CPU time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to be used by non-real-time processes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Reserving CPU time in this fashion allows some CPU time to be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "allocated to (say) a root shell that can be used to kill a runaway process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Both of these files specify time values in microseconds:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/kernel/sched_rt_period_us"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This file specifies a scheduling period that is equivalent to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "100% CPU bandwidth."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value in this file can range from 1 to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " INT_MAX ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "giving an operating range of 1 microsecond to around 35 minutes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default value in this file is 1,000,000 (1 second)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/kernel/sched_rt_runtime_us"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value in this file specifies how much of the \"period\" time"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be used by all real-time and deadline scheduled processes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the system."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The value in this file can range from "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " INT_MAX "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Specifying "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1 makes the run time the same as the period;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is, no CPU time is set aside for non-real-time processes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(which was the Linux behavior before kernel 2.6.25)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default value in this file is 950,000 (0.95 seconds),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "meaning that 5% of the CPU time is reserved for processes that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "don't run under a real-time or deadline scheduling policy."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Response time"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A blocked high priority thread waiting for I/O has a certain"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "response time before it is scheduled again."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The device driver writer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can greatly reduce this response time by using a \"slow interrupt\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interrupt handler."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" as described in"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .BR request_irq (9)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Miscellaneous"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Child processes inherit the scheduling policy and parameters across a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The scheduling policy and parameters are preserved across"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " execve (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Memory locking is usually needed for real-time processes to avoid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "paging delays; this can be done with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mlock (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mlockall (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The autogroup feature"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 5091faa449ee0b7d73bc296a93bca9540fc51d0a"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 2.6.38,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel provides a feature known as autogrouping to improve interactive"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "desktop performance in the face of multiprocess, CPU-intensive"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "workloads such as building the Linux kernel with large numbers of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "parallel build processes (i.e., the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " make (1)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "j"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This feature operates in conjunction with the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "CFS scheduler and requires a kernel that is configured with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_SCHED_AUTOGROUP ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On a running system, this feature is enabled or disabled via the file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/kernel/sched_autogroup_enabled ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a value of 0 disables the feature, while a value of 1 enables it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default value in this file is 1, unless the kernel was booted with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " noautogroup"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "parameter."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A new autogroup is created when a new session is created via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsid (2);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this happens, for example, when a new terminal window is started."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A new process created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "inherits its parent's autogroup membership."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, all of the processes in a session are members of the same autogroup."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An autogroup is automatically destroyed when the last process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the group terminates."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When autogrouping is enabled, all of the members of an autogroup"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are placed in the same kernel scheduler \"task group\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The CFS scheduler employs an algorithm that equalizes the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "distribution of CPU cycles across task groups."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The benefits of this for interactive desktop performance"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be described via the following example."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Suppose that there are two autogroups competing for the same CPU"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., presume either a single CPU system or the use of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " taskset (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to confine all the processes to the same CPU on an SMP system)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The first group contains ten CPU-bound processes from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a kernel build started with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"make"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "j10\" ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The other contains a single CPU-bound process: a video player."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The effect of autogrouping is that the two groups will"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "each receive half of the CPU cycles."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That is, the video player will receive 50% of the CPU cycles,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rather than just 9% of the cycles,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which would likely lead to degraded video playback."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The situation on an SMP system is more complex,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Mike Galbraith, 25 Nov 2016:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     I'd say something more wishy-washy here, like cycles are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     distributed fairly across groups and leave it at that, as your"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     detailed example is incorrect due to SMP fairness (which I don't"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     like much because [very unlikely] worst case scenario"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     renders a box sized group incapable of utilizing more that"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     a single CPU total).  For example, if a group of NR_CPUS"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     size competes with a singleton, load balancing will try to give"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     the singleton a full CPU of its very own.  If groups intersect for"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     whatever reason on say my quad lappy, distribution is 80/20 in"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     favor of the singleton."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "but the general effect is the same:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the scheduler distributes CPU cycles across task groups such that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an autogroup that contains a large number of CPU-bound processes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "does not end up hogging CPU cycles at the expense of the other"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "jobs on the system."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A process's autogroup (task group) membership can be viewed via the file"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/autogroup :"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "$ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bcat /proc/1/autogroup"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "/autogroup-1 nice 0"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This file can also be used to modify the CPU bandwidth allocated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to an autogroup."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is done by writing a number in the \"nice\" range to the file"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to set the autogroup's nice value."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The allowed range is from +19 (low priority) to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "20 (high priority)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Writing values outside of this range causes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to fail with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL .)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME ."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Because of a bug introduced in Linux 4.7"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" (commit 2159197d66770ec01f75c93fb11dc66df81fd45b made changes"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" that exposed the fact that autogroup didn't call scale_load()),"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" it happened that *all* values in this range caused a task group"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" to be further disfavored by the scheduler, with \\-20 resulting"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" in the scheduler mildly disfavoring the task group and +19 greatly"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" disfavoring it."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" A patch was posted on 23 Nov 2016"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" (\"sched/autogroup: Fix 64bit kernel nice adjustment\";"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" check later to see in which kernel version it lands."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The autogroup nice setting has the same meaning as the process nice value,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but applies to distribution of CPU cycles to the autogroup as a whole,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "based on the relative nice values of other autogroups."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For a process inside an autogroup, the CPU cycles that it receives"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be a product of the autogroup's nice value"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(compared to other autogroups)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the process's nice value"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(compared to other processes in the same autogroup."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The use of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cgroups (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "CPU controller to place processes in cgroups other than the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "root CPU cgroup overrides the effect of autogrouping."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The autogroup feature groups only processes scheduled under"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "non-real-time policies"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".RB",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ( SCHED_OTHER ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_BATCH ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_IDLE )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It does not group processes scheduled under real-time and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "deadline policies."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Those processes are scheduled according to the rules described earlier."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The nice value and group scheduling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When scheduling non-real-time processes (i.e., those scheduled under the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_OTHER ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_BATCH ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCHED_IDLE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "policies), the CFS scheduler employs a technique known as \"group scheduling\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the kernel was configured with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_FAIR_GROUP_SCHED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "option (which is typical)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Under group scheduling, threads are scheduled in \"task groups\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Task groups have a hierarchical relationship,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rooted under the initial task group on the system,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "known as the \"root task group\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Task groups are formed in the following circumstances:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "All of the threads in a CPU cgroup form a task group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The parent of this task group is the task group of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "corresponding parent cgroup."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If autogrouping is enabled,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then all of the threads that are (implicitly) placed in an autogroup"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the same session, as created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsid (2))"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "form a task group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each new autogroup is thus a separate task group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The root task group is the parent of all such autogroups."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If autogrouping is enabled, then the root task group consists of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all processes in the root CPU cgroup that were not"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "otherwise implicitly placed into a new autogroup."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If autogrouping is disabled, then the root task group consists of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all processes in the root CPU cgroup."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If group scheduling was disabled (i.e., the kernel was configured without"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_FAIR_GROUP_SCHED ),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then all of the processes on the system are notionally placed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in a single task group."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Under group scheduling,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a thread's nice value has an effect for scheduling decisions"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"only relative to other threads in the same task group\" ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This has some surprising consequences in terms of the traditional semantics"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the nice value on UNIX systems."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, if autogrouping"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is enabled (which is the default in various distributions), then employing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setpriority (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nice (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on a process has an effect only for scheduling relative"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to other processes executed in the same session"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(typically: the same terminal window)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Conversely, for two processes that are (for example)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the sole CPU-bound processes in different sessions"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g., different terminal windows,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "each of whose jobs are tied to different autogroups),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"modifying the nice value of the process in one of the sessions\""
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"has no effect\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in terms of the scheduler's decisions relative to the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process in the other session."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" More succinctly: the nice(1) command is in many cases a no-op since"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Linux 2.6.38."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A possibly useful workaround here is to use a command such as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following to modify the autogroup nice value for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " all"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the processes in a terminal session:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "$ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Becho 10 > /proc/self/autogroup"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Real-time features in the mainline Linux kernel"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . Probably this text will need some minor tweaking"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ask Carsten Emde about this."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Since kernel version 2.6.18, Linux is gradually"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "becoming equipped with real-time capabilities,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "most of which are derived from the former"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " realtime-preempt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "patch set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Until the patches have been completely merged into the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mainline kernel,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "they must be installed to achieve the best real-time performance."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These patches are named:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "patch-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ikernelversion"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P-rt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ipatchversion"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "and can be downloaded from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " http://www.kernel.org"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/pub"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/linux"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/kernel"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/projects"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/rt/"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Without the patches and prior to their full inclusion into the mainline"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel, the kernel configuration offers only the three preemption classes"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_PREEMPT_NONE ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_PREEMPT_VOLUNTARY ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_PREEMPT_DESKTOP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which respectively provide no, some, and considerable"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reduction of the worst-case scheduling latency."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "With the patches applied or after their full inclusion into the mainline"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel, the additional configuration item"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_PREEMPT_RT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "becomes available."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If this is selected, Linux is transformed into a regular"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "real-time operating system."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The FIFO and RR scheduling policies are then used to run a thread"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with true real-time priority and a minimum worst-case scheduling latency."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cgroups (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "CPU controller can be used to limit the CPU consumption of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "groups of processes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Originally, Standard Linux was intended as a general-purpose operating"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system being able to handle background processes, interactive"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "applications, and less demanding real-time applications (applications that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "need to usually meet timing deadlines)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Although the Linux kernel 2.6"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "allowed for kernel preemption and the newly introduced O(1) scheduler"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ensures that the time needed to schedule is fixed and deterministic"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "irrespective of the number of active tasks, true real-time computing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was not possible up to kernel version 2.6.17."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " l"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nh",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chcpu (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " chrt (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " lscpu (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ps (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " taskset (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " top (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpriority (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mlock (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mlockall (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " munlock (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " munlockall (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nice (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_get_priority_max (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_get_priority_min (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getaffinity (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getparam (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getscheduler (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_rr_get_interval (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setaffinity (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setparam (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_setscheduler (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_yield (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setpriority (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_getaffinity_np (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pthread_setaffinity_np (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sched_getcpu (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cpuset (7)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Programming for the real world "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " POSIX.4"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by Bill O. Gallmeister, O'Reilly & Associates, Inc., ISBN 1-56592-074-0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux kernel source files"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/scheduler/sched-deadline.txt ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/scheduler/sched-rt-group.txt ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/scheduler/sched-design-CFS.txt ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/scheduler/sched-nice-design.txt"
+        }
+      ]
+    ]
+  }
+]

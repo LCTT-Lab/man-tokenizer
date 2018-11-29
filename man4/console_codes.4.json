@@ -1,0 +1,6965 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 1996 Andries Brouwer <aeb@cwi.nl>, Mon Oct 31 22:13:04 1996"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(GPLv2+_DOC_ONEPARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This is free documentation; you can redistribute it and/or"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" modify it under the terms of the GNU General Public License as"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" published by the Free Software Foundation; either version 2 of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the License, or (at your option) any later version."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This is combined from many sources."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" For Linux, the definitive source is of course console.c."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" About vt100-like escape sequences in general there are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the ISO 6429 and ISO 2022 norms, the descriptions of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" an actual vt100, and the xterm docs (ctlseqs.ms)."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Substantial portions of this text are derived from a write-up"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" by Eric S. Raymond <esr@thyrsus.com>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Tiny correction, aeb, 961107."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2006-05-27, Several corrections - Thomas E. Dickey"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONSOLE_CODES 4 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "console_codes "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " Linux console escape and control sequences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux console implements a large subset of the VT102 and ECMA-48/ISO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "6429/ANSI X3.64 terminal controls, plus certain private-mode sequences"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for changing the color palette, character-set mapping, and so on."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the tabular descriptions below, the second column gives ECMA-48 or DEC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mnemonics (the latter if prefixed with DEC) for the given function."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Sequences without a mnemonic are neither ECMA-48 nor VT102."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After all the normal output processing has been done, and a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "stream of characters arrives at the console driver for actual"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "printing, the first thing that happens is a translation from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the code used for processing to the code used for printing."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the console is in UTF-8 mode, then the incoming bytes are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "first assembled into 16-bit Unicode codes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Otherwise, each byte is transformed according to the current mapping table"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(which translates it to a Unicode value)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BCharacter Sets"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P section below for discussion."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In the normal case, the Unicode value is converted to a font index,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and this is stored in video memory, so that the corresponding glyph"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(as found in video ROM) appears on the screen."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the use of Unicode (and the design of the PC hardware)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "allows us to use 512 different glyphs simultaneously."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the current Unicode value is a control character, or we are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "currently processing an escape sequence, the value will treated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specially."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Instead of being turned into a font index and rendered as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a glyph, it may trigger cursor movement or other control functions."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BLinux Console Controls"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P section below for discussion."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It is generally not good practice to hard-wire terminal controls into"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "programs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux supports a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " terminfo (5)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "database of terminal capabilities."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Rather than emitting console escape sequences by hand, you will almost"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "always want to use a terminfo-aware screen library or utility such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ncurses (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tput (1),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " reset (1)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Linux console controls"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This section describes all the control characters and escape sequences"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that invoke special functions (i.e., anything other than writing a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "glyph at the current cursor location) on the Linux console."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"Control characters\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A character is a control character if (before transformation"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "according to the mapping table) it has one of the 14 codes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "00 (NUL), 07 (BEL), 08 (BS), 09 (HT), 0a (LF), 0b (VT),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0c (FF), 0d (CR), 0e (SO), 0f (SI), 18 (CAN), 1a (SUB),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "1b (ESC), 7f (DEL)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "One can set a \"display control characters\" mode (see below),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and allow 07, 09, 0b, 18, 1a, 7f to be displayed as glyphs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On the other hand, in UTF-8 mode all codes 00"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(en"
+        },
+        {
+          "type": "TEXT",
+          "content": "1f are regarded"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as control characters, regardless of any \"display control characters\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mode."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If we have a control character, it is acted upon immediately"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and then discarded (even in the middle of an escape sequence)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the escape sequence continues with the next character."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(However, ESC starts a new escape sequence, possibly aborting a previous"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "unfinished one, and CAN and SUB abort any escape sequence.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The recognized control characters are BEL, BS, HT, LF, VT, FF,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "CR, SO, SI, CAN, SUB, ESC, DEL, CSI."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They do what one would expect:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "BEL (0x07, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^G"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) beeps;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "BS (0x08, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^H"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) backspaces one column"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(but not past the beginning of the line);"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "HT (0x09, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) goes to the next tab stop or to the end of the line"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if there is no earlier tab stop;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "LF (0x0A, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^J"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P), VT (0x0B, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^K"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "FF (0x0C, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^L"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) all give a linefeed,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and if LF/NL (new-line mode) is set also a carriage return;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "CR (0x0D, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^M"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) gives a carriage return;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "SO (0x0E, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^N"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) activates the G1 character set;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "SI (0x0F, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^O"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) activates the G0 character set;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "CAN (0x18, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^X"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) and SUB (0x1A, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^Z"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) interrupt escape sequences;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC (0x1B, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^["
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P) starts an escape sequence;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "DEL (0x7F) is ignored;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "CSI (0x9B) is equivalent to ESC [."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"ESC- but not CSI-sequences\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC c\tRIS\tReset."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC D\tIND\tLinefeed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC E\tNEL\tNewline."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC H\tHTS\tSet tab stop at current column."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC M\tRI\tReverse linefeed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC Z\tDECID\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DEC private identification. The kernel"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns the string  ESC [ ? 6 c, claiming"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that it is a VT102."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC 7\tDECSC\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Save current state (cursor coordinates,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "attributes, character sets pointed at by G0, G1)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC 8\tDECRC\tRestore state most recently saved by ESC 7."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [\tCSI\tControl sequence introducer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC %\t\tStart sequence selecting character set"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC % @\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select default (ISO 646 / ISO 8859-1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC % G\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select UTF-8"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC % 8\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select UTF-8 (obsolete)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC # 8\tDECALN\tDEC screen alignment test "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " fill screen with E's."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC (\t\tStart sequence defining G0 character set"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ( B\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select default (ISO 8859-1 mapping)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ( 0\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select VT100 graphics mapping"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ( U\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select null mapping "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " straight to character ROM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ( K\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "Select user mapping "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " the map that is loaded by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\0"
+        },
+        {
+          "type": "TEXT",
+          "content": "the utility "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bmapscrn"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(8)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC )\t\tStart sequence defining G1"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\t(followed by one of B, 0, U, K, as above)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC >\tDECPNM\tSet numeric keypad mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC =\tDECPAM\tSet application keypad mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ]\tOSC\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Should be: Operating system command)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] P "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Inrrggbb"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P: set palette, with parameter"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "given in 7 hexadecimal digits after the final P :-(."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Here "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is the color (0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(en"
+        },
+        {
+          "type": "TEXT",
+          "content": "15), and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Irrggbb"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P indicates"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the red/green/blue values (0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(en"
+        },
+        {
+          "type": "TEXT",
+          "content": "255)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] R: reset palette"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"ECMA-48 CSI sequences\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "CSI (or ESC [) is followed by a sequence of parameters,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "at most NPAR (16), that are decimal numbers separated by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "semicolons."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An empty or absent parameter is taken to be 0."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The sequence of parameters may be preceded by a single question mark."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "However, after CSI [ (or ESC [ [) a single character is read"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and this entire sequence is ignored."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(The idea is to ignore an echoed function key.)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The action of a CSI sequence is determined by its final character."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "@\tICH\tInsert the indicated # of blank characters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A\tCUU\tMove cursor up the indicated # of rows."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "B\tCUD\tMove cursor down the indicated # of rows."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "C\tCUF\tMove cursor right the indicated # of columns."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "D\tCUB\tMove cursor left the indicated # of columns."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "E\tCNL\tMove cursor down the indicated # of rows, to column 1."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "F\tCPL\tMove cursor up the indicated # of rows, to column 1."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "G\tCHA\tMove cursor to indicated column in current row."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "H\tCUP\tMove cursor to the indicated row, column (origin at 1,1)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "J\tED\tErase display (default: from cursor to end of display)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 1 J: erase from start to cursor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 2 J: erase whole display."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 3 J: erase whole display including scroll-back"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\t           buffer (since Linux 3.0)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ESC [ 3 J: commit f8df13e0a901fe55631fed66562369b4dba40f8b"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "K\tEL\tErase line (default: from cursor to end of line)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 1 K: erase from start of line to cursor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 2 K: erase whole line."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "L\tIL\tInsert the indicated # of blank lines."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "M\tDL\tDelete the indicated # of lines."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "P\tDCH\tDelete the indicated # of characters on current line."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "X\tECH\tErase the indicated # of characters on current line."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a\tHPR\tMove cursor right the indicated # of columns."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "c\tDA\tAnswer ESC [ ? 6 c: \"I am a VT102\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "d\tVPA\tMove cursor to the indicated row, current column."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "e\tVPR\tMove cursor down the indicated # of rows."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "f\tHVP\tMove cursor to the indicated row, column."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "g\tTBC\tWithout parameter: clear tab stop at current position."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 3 g: delete all tab stops."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "h\tSM\tSet Mode (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l\tRM\tReset Mode (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "m\tSGR\tSet attributes (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "n\tDSR\tStatus report (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "q\tDECLL\tSet keyboard LEDs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 0 q: clear all LEDs"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 1 q: set Scroll Lock LED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 2 q: set Num Lock LED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tESC [ 3 q: set Caps Lock LED"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "r\tDECSTBM\tSet scrolling region; parameters are top and bottom row."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "s\t?\tSave cursor location."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "u\t?\tRestore cursor location."
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\`"
+        },
+        {
+          "type": "TEXT",
+          "content": "\tHPA\tMove cursor to indicated column in current row."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ECMA-48 Set Graphics Rendition"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The ECMA-48 SGR sequence ESC [ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iparameters"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P m sets display"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "attributes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Several attributes can be set in the same sequence, separated by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "semicolons."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An empty parameter (between semicolons or string initiator or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "terminator) is interpreted as a zero."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "param\tresult"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0\treset all attributes to their defaults"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "1\tset bold"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "2\tset half-bright (simulated with color on a color display)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "4\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set underscore (simulated with color on a color display)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(the colors used to simulate dim or underline are set"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "using ESC ] ...)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "5\tset blink"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "7\tset reverse video"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "10\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reset selected mapping, display control flag,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and toggle meta flag (ECMA-48 says \"primary font\")."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "11\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "select null mapping, set display control flag,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reset toggle meta flag (ECMA-48 says \"first alternate font\")."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "12\tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "select null mapping, set display control flag,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set toggle meta flag (ECMA-48 says \"second alternate font\")."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The toggle meta flag"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "causes the high bit of a byte to be toggled"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before the mapping table translation is done."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "21\tset normal intensity (ECMA-48 says \"doubly underlined\")"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "22\tset normal intensity"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "24\tunderline off"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "25\tblink off"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "27\treverse video off"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "30\tset black foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "31\tset red foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "32\tset green foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "33\tset brown foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "34\tset blue foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "35\tset magenta foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "36\tset cyan foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "37\tset white foreground"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "38\tset underscore on, set default foreground color"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "39\tset underscore off, set default foreground color"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "40\tset black background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "41\tset red background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "42\tset green background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "43\tset brown background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "44\tset blue background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "45\tset magenta background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "46\tset cyan background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "47\tset white background"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "49\tset default background color"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ECMA-48 Mode Switches"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 3 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECCRM (default off): Display control chars."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 4 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECIM (default off): Set insert mode."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 20 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "LF/NL (default off): Automatically follow echo of LF, VT or FF with CR."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ECMA-48 Status Report Commands"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 5 n"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Device status report (DSR): Answer is ESC [ 0 n (Terminal OK)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 6 n"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Cursor position report (CPR): Answer is ESC [ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iy"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ix"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P R,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "where "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ix,y"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is the cursor location."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " DEC Private Mode (DECSET/DECRST) sequences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These are not described in ECMA-48."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "We list the Set Mode sequences;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the Reset Mode sequences are obtained by replacing the final "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "h"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "l"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 1 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECCKM (default off): When set, the cursor keys send an ESC O prefix,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rather than ESC [."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 3 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECCOLM (default off = 80 columns): 80/132 col mode switch."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The driver sources note that this alone does not suffice; some user-mode"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "utility such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " resizecons (8)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "has to change the hardware registers on the console video card."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 5 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECSCNM (default off): Set reverse-video mode."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 6 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECOM (default off): When set, cursor addressing is relative to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the upper left corner of the scrolling region."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 7 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECAWM (default on): Set autowrap on."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this mode, a graphic"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "character emitted after column 80 (or column 132 of DECCOLM is on)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "forces a wrap to the beginning of the following line first."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 8 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECARM (default on): Set keyboard autorepeat on."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 9 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "X10 Mouse Reporting (default off): Set reporting mode to 1 (or reset to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "see below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 25 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "DECTECM (default on): Make cursor visible."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 1000 h"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "X11 Mouse Reporting (default off): Set reporting mode to 2 (or reset"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to 0)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "see below."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Linux Console Private CSI Sequences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following sequences are neither ECMA-48 nor native VT102."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They are native to the Linux console driver."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Colors are in SGR parameters:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 ="
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cyan, 7 = white."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 1 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]\tSet color "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P as the underline color"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 2 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]\tSet color "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P as the dim color"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 8 ]       \tMake the current color pair the default attributes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 9 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]\tSet screen blank timeout to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P minutes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 10 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]\tSet bell frequency in Hz."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 11 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]\tSet bell duration in msec."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 12 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]\tBring specified console to the front."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 13 ]      \tUnblank the screen."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 14 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]   \tSet the VESA powerdown interval in minutes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 15 ]      \tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Bring the previous console to the front"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(since Linux 2.6.0)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ 16 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "In"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ]   \tT{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the cursor blink interval in milliseconds"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(since Linux 4.2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit bd63364caa8df38bad2b25b11b2a1b849475cce5"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Character sets"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel knows about 4 translations of bytes into console-screen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "symbols."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The four tables are: a) Latin1 "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "> PC,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "b) VT100 graphics "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "> PC, c) PC "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "> PC, d) user-defined."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "There are two character sets, called G0 and G1, and one of them"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the current character set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Initially G0.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Typing "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^N"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P causes G1 to become current,"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^O"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P causes G0 to become current."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These variables G0 and G1 point at a translation table, and can be"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "changed by the user."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Initially they point at tables a) and b), respectively."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The sequences ESC ( B and ESC ( 0 and ESC ( U and ESC ( K cause G0 to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "point at translation table a), b), c) and d), respectively."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The sequences ESC ) B and ESC ) 0 and ESC ) U and ESC ) K cause G1 to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "point at translation table a), b), c) and d), respectively."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The sequence ESC c causes a terminal reset, which is what you want if the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "screen is all garbled."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The oft-advised \"echo ^V^O\" will make only G0 current,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but there is no guarantee that G0 points at table a)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In some distributions there is a program"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " reset (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that just does \"echo ^[c\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If your terminfo entry for the console is correct"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(and has an entry rs1="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ec), then \"tput reset\" will also work."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The user-defined mapping table can be set using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mapscrn (8)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The result of the mapping is that if a symbol c is printed, the symbol"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "s = map[c] is sent to the video memory."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The bitmap that corresponds to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "s is found in the character ROM, and can be changed using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setfont (8)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Mouse tracking"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The mouse tracking facility is intended to return"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xterm (1)-compatible"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mouse status reports."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Because the console driver has no way to know"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the device or type of the mouse, these reports are returned in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "console input stream only when the virtual terminal driver receives"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a mouse update ioctl."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These ioctls must be generated by a mouse-aware"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "user-mode application such as the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " gpm (8)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "daemon."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The mouse tracking escape sequences generated by"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) encode numeric parameters in a single character as"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ivalue"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P+040."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "!"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is 1."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The screen coordinate system is 1-based."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The X10 compatibility mode sends an escape sequence on button press"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "encoding the location and the mouse button pressed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is enabled by sending ESC [ ? 9 h and disabled with ESC [ ? 9 l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On button press, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) sends"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ M "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibxy"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P (6 characters)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Here "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ib"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P is button"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "1,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ix"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iy"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P are the x and y coordinates of the mouse"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when the button was pressed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the same code the kernel also produces."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Normal tracking mode (not implemented in Linux 2.0.24) sends an escape"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sequence on both button press and release."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Modifier information is also sent."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is enabled by sending ESC [ ? 1000 h and disabled with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [ ? 1000 l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On button press or release, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) sends ESC [ M"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibxy"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The low two bits of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ib"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P encode button information:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0=MB1 pressed, 1=MB2 pressed, 2=MB3 pressed, 3=release."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The upper bits encode what modifiers were down when the button was"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "pressed and are added together: 4=Shift, 8=Meta, 16=Control."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Again "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ix"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P and"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iy"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P are the x and y coordinates of the mouse event."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The upper left corner is (1,1)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Comparisons with other terminals"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Many different terminal types are described, like the Linux console,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as being \"VT100-compatible\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Here we discuss differences between the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux console and the two most important others, the DEC VT102 and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xterm (1)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Control-character handling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The VT102 also recognized the following control characters:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "NUL (0x00) was ignored;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ENQ (0x05) triggered an answerback message;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "DC1 (0x11, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^Q"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, XON) resumed transmission;"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".HP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "DC3 (0x13, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "B^S"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P, XOFF) caused VT100 to ignore (and stop transmitting)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "all codes except XOFF and XON."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "VT100-like DC1/DC3 processing may be enabled by the terminal driver."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xterm (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "program (in VT100 mode) recognizes the control characters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "BEL, BS, HT, LF, VT, FF, CR, SO, SI, ESC."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Escape sequences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "VT100 console sequences not implemented on the Linux console:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC N\tSS2\tSingle shift 2. (Select G2 character set for the next"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tcharacter only.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC O\tSS3\tSingle shift 3. (Select G3 character set for the next"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tcharacter only.)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC P\tDCS\tDevice control string (ended by ESC "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": ")"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC X\tSOS\tStart of string."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ^\tPM\tPrivacy message (ended by ESC "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": ")"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": "\tST\tString terminator"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC * ...\t\tDesignate G2 character set"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC + ...\t\tDesignate G3 character set"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The program"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xterm (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(in VT100 mode) recognizes ESC c, ESC # 8, ESC >, ESC =,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC D, ESC E, ESC H, ESC M, ESC N, ESC O, ESC P ... ESC "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": ","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC Z (it answers ESC [ ? 1 ; 2 c, \"I am a VT100 with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "advanced video option\")"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and ESC ^ ... ESC "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\\\"
+        },
+        {
+          "type": "TEXT",
+          "content": " with the same meanings as indicated above."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It accepts ESC (, ESC ), ESC *,  ESC + followed by 0, A, B for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the DEC special character and line drawing set, UK, and US-ASCII,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "respectively."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The user can configure "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) to respond to VT220-specific"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "control sequences, and it will identify itself as a VT52, VT100, and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "up depending on the way it is configured and initialized."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It accepts ESC ] (OSC) for the setting of certain resources."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition to the ECMA-48 string terminator (ST),"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) accepts a BEL to terminate an OSC string."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These are a few of the OSC control sequences recognized by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 0 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tSet icon name and window title to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 1 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tSet icon name to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 2 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tSet window title to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 4 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Inum"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tSet ANSI color "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Inum"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 10 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tSet dynamic text color to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Itxt"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 4 6 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iname"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tChange log file to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iname"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P (normally disabled"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\tby a compile-time option)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ] 5 0 ; "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ifn"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P ST\tSet font to "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ifn"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It recognizes the following with slightly modified meaning"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(saving more state, behaving closer to VT100/VT220):"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC 7  DECSC\tSave cursor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC 8  DECRC\tRestore cursor"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It also recognizes"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC F\t\tCursor to lower left corner of screen (if enabled by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\t"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1)'s "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BhpLowerleftBugCompat"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P resource)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC l\t\tMemory lock (per HP terminals)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\t\tLocks memory above the cursor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC m\t\tMemory unlock (per HP terminals)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC n\tLS2\tInvoke the G2 character set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC o\tLS3\tInvoke the G3 character set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC |\tLS3R\tInvoke the G3 character set as GR."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC }\tLS2R\tInvoke the G2 character set as GR."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC ~\tLS1R\tInvoke the G1 character set as GR."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "It also recognizes ESC % and provides a more complete UTF-8"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "implementation than Linux console."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CSI Sequences"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Old versions of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1), for example, from X11R5,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interpret the blink SGR as a bold SGR."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Later versions which implemented ANSI colors, for example,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "XFree86 3.1.2A in 1995, improved this by allowing"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the blink attribute to be displayed as a color."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Modern versions of xterm implement blink SGR as blinking text"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and still allow colored text as an alternate rendering of SGRs."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Stock X11R6 versions did not recognize the color-setting SGRs until"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the X11R6.8 release, which incorporated XFree86 xterm."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All ECMA-48 CSI sequences recognized by Linux are also recognized by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " xterm ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "however "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) implements several ECMA-48 and DEC control sequences"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "not recognized by Linux."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "program recognizes all of the DEC Private Mode sequences listed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "above, but none of the Linux private-mode sequences."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For discussion of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1)'s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "own private-mode sequences, refer to the"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "IXterm Control Sequences"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "document by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Edward Moy,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Stephen Gildea,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and Thomas E. Dickey"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "available with the X distribution."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That document, though terse, is much longer than this manual page."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For a chronological overview,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " http://invisible"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "island.net"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/xterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/xterm.log.html"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "details changes to xterm."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ivttest"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P program"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " http://invisible"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "island.net"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\:"
+        },
+        {
+          "type": "TEXT",
+          "content": "/vttest/"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".UE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "demonstrates many of these control sequences."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) source distribution also contains sample"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "scripts which exercise other features."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC 8 (DECRC) is not able to restore the character set changed with"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC %."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In 2.0.23, CSI is broken, and NUL is not ignored inside"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "escape sequences."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some older kernel versions (after 2.0) interpret 8-bit control"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sequences."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These \"C1 controls\" use codes between 128 and 159 to replace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ESC [, ESC ] and similar two-byte control sequence initiators."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There are fragments of that in modern kernels (either overlooked or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "broken by changes to support UTF-8),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but the implementation is incomplete and should be regarded"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as unreliable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux \"private mode\" sequences do not follow the rules in ECMA-48"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for private mode control sequences."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, those ending with ] do not use a standard terminating"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "character."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The OSC (set palette) sequence is a greater problem,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "since "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) may interpret this as a control sequence"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which requires a string terminator (ST)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unlike the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bsetterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) sequences which will be ignored (since"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "they are invalid control sequences), the palette sequence will make"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) appear to hang (though pressing the return-key"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will fix that)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To accommodate applications which have been hardcoded to use Linux"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "control sequences,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Bxterm"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P(1) resource "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "BbrokenLinuxOSC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P to true."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An older version of this document implied that Linux recognizes the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ECMA-48 control sequence for invisible text."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is ignored."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_console (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " charsets (7)"
+        }
+      ]
+    ]
+  }
+]

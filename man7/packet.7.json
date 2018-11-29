@@ -1,0 +1,6045 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page is Copyright (C) 1999 Andi Kleen <ak@muc.de>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_ONE_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to distribute possibly modified copies"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of this page provided the header is included verbatim,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and in case of nontrivial modification author and date"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of the modification is added to the header."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" $Id: packet.7,v 1.13 2000/08/14 08:03:45 ak Exp $"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET  7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "packet "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " packet interface on device level"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <sys/socket.h>"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <linux/if_packet.h>"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <net/ethernet.h>     /* the L2 protocols */"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".BI",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"packet_socket = socket(AF_PACKET, int \" socket_type \", int \"protocol );"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet sockets are used to receive or send raw packets at the device driver"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(OSI Layer 2) level."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They allow the user to implement protocol modules in user space"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on top of the physical layer."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socket_type"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is either"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_RAW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for raw packets including the link-level header or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for cooked packets with the link-level header removed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The link-level header information is available in a common format in a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_ll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " protocol"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the IEEE 802.3 protocol number in network byte order."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <linux/if_ether.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "include file for a list of allowed protocols."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When protocol"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " htons(ETH_P_ALL) ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then all protocols are received."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All incoming packets of that protocol type will be passed to the packet"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket before they are passed to the protocols implemented in the kernel."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In order to create a packet socket, a process must have the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_NET_RAW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability in the user namespace that governs its network namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_RAW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets are passed to and from the device driver without any changes in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the packet data."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When receiving a packet, the address is still parsed and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "passed in a standard"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_ll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "address structure."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When transmitting a packet, the user-supplied buffer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should contain the physical-layer header."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That packet is then"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "queued unmodified to the network driver of the interface defined by the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "destination address."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Some device drivers always add other headers."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_RAW"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is similar to but not compatible with the obsolete"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET/SOCK_PACKET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of Linux 2.0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operates on a slightly higher level."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The physical header is removed before the packet is passed to the user."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Packets sent through a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packet socket get a suitable physical-layer header based on the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "information in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_ll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "destination address before they are queued."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By default, all packets of the specified protocol type"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are passed to a packet socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To get packets only from a specific interface use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " bind (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "specifying an address in a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct sockaddr_ll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to bind the packet socket to an interface."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fields used for binding are"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_family"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(should be"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_PACKET ),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_protocol ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_ifindex ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " connect (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation is not supported on packet sockets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MSG_TRUNC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is passed to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recvmsg (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recv (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recvfrom (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the real length of the packet on the wire is always returned,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "even when it is longer than the buffer."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Address types"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr_ll"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure is a device-independent physical-layer address."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr_ll {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short sll_family;   /* Always AF_PACKET */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short sll_protocol; /* Physical-layer protocol */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int            sll_ifindex;  /* Interface number */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short sll_hatype;   /* ARP hardware type */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char  sll_pkttype;  /* Packet type */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char  sll_halen;    /* Length of address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char  sll_addr[8];  /* Physical-layer address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The fields of this structure are as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_protocol"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the standard ethernet protocol type in network byte order as defined"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <linux/if_ether.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "include file."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It defaults to the socket's protocol."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_ifindex"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the interface index of the interface"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netdevice (7));"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "0 matches any interface (only permitted for binding)."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_hatype"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is an ARP type as defined in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <linux/if_arp.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "include file."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_pkttype"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains the packet type."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Valid types are"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_HOST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a packet addressed to the local host,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_BROADCAST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a physical-layer broadcast packet,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_MULTICAST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a packet sent to a physical-layer multicast address,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_OTHERHOST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a packet to some other host that has been caught by a device driver"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in promiscuous mode, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_OUTGOING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for a packet originating from the local host that is looped back to a packet"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These types make sense only for receiving."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_addr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_halen"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contain the physical-layer (e.g., IEEE 802.3) address and its length."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The exact interpretation depends on the device."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When you send packets, it is enough to specify"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_family ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_addr ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_halen ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_ifindex ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_protocol ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The other fields should be 0."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_hatype"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sll_pkttype"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are set on received packets for your information."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Socket options"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet socket options are configured by calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsockopt (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with level"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOL_PACKET ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_ADD_MEMBERSHIP"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PD",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 0"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_DROP_MEMBERSHIP"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PD",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet sockets can be used to configure physical-layer multicasting"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and promiscuous mode."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_ADD_MEMBERSHIP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "adds a binding and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_DROP_MEMBERSHIP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "drops it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They both expect a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " packet_mreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure as argument:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct packet_mreq {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int            mr_ifindex;    /* interface index */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short mr_type;       /* action */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short mr_alen;       /* address length */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char  mr_address[8]; /* physical-layer address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mr_ifindex"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains the interface index for the interface whose status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "should be changed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mr_type"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field specifies which action to perform."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_MR_PROMISC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enables receiving all packets on a shared medium (often known as"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\"promiscuous mode\"),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_MR_MULTICAST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "binds the socket to the physical-layer multicast group specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mr_address"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mr_alen ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_MR_ALLMULTI"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sets the socket up to receive all multicast packets arriving at"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the interface."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, the traditional ioctls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCSIFFLAGS ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCADDMULTI ,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCDELMULTI"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be used for the same purpose."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_AUXDATA \" (since Linux 2.6.21)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 8dc4194474159660d7f37c495e3fc3f10d0db8cc"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If this binary option is enabled, the packet socket passes a metadata"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure along with each packet in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recvmsg (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "control field."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The structure can be read with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " cmsg (3)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is defined as"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct tpacket_auxdata {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 tp_status;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 tp_len;      /* packet length */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u32 tp_snaplen;  /* captured length */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 tp_mac;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 tp_net;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 tp_vlan_tci;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    __u16 tp_padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT \" (since Linux 3.1)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit dc99f600698dcac69b8f56dda9a8a00d645c5ffc"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To scale processing across threads, packet sockets can form a fanout"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this mode, each matching packet is enqueued onto only one"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket in the group."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A socket joins a fanout group by calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setsockopt (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with level"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOL_PACKET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and option"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each network namespace can have up to 65536 independent groups."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A socket selects a group by encoding the ID in the first 16 bits of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the integer option value."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The first packet socket to join a group implicitly creates it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To successfully join an existing group, subsequent packet sockets"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must have the same protocol, device settings, fanout mode and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flags (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet sockets can leave a fanout group only by closing the socket."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The group is deleted when the last socket is closed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Fanout supports multiple algorithms to spread traffic between sockets,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as follows:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The default mode,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_HASH ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sends packets from the same flow to the same socket to maintain"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "per-flow ordering."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For each packet, it chooses a socket by taking the packet flow hash"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "modulo the number of sockets in the group, where a flow hash is a hash"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "over network-layer address and optional transport-layer port fields."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The load-balance mode"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_LB"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "implements a round-robin algorithm."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_CPU"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "selects the socket based on the CPU that the packet arrived on."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_ROLLOVER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "processes all data on a single socket, moving to the next when one"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "becomes backlogged."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_RND"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "selects the socket using a pseudo-random number generator."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_QM"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 2d36097d26b5991d71a2cf4a20c1a158f0f1bfcd"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(available since Linux 3.14)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "selects the socket using the recorded queue_mapping of the received skb."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Fanout modes can take additional options."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IP fragmentation causes packets from the same flow to have different"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flow hashes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The flag"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_FLAG_DEFRAG ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if set, causes packets to be defragmented before fanout is applied, to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "preserve order even in this case."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Fanout mode and options are communicated in the second 16 bits of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "integer option value."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The flag"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_FANOUT_FLAG_ROLLOVER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enables the roll over mechanism as a backup strategy: if the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "original fanout algorithm selects a backlogged socket, the packet"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rolls over to the next available one."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_LOSS \" (with \" PACKET_TX_RING )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When a malformed packet is encountered on a transmit ring,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the default is to reset its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_WRONG_FORMAT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and abort the transmission immediately."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The malformed packet blocks itself and subsequently enqueued packets from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "being sent."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The format error must be fixed, the associated"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reset to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_SEND_REQUEST ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the transmission process restarted via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " send (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, if"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_LOSS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set, any malformed packet will be skipped, its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "reset to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_AVAILABLE ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the transmission process continued."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_RESERVE \" (with \" PACKET_RX_RING )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "By default, a packet receive ring writes packets immediately following the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "metadata structure and alignment padding."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This integer option reserves additional headroom."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_RX_RING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Create a memory-mapped ring buffer for asynchronous packet reception."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The packet socket reserves a contiguous region of application address"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "space, lays it out into an array of packet slots and copies packets"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_snaplen )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "into subsequent slots."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Each packet is preceded by a metadata structure similar to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tpacket_auxdata ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The protocol fields encode the offset to the data"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from the start of the metadata header."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_net"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "stores the offset to the network layer."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the packet socket is of type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_mac"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the same."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If it is of type"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_RAW ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then that field stores the offset to the link-layer frame."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet socket and application communicate the head and tail of the ring"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "through the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The packet socket owns all slots with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "equal to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_KERNEL ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After filling a slot, it changes the status of the slot to transfer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ownership to the application."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "During normal operation, the new"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value has at least the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_USER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bit set to signal that a received packet has been stored."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When the application has finished processing a packet, it transfers"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ownership of the slot back to the socket by setting"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "equal to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_KERNEL ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet sockets implement multiple variants of the packet ring."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The implementation details are described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/networking/packet_mmap.txt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the Linux kernel source tree."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_STATISTICS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Retrieve packet socket statistics in the form of a structure"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct tpacket_stats {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned int tp_packets;  /* Total packet count */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned int tp_drops;    /* Dropped packet count */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Receiving statistics resets the internal counters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The statistics structure differs when using a ring of variant"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TPACKET_V3 ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_TIMESTAMP \" (with \" PACKET_RX_RING \"; since Linux 2.6.36)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 614f60fa9d73a9e8fdff3df83381907fea7c5649"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The packet receive ring always stores a timestamp in the metadata header."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "By default, this is a software generated timestamp generated when the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packet is copied into the ring."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This integer option selects the type of timestamp."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Besides the default, it support the two hardware formats described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Documentation/networking/timestamping.txt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the Linux kernel source tree."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_TX_RING \" (since Linux 2.6.31)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit 69e3c75f4d541a6eb151b3ef91f34033cb3ad6e1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Create a memory-mapped ring buffer for packet transmission."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This option is similar to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_RX_RING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and takes the same arguments."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The application writes packets into slots with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "equal to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_AVAILABLE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and schedules them for transmission by changing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_SEND_REQUEST ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When packets are ready to be transmitted, the application calls"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " send (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a variant thereof."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " buf"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fields of this call are ignored."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If an address is passed using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sendto (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sendmsg (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then that overrides the socket default."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "On successful transmission, the socket resets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " tp_status"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TP_STATUS_AVAILABLE ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It immediately aborts the transmission on error unless"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_LOSS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_VERSION \" (with \" PACKET_RX_RING \"; since Linux 2.6.27)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit bbd6ef87c544d88c30e4b762b1b61ef267a7d279"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By default,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_RX_RING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "creates a packet receive ring of variant"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " TPACKET_V1 ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To create another variant, configure the desired variant by setting this"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "integer option before creating the ring."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_QDISC_BYPASS \" (since Linux 3.14)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit d346a3fae3ff1d99f5d0c819bf86edf9094a26a1"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "By default, packets sent through packet sockets pass through the kernel's"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "qdisc (traffic control) layer, which is fine for the vast majority of use"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cases."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For traffic generator appliances using packet sockets"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that intend to brute-force flood the network"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "for example,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to test devices under load in a similar"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fashion to pktgen"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "this layer can be bypassed by setting"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this integer option to 1."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A side effect is that packet buffering in the qdisc layer is avoided,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which will lead to increased drops when network"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "device transmit queues are busy;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "therefore, use at your own risk."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Ioctls"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGSTAMP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be used to receive the timestamp of the last received packet."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Argument is a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct timeval"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "variable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME Document SIOCGSTAMPNS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, all standard ioctls defined in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " netdevice (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socket (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are valid on packet sockets."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Error handling"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet sockets do no error handling other than errors occurred"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "while passing the packet to the device driver."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They don't have the concept of a pending error."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EADDRNOTAVAIL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unknown multicast group address passed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "User passed invalid memory address."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Invalid argument."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EMSGSIZE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet is bigger than interface MTU."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENETDOWN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Interface is not up."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOBUFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Not enough memory to allocate the packet."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENODEV"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unknown device name or interface index specified in interface address."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOENT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No packet received."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOTCONN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No interface address passed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENXIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Interface address contained an invalid interface index."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "User has insufficient privileges to carry out this operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, other errors may be generated by the low-level driver."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " VERSIONS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_PACKET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is a new feature in Linux 2.2."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Earlier Linux versions supported only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_PACKET ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For portable programs it is suggested to use"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_PACKET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pcap (3);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "although this covers only a subset of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_PACKET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "features."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packet sockets make no attempt to create or parse the IEEE 802.2 LLC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "header for a IEEE 802.3 frame."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ETH_P_802_3"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is specified as protocol for sending the kernel creates the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "802.3 frame and fills out the length field; the user has to supply the LLC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "header to get a fully conforming packet."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Incoming 802.3 packets are not multiplexed on the DSAP/SSAP protocol"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fields; instead they are supplied to the user as protocol"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ETH_P_802_2"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the LLC header prefixed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is thus not possible to bind to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ETH_P_802_3 ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bind to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ETH_P_802_2"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "instead and do the protocol multiplex yourself."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The default for sending is the standard Ethernet DIX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "encapsulation with the protocol filled in."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Packet sockets are not subject to the input or output firewall chains."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Compatibility"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In Linux 2.0, the only way to get a packet socket was with the call:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "    socket(AF_INET, SOCK_PACKET, protocol)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This is still supported, but deprecated and strongly discouraged."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The main difference between the two methods is that"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_PACKET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "uses the old"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " struct sockaddr_pkt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to specify an interface, which doesn't provide physical-layer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "independence."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct sockaddr_pkt {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short spkt_family;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char  spkt_device[14];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short spkt_protocol;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " spkt_family"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the device type,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " spkt_protocol"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the IEEE 802.3 protocol type as defined in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <sys/if_ether.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " spkt_device"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is the device name as a null-terminated string, for example, eth0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This structure is obsolete and should not be used in new code."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The IEEE 802.2/803.3 LLC handling could be considered as a bug."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Socket filters are not documented."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " MSG_TRUNC"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " recvmsg (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "extension is an ugly hack and should be replaced by a control message."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is currently no way to get the original destination address of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "packets via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SOCK_DGRAM ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .SH CREDITS"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page was written by Andi Kleen with help from Matthew Wilcox."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" AF_PACKET in Linux 2.2 was implemented"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" by Alexey Kuznetsov, based on code by Alan Cox and others."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socket (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pcap (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " raw (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socket (7)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "894 for the standard IP Ethernet encapsulation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "RFC"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "TEXT",
+          "content": "1700 for the IEEE 802.3 IP encapsulation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <linux/if_ether.h>"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "include file for physical-layer protocols."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The Linux kernel source tree."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /Documentation/networking/filter.txt"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "describes how to apply Berkeley Packet Filters to packet sockets."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /tools/testing/selftests/net/psock_tpacket.c"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains example source code for all available versions of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_RX_RING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PACKET_TX_RING ."
+        }
+      ]
+    ]
+  }
+]

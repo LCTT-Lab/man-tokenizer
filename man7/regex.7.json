@@ -1,0 +1,3965 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" From Henry Spencer's regex package (as found in the apache"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" distribution). The package carries the following copyright:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  Copyright 1992, 1993, 1994 Henry Spencer.  All rights reserved."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(MISC)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  This software is not subject to any license of the American Telephone"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  and Telegraph Company or of the Regents of the University of California."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  Permission is granted to anyone to use this software for any purpose"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  on any computer system, and to alter it and redistribute it, subject"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  to the following restrictions:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  1. The author is not responsible for the consequences of use of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     software, no matter how awful, even if they arise from flaws in it."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  2. The origin of this software must not be misrepresented, either by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     explicit claim or by omission.  Since few users ever read sources,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     credits must appear in the documentation."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  3. Altered versions must be plainly marked as such, and must not be"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     misrepresented as being the original software.  Since few users"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"     ever read sources, credits must appear in the documentation."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  4. This notice may not be removed or altered."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" In order to comply with `credits must appear in the documentation'"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" I added an AUTHOR paragraph below - aeb."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" In the default nroff environment there is no dagger \\(dg."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 2005-05-11 Removed discussion of `[[:<:]]' and `[[:>:]]', which"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" \tappear not to be in the glibc implementation of regcomp"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ie",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " t .ds dg "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(dg"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".el",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " .ds dg (!)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " REGEX 7 2009-01-12 \"\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "regex "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " POSIX.2 regular expressions"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Regular expressions (\"RE\"s),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as defined in POSIX.2, come in two forms:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "modern REs (roughly those of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " egrep ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.2 calls these \"extended\" REs)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and obsolete REs (roughly those of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ed (1);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.2 \"basic\" REs)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Obsolete REs mostly exist for backward compatibility in some old programs;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "they will be discussed at the end."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.2 leaves some aspects of RE syntax and semantics open;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg\" marks decisions on these aspects that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may not be fully portable to other POSIX.2 implementations."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A (modern) RE is one"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg or more nonempty"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibranches"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "separated by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "|"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It matches anything that matches one of the branches."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A branch is one"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg or more "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ipieces"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R, concatenated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It matches a match for the first, followed by a match for the second,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and so on."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A piece is an "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iatom"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R possibly followed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by a single"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "+"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "?"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", or "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibound"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom followed by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches a sequence of 0 or more matches of the atom."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom followed by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "+"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches a sequence of 1 or more matches of the atom."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom followed by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "?"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches a sequence of 0 or 1 matches of the atom."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibound"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R is "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "{"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " followed by an unsigned decimal integer,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "possibly followed by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ","
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "possibly followed by another unsigned decimal integer,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "always followed by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "}"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The integers must lie between 0 and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " RE_DUP_MAX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(255"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg) inclusive,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and if there are two of them, the first may not exceed the second."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom followed by a bound containing one integer "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ii"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and no comma matches"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a sequence of exactly "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ii"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R matches of the atom."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom followed by a bound"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "containing one integer "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ii"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R and a comma matches"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a sequence of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ii"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R or more matches of the atom."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom followed by a bound"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "containing two integers "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ii"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ij"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R matches"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a sequence of "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ii"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R through "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ij"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R (inclusive) matches of the atom."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "An atom is a regular expression enclosed in \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I()"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(matching a match for the regular expression),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "an empty set of \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I()"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" (matching the null string)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibracket expression"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R (see below), "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(matching any single character), "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "^"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " (matching the null string at the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "beginning of a line), "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "$"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " (matching the null string at the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "end of a line), a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " followed by one of the characters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I^.[$()|*+?{"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(matching that character taken as an ordinary character),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " followed by any other character"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(matching that character taken as an ordinary character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as if the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " had not been present"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a single character with no other significance (matching that character)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "{"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " followed by a character other than a digit is an ordinary"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "character, not the beginning of a bound"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is illegal to end an RE with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibracket expression"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R is a list of characters enclosed in \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It normally matches any single character from the list (but see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the list begins with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "^"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it matches any single character"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(but see below) "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Inot"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R from the rest of the list."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If two characters in the list are separated by "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", this is shorthand"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for the full "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Irange"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R of characters between those two (inclusive) in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "collating sequence,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for example, \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[0"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "9]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" in ASCII matches any decimal digit."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is illegal"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg for two ranges to share an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "endpoint, for example, \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ia"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "c"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Ranges are very collating-sequence-dependent,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and portable programs should avoid relying on them."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To include a literal "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " in the list, make it the first character"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(following a possible "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "^"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ")."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To include a literal "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", make it the first or last character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or the second endpoint of a range."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "To use a literal "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " as the first endpoint of a range,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enclose it in \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I.]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to make it a collating element (see below)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "With the exception of these and some combinations using "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "["
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " (see next"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "paragraphs), all other special characters, including "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", lose their"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "special significance within a bracket expression."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Within a bracket expression, a collating element (a character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a multicharacter sequence that collates as if it were a single character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or a collating-sequence name for either)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "enclosed in \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I.]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" stands for the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "sequence of characters of that collating element."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The sequence is a single element of the bracket expression's list."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A bracket expression containing a multicharacter collating element"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can thus match more than one character,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for example, if the collating sequence includes a \"ch\" collating element,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then the RE \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[[.ch.]]*c"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" matches the first five characters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of \"chchcc\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Within a bracket expression, a collating element enclosed in \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I=]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" is an equivalence class, standing for the sequences of characters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of all collating elements equivalent to that one, including itself."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(If there are no other equivalent collating elements,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the treatment is as if the enclosing delimiters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "were \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[."
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I.]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\".)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, if o and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\o"
+        },
+        {
+          "type": "TEXT",
+          "content": "'o^' are the members of an equivalence class,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[[=o=]]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\", \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[[="
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\o"
+        },
+        {
+          "type": "TEXT",
+          "content": "'o^'=]]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[o"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\o"
+        },
+        {
+          "type": "TEXT",
+          "content": "'o^']"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" are all synonymous."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "An equivalence class may not"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg be an endpoint"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of a range."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Within a bracket expression, the name of a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Icharacter class"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R enclosed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[:"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I:]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" stands for the list"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of all characters belonging to that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "class."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Standard character class names are:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "l l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "alnum\tdigit\tpunct"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "alpha\tgraph\tspace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "blank\tlower\tupper"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cntrl\tprint\txdigit"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These stand for the character classes defined in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " wctype (3)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A locale may provide others."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A character class may not be used as an endpoint of a range."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" As per http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=295666"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following does not seem to apply in the glibc implementation"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .PP"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" There are two special cases\\*(dg of bracket expressions:"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the bracket expressions \"\\fI[[:<:]]\\fP\" and \"\\fI[[:>:]]\\fP\" match"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the null string at the beginning and end of a word respectively."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" A word is defined as a sequence of"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" word characters"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is neither preceded nor followed by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" word characters."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" A word character is an"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .I alnum"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" character (as defined by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .BR wctype (3))"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" or an underscore."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This is an extension,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" compatible with but not specified by POSIX.2,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and should be used with"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" caution in software intended to be portable to other systems."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In the event that an RE could match more than one substring of a given"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "string,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the RE matches the one starting earliest in the string."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If the RE could match more than one substring starting at that point,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it matches the longest."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Subexpressions also match the longest possible substrings, subject to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the constraint that the whole match be as long as possible,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with subexpressions starting earlier in the RE taking priority over"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ones starting later."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that higher-level subexpressions thus take priority over"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "their lower-level component subexpressions."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Match lengths are measured in characters, not collating elements."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A null string is considered longer than no match at all."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ibb*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" matches the three middle characters of \"abbbc\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I(wee|week)(knights|nights)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches all ten characters of \"weeknights\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I(.*).*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" is matched against \"abc\" the parenthesized subexpression"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches all three characters, and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I(a*)*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" is matched against \"bc\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "both the whole RE and the parenthesized"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "subexpression match the null string."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If case-independent matching is specified,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the effect is much as if all case distinctions had vanished from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "alphabet."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When an alphabetic that exists in multiple cases appears as an"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ordinary character outside a bracket expression, it is effectively"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "transformed into a bracket expression containing both cases,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for example, "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "x"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " becomes \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[xX]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\"."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When it appears inside a bracket expression, all case counterparts"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of it are added to the bracket expression, so that, for example, \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[x]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "becomes \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[xX]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[^x]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" becomes \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I[^xX]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "No particular limit is imposed on the length of REs"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Programs intended to be portable should not employ REs longer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "than 256 bytes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as an implementation can refuse to accept such REs and remain"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX-compliant."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Obsolete (\"basic\") regular expressions differ in several respects."
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "|"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "+"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ", and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "?"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " are"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "ordinary characters and there is no equivalent"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for their functionality."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The delimiters for bounds are \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "{"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "}"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "{"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "}"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " by themselves ordinary characters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The parentheses for nested subexpressions are \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" and \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": ")"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\","
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ")"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " by themselves ordinary characters."
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "^"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is an ordinary character except at the beginning of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "RE or"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg the beginning of a parenthesized subexpression,"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "$"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is an ordinary character except at the end of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "RE or"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\*"
+        },
+        {
+          "type": "TEXT",
+          "content": "(dg the end of a parenthesized subexpression,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is an ordinary character if it appears at the beginning of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "RE or the beginning of a parenthesized subexpression"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(after a possible leading "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "^"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ")."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Finally, there is one new type of atom, a "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Iback reference"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R:"
+        }
+      ],
+      [
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " followed by a nonzero decimal digit "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Id"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "R"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matches the same sequence of characters"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "matched by the "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Id"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Rth parenthesized subexpression"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(numbering subexpressions by the positions of their opening parentheses,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "left to right),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that, for example, \""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "I"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "([bc]"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": ")"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "1"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" matches \"bb\" or \"cc\" but not \"bc\"."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Having two kinds of REs is a botch."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The current POSIX.2 spec says that "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ")"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": " is an ordinary character in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the absence of an unmatched "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": ";"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this was an unintentional result of a wording error,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and change is likely."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Avoid relying on it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Back references are a dreadful botch,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "posing major problems for efficient implementations."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They are also somewhat vaguely defined"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(does"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "\""
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "Ia"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "("
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "(b"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": ")*"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": "2"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\e"
+        },
+        {
+          "type": "TEXT",
+          "content": ")*d"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\f"
+        },
+        {
+          "type": "TEXT",
+          "content": "P\" match \"abbbd\"?)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Avoid using them."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.2's specification of case-independent matching is vague."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The \"one case implies all cases\" definition given above"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is current consensus among implementors as to the right interpretation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" As per http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=295666"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The following does not seem to apply in the glibc implementation"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .PP"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The syntax for word boundaries is incredibly ugly."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " AUTHOR"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Sigh... The page license means we must have the author's name"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" in the formatted output."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This page was taken from Henry Spencer's regex package."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " grep (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " regex (3)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX.2, section 2.8 (Regular Expression Notation)."
+        }
+      ]
+    ]
+  }
+]

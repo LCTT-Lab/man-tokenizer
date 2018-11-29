@@ -1,0 +1,3316 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": "'\\\" t"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page is Copyright (C) 1999 Andi Kleen <ak@muc.de>."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_ONE_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to distribute possibly modified copies"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of this page provided the header is included verbatim,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and in case of nontrivial modification author and date"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of the modification is added to the header."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" $Id: netdevice.7,v 1.10 2000/08/17 10:09:54 ak Exp $"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified, 2004-11-25, mtk, formatting and a few wording fixes"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Modified, 2011-11-02, <bidulock@openss7.org>, added many basic"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\"  but missing ioctls, such as SIOCGIFADDR."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NETDEVICE  7 2017-09-15 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "netdevice "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " low-level access to Linux network devices"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"#include <sys/ioctl.h>\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".br",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"#include <net/if.h>\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This man page describes the sockets interface which is used to configure"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "network devices."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Linux supports some standard ioctls to configure network devices."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "They can be used on any socket's file descriptor regardless of the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "family or type."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Most of them pass an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct ifreq {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    char ifr_name[IFNAMSIZ]; /* Interface name */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    union {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct sockaddr ifr_addr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct sockaddr ifr_dstaddr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct sockaddr ifr_broadaddr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct sockaddr ifr_netmask;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct sockaddr ifr_hwaddr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        short           ifr_flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        int             ifr_ifindex;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        int             ifr_metric;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        int             ifr_mtu;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct ifmap    ifr_map;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        char            ifr_slave[IFNAMSIZ];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        char            ifr_newname[IFNAMSIZ];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        char           *ifr_data;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Normally, the user specifies which device to affect by setting"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the name of the interface."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All other members of the structure may"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "share memory."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Ioctls"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If an ioctl is marked as privileged, then using it requires an effective"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "user ID of 0 or the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_NET_ADMIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If this is not the case,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be returned."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFNAME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Given the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_ifindex ,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "return the name of the interface in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_name ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the only ioctl which returns its result in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_name ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFINDEX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Retrieve the interface index of the interface into"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_ifindex ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFFLAGS \", \" SIOCSIFFLAGS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the active flag word of the device."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains a bit mask of the following values:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Do not right adjust text blocks in tables"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".na",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "tab(:);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "c s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Device flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_UP:Interface is running."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_BROADCAST:Valid broadcast address set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_DEBUG:Internal debugging flag."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_LOOPBACK:Interface is a loopback interface."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_POINTOPOINT:Interface is a point-to-point link."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_RUNNING:Resources allocated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_NOARP:T{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No arp protocol, L2 destination address not set."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_PROMISC:Interface is in promiscuous mode."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_NOTRAILERS:Avoid use of trailers."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_ALLMULTI:Receive all multicast packets."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_MASTER:Master of a load balancing bundle."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_SLAVE:Slave of a load balancing bundle."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_MULTICAST:Supports multicast"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_PORTSEL:Is able to select media type via ifmap."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_AUTOMEDIA:Auto media selection active."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_DYNAMIC:T{"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The addresses are lost when the interface goes down."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "T}"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_LOWER_UP:Driver signals L1 up (since Linux 2.6.17)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_DORMANT:Driver signals dormant (since Linux 2.6.17)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_ECHO:Echo sent packets (since Linux 2.6.25)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".ad",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the active flag word is a privileged operation, but any"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process may read it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFPFLAGS \", \" SIOCSIFPFLAGS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set extended (private) flags for the device."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains a bit mask of the following values:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "tab(:);"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "c s"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "l l."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Private flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_802_1Q_VLAN:Interface is 802.1Q VLAN device."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_EBRIDGE:Interface is Ethernet bridging device."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_SLAVE_INACTIVE:Interface is inactive bonding slave."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_MASTER_8023AD:Interface is 802.3ad bonding master."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_MASTER_ALB:Interface is balanced-alb bonding master."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_BONDING:Interface is a bonding master or slave."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_SLAVE_NEEDARP:Interface needs ARPs for validation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "IFF_ISATAP:Interface is RFC4214 ISATAP interface."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TE",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the extended (private) interface flags is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFADDR \", \" SIOCSIFADDR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the address of the device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_addr ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the interface address is a privileged operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For compatibility, only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "addresses are accepted or returned."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFDSTADDR \", \" SIOCSIFDSTADDR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the destination address of a point-to-point device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_dstaddr ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For compatibility, only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "addresses are accepted or returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the destination address is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFBRDADDR \", \" SIOCSIFBRDADDR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the broadcast address for a device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_brdaddr ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For compatibility, only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "addresses are accepted or returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the broadcast address is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFNETMASK \", \" SIOCSIFNETMASK"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the network mask for a device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_netmask ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For compatibility, only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "addresses are accepted or returned."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the network mask is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFMETRIC \", \" SIOCSIFMETRIC"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the metric of the device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_metric ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is currently not implemented; it sets"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_metric"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to 0 if you attempt to read it and returns"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EOPNOTSUPP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if you attempt to set it."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFMTU \", \" SIOCSIFMTU"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the MTU (Maximum Transfer Unit) of a device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_mtu ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the MTU is a privileged operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the MTU to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "too small values may cause kernel crashes."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFHWADDR \", \" SIOCSIFHWADDR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the hardware address of a device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_hwaddr ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The hardware address is specified in a struct"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sockaddr ."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sa_family"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains the ARPHRD_* device type,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sa_data"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the L2 hardware address starting from byte 0."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the hardware address is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCSIFHWBROADCAST"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Set the hardware broadcast address of a device from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_hwaddr ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFMAP \", \" SIOCSIFMAP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the interface's hardware parameters using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_map ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the parameters is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct ifmap {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned long   mem_start;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned long   mem_end;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned short  base_addr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char   irq;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char   dma;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    unsigned char   port;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The interpretation of the ifmap structure depends on the device driver"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the architecture."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCADDMULTI \", \" SIOCDELMULTI"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Add an address to or delete an address from the device's link layer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "multicast filters using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_hwaddr ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These are privileged operations."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See also"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " packet (7)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for an alternative."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFTXQLEN \", \" SIOCSIFTXQLEN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Get or set the transmit queue length of a device using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_qlen ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Setting the transmit queue length is a privileged operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCSIFNAME"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Changes the name of the interface specified in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_newname ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This is a privileged operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is allowed only when the interface"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is not up."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFCONF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Return a list of interface (transport layer) addresses."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This currently"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "means only addresses of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(IPv4) family for compatibility."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Unlike the others, this ioctl passes an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifconf"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct ifconf {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int                 ifc_len; /* size of buffer */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    union {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        char           *ifc_buf; /* buffer address */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        struct ifreq   *ifc_req; /* array of structures */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    };"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_req"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is NULL,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFCONF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "returns the necessary buffer size in bytes"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for receiving all available addresses in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_len ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Otherwise,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_req"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains a pointer to an array of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structures to be filled with all currently active L3 interface addresses."
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contains the size of the array in bytes."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Within each"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structure,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_name"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will receive the interface name, and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_addr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the address."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The actual number of bytes transferred is returned in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_len ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the size specified by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is insufficient to store all the addresses,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel will skip the exceeding ones and return success."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is no reliable way of detecting this condition once it has occurred."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is therefore recommended to either determine the necessary buffer size"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "beforehand by calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFCONF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_req"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set to NULL, or to retry the call with a bigger buffer whenever"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifc_len"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "upon return differs by less than"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sizeof(struct ifreq)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "from its original value."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If an error occurs accessing the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifconf"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifreq"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "structures,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EFAULT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be returned."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Slaving isn't supported in 2.2"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .TP"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .BR SIOCGIFSLAVE \", \" SIOCSIFSLAVE"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Get or set the slave device using"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .IR ifr_slave ."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Setting the slave device is a privileged operation."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" .PP"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME . add amateur radio stuff."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Most protocols support their own ioctls to configure protocol-specific"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interface options."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See the protocol man pages for a description."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For configuring IP addresses, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In addition, some devices support private ioctls."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These are not described here."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Strictly speaking,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIOCGIFCONF"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the other ioctls that accept or return only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " AF_INET"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "socket addresses,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are IP-specific and belong in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The names of interfaces with no addresses or that don't have the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " IFF_RUNNING"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag set can be found via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/net/dev ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Local IPv6 IP addresses can be found via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/net"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or via"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtnetlink (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " BUGS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "glibc 2.1 is missing the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ifr_newname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "macro in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " <net/if.h> ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Add the following to your program as a workaround:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#ifndef ifr_newname"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#define ifr_newname     ifr_ifru.ifru_slave"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "#endif"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ip (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " rtnetlink (7)"
+        }
+      ]
+    ]
+  }
+]

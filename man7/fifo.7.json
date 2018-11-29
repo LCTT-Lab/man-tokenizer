@@ -1,0 +1,683 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This man page is Copyright (C) 1999 Claus Fischer."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM_ONE_PARA)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to distribute possibly modified copies"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of this page provided the header is included verbatim,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and in case of nontrivial modification author and date"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of the modification is added to the header."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 990620 - page created - aeb@cwi.nl"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FIFO 7 2017-11-26 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fifo "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " first-in first-out special file, named pipe"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A FIFO special file (a named pipe) is similar to a pipe,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "except that it is accessed as part of the filesystem."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It can be opened by multiple processes for reading or"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "writing."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When processes are exchanging data via the FIFO,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel passes all data internally without writing it"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the filesystem."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Thus, the FIFO special file has no"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "contents on the filesystem; the filesystem entry merely"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "serves as a reference point so that processes can access"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the pipe using a name in the filesystem."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel maintains exactly one pipe object for each"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "FIFO special file that is opened by at least one process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The FIFO must be opened on both ends (reading and writing)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "before data can be passed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Normally, opening the FIFO blocks"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "until the other end is opened also."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A process can open a FIFO in nonblocking mode."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "case, opening for read-only succeeds even if no one has"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "opened on the write side yet and opening for write-only"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fails with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENXIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(no such device or address) unless the other"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "end has already been opened."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Under Linux, opening a FIFO for read and write will succeed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "both in blocking and nonblocking mode."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "POSIX leaves this"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "behavior undefined."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This can be used to open a FIFO for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "writing while there are no readers available."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that uses both ends of the connection in order to communicate"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with itself should be very careful to avoid deadlocks."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For details of the semantics of I/O on FIFOs, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pipe (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When a process tries to write to a FIFO that is not opened"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for read on the other side, the process is sent a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGPIPE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "FIFO special files can be created by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mkfifo (3),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and are indicated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"ls"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\ "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "l\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the file type "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "p"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(aq"
+        },
+        {
+          "type": "TEXT",
+          "content": "."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mkfifo (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pipe (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " signal (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " socketpair (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mkfifo (3),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " pipe (7)"
+        }
+      ]
+    ]
+  }
+]

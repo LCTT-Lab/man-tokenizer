@@ -1,0 +1,3457 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2013 by Michael Kerrisk <mtk.manpages@gmail.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" and Copyright (c) 2012 by Eric W. Biederman <ebiederm@xmission.com>"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PID_NAMESPACES 7 2017-11-26 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "pid_namespaces "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " overview of Linux PID namespaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For an overview of namespaces, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " namespaces (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "PID namespaces isolate the process ID number space,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "meaning that processes in different PID namespaces can have the same PID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "PID namespaces allow containers to provide functionality"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "such as suspending/resuming the set of processes in the container and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "migrating the container to a new host"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "while the processes inside the container maintain the same PIDs."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "PIDs in a new PID namespace start at 1,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "somewhat like a standalone system, and calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " vfork (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will produce processes with PIDs that are unique within the namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Use of PID namespaces requires a kernel that is configured with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFIG_PID_NS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "option."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The namespace \"init\" process"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The first process created in a new namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the process created using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWPID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag, or the first child created by a process after a call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "using the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWPID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag) has the PID 1, and is the \"init\" process for the namespace (see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " init (1))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This process becomes the parent of any child processes that are orphaned"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "because a process that resides in this PID namespace terminated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see below for further details)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the \"init\" process of a PID namespace terminates,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel terminates all of the processes in the namespace via a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGKILL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This behavior reflects the fact that the \"init\" process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is essential for the correct operation of a PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this case, a subsequent"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "into this PID namespace fail with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOMEM ;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is not possible to create a new processes in a PID namespace whose \"init\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process has terminated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Such scenarios can occur when, for example,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a process uses an open file descriptor for a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/ns/pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file corresponding to a process that was in a namespace to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "into that namespace after the \"init\" process has terminated."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Another possible scenario can occur after a call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2):"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the first child subsequently created by a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "terminates, then subsequent calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fork (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "fail with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENOMEM ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Only signals for which the \"init\" process has established a signal handler"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be sent to the \"init\" process by other members of the PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This restriction applies even to privileged processes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and prevents other members of the PID namespace from"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "accidentally killing the \"init\" process."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Likewise, a process in an ancestor namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "subject to the usual permission checks described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " kill (2)"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\(em"
+        },
+        {
+          "type": "TEXT",
+          "content": "send"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "signals to the \"init\" process of a child PID namespace only"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the \"init\" process has established a handler for that signal."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Within the handler, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " siginfo_t"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " si_pid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will be zero.)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGKILL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SIGSTOP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are treated exceptionally:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "these signals are forcibly delivered when sent from an ancestor PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Neither of these signals can be caught by the \"init\" process,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and so will result in the usual actions associated with those signals"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(respectively, terminating and stopping the process)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Starting with Linux 3.4, the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " reboot (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system call causes a signal to be sent to the namespace \"init\" process."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " reboot (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for more details."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Nesting PID namespaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "PID namespaces can be nested:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "each PID namespace has a parent,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "except for the initial (\"root\") PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The parent of a PID namespace is the PID namespace of the process that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "created the namespace using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "PID namespaces thus form a tree,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with all namespaces ultimately tracing their ancestry to the root namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since Linux 3.7,"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit f2302505775fd13ba93f034206f1e2a587017929"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" The kernel constant MAX_PID_NS_LEVEL"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel limits the maximum nesting depth for PID namespaces to 32."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A process is visible to other processes in its PID namespace,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and to the processes in each direct ancestor PID namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "going back to the root PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In this context, \"visible\" means that one process"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can be the target of operations by another process using"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "system calls that specify a process ID."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Conversely, the processes in a child PID namespace can't see"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "processes in the parent and further removed ancestor namespaces."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "More succinctly: a process can see (e.g., send signals with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " kill (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "set nice values with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setpriority (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "etc.) only processes contained in its own PID namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and in descendants of that namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A process has one process ID in each of the layers of the PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "namespace hierarchy in which is visible,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and walking back though each direct ancestor namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "through to the root PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "System calls that operate on process IDs always"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operate using the process ID that is visible in the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "PID namespace of the caller."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "A call to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "always returns the PID associated with the namespace in which"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the process was created."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Some processes in a PID namespace may have parents"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that are outside of the namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For example, the parent of the initial process in the namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " init (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process with PID 1) is necessarily in another namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Likewise, the direct children of a process that uses"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to cause its children to join a PID namespace are in a different"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "PID namespace from the caller of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getppid (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for such processes return 0."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "While processes may freely descend into child PID namespaces"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(e.g., using"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with a PID namespace file descriptor),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "they may not move in the other direction."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "That is to say, processes may not enter any ancestor namespaces"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(parent, grandparent, etc.)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Changing PID namespaces is a one-way operation."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " NS_GET_PARENT"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operation can be used to discover the parental relationship"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "between PID namespaces; see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ioctl_ns (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " setns(2) and unshare(2) semantics"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that specify a PID namespace file descriptor"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and calls to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWPID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag cause children subsequently created"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by the caller to be placed in a different PID namespace from the caller."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(Since Linux 4.12, that PID namespace is shown via the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]/ns/pid_for_children"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file, as described in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " namespaces (7).)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "These calls do not, however,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "change the PID namespace of the calling process,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "because doing so would change the caller's idea of its own PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(as reported by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " getpid ()),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "which would break many applications and libraries."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "To put things another way:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a process's PID namespace membership is determined when the process is created"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and cannot be changed thereafter."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Among other things, this means that the parental relationship"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "between processes mirrors the parental relationship between PID namespaces:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the parent of a process is either in the same namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or resides in the immediate parent PID namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A process may call"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "with the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWPID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag only once."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After it has performed this operation, its"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/PID/ns/pid_for_children"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "symbolic link will be empty until the first child is created in the namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Adoption of orphaned children"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When a child process becomes orphaned, it is reparented to the \"init\""
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process in the PID namespace of its parent"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(unless one of the nearer ancestors of the parent employed the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " prctl (2)"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " PR_SET_CHILD_SUBREAPER"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "command to mark itself as the reaper of orphaned descendant processes)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that because of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "semantics described above, this may be the \"init\" process in the PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "namespace that is the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " parent"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the child's PID namespace,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "rather than the \"init\" process in the child's own PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_INLINE",
+          "content": "\\\" Furthermore, by definition, the parent of the \"init\" process"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" of a PID namespace resides in the parent PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Compatibility of CLONE_NEWPID with other CLONE_* flags"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In current versions of Linux,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWPID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "can't be combined with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_THREAD ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Threads are required to be in the same PID namespace such that"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the threads in a process can send signals to each other."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Similarly, it must be possible to see all of the threads"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of a processes in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Additionally, if two threads were in different PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "namespaces, the process ID of the process sending a signal"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "could not be meaningfully encoded when a signal is sent"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(see the description of the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " siginfo_t"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "type in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " sigaction (2))."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Since this is computed when a signal is enqueued,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a signal queue shared by processes in multiple PID namespaces"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "would defeat that."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Note these restrictions were all introduced in"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" 8382fcac1b813ad0a4e68a838fc7ae93fa39eda0"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" when CLONE_NEWPID|CLONE_VM was disallowed"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "In earlier versions of Linux,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWPID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "was additionally disallowed (failing with the error"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL )"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in combination with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_SIGHAND"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" (restriction lifted in faf00da544045fdc1454f3b9e6d7f65c841de302)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "(before Linux 4.3) as well as"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" (restriction lifted in e79f525e99b04390ca4d2366309545a836c03bf1)"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_VM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(before Linux 3.12)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The changes that lifted these restrictions have also been ported to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "earlier stable kernels."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc and PID namespaces"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "A"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem shows (in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/[pid]"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "directories) only processes visible in the PID namespace"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the process that performed the mount, even if the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem is viewed from processes in other namespaces."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "After creating a new PID namespace,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is useful for the child to change its root directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and mount a new procfs instance at"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so that tools such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ps (1)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "work correctly."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "If a new mount namespace is simultaneously created by including"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CLONE_NEWNS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "argument of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then it isn't necessary to change the root directory:"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a new procfs instance can be mounted directly over"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "From a shell, the command to mount"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "$ mount -t proc proc /proc"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Calling"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " readlink (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "on the path"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/self"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "yields the process ID of the caller in the PID namespace of the procfs mount"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(i.e., the PID namespace of the process that mounted the procfs)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This can be useful for introspection purposes,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "when a process wants to discover its PID in other namespaces."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc files"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /proc/sys/kernel/ns_last_pid \" (since Linux 3.3)\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" commit b8f566b04d3cddd192cfd2418ae6d54ac6353792"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This file displays the last PID that was allocated in this PID namespace."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "When the next PID is allocated,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel will search for the lowest unallocated PID"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that is greater than this value,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and when this file is subsequently read it will show that PID."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This file is writable by a process that has the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " CAP_SYS_ADMIN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "capability inside its user namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" This ability is necessary to support checkpoint restore in user-space"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This makes it possible to determine the PID that is allocated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the next process that is created inside this PID namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" ============================================================"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Miscellaneous"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "When a process ID is passed over a UNIX domain socket to a"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "process in a different PID namespace (see the description of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " SCM_CREDENTIALS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unix (7)),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "it is translated into the corresponding PID value in"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the receiving process's PID namespace."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Namespaces are a Linux-specific feature."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " EXAMPLE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "See"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user_namespaces (7)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " clone (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " reboot (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " setns (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unshare (2),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " proc (5),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " capabilities (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " credentials (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mount_namespaces (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " namespaces (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " user_namespaces (7),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " switch_root (8)"
+        }
+      ]
+    ]
+  }
+]

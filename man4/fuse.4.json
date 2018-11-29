@@ -1,0 +1,5032 @@
+[
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Copyright (c) 2016 Julia Computing Inc, Keno Fischer"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Description based on include/uapi/fuse.h and code in fs/fuse"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_START(VERBATIM)"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to make and distribute verbatim copies of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual provided the copyright notice and this permission notice are"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" preserved on all copies."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Permission is granted to copy and distribute modified versions of this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual under the conditions for verbatim copying, provided that the"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" entire resulting derived work is distributed under the terms of a"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" permission notice identical to this one."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Since the Linux kernel and libraries are constantly changing, this"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" manual page may be incorrect or out-of-date.  The author(s) assume no"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" responsibility for errors or omissions, or for damages resulting from"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the use of the information contained herein.  The author(s) may not"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" have taken the same level of care in the production of this manual,"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" which is licensed free of charge, as they might when working"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" professionally."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" Formatted or processed versions of this manual, if unaccompanied by"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" the source, must acknowledge the copyright and authors of this work."
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" %%%LICENSE_END"
+        }
+      ],
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TH",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE 4 2018-02-02 \"Linux\" \"Linux Programmer's Manual\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NAME"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "fuse "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": " Filesystem in Userspace (FUSE) device"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SYNOPSIS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".nf",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " #include <linux/fuse.h>"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".fi",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " DESCRIPTION"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This device is the primary interface between the FUSE filesystem driver"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and a user-space process wishing to provide the filesystem (referred to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the rest of this manual page as the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " \"filesystem daemon\" )."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This manual page is intended for those"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "interested in understanding the kernel interface itself."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Those implementing a FUSE filesystem may wish to make use of"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a user-space library such as"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " libfuse"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that abstracts away the low-level interface."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "At its core, FUSE is a simple client-server protocol, in which the Linux"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "kernel is the client and the daemon is the server."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After obtaining a file descriptor for this device, the daemon may"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "requests from that file descriptor and is expected to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "back its replies."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is important to note that a file descriptor is"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "associated with a unique FUSE filesystem."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In particular, opening a second copy of this device,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "will not allow access to resources created"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "through the first file descriptor (and vice versa)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " The basic protocol"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Every message that is read by the daemon begins with a header described by"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the following structure:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_in_header {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t len;       /* Total length of the data,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           including this header */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t opcode;    /* The kind of operation (see below) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t unique;    /* A unique identifier for this request */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t nodeid;    /* ID of the filesystem object"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           being operated on */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t uid;       /* UID of the requesting process */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t gid;       /* GID of the requesting process */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t pid;       /* PID of the requesting process */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The header is followed by a variable-length data portion"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(which may be empty) specific to the requested operation"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(the requested operation is indicated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " opcode )."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The daemon should then process the request and if applicable send"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a reply (almost all operations require a reply; if they do not,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "this is documented below), by performing a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to the file descriptor."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "All replies must start with the following header:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_out_header {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t len;       /* Total length of data written to"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           the file descriptor */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    int32_t  error;     /* Any error that occurred (0 if none) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t unique;    /* The value from the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           corresponding request */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This header is also followed by (potentially empty) variable-sized"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "data depending on the executed request."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, if the reply is an error reply (i.e.,"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " error"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is set),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "then no further payload data should be sent, independent of the request."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\""
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SS",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " Exchanged messages"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This section should contain documentation for each of the messages"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the protocol."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This manual page is currently incomplete,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "so not all messages are documented."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "For each message, first the struct sent by the kernel is given,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "followed by a description of the semantics of the message."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_INIT"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_init_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t major;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t minor;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t max_readahead; /* Since protocol v7.6 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t flags;         /* Since protocol v7.6 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "This is the first request sent by the kernel to the daemon."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "It is used to negotiate the protocol version and other filesystem parameters."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Note that the protocol version may affect the layout of any structure"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "in the protocol (including this structure)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The daemon must thus remember the negotiated version"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and flags for each session."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "As of the writing of this man page,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the highest supported kernel protocol version is"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 7.26 ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "Users should be aware that the descriptions in this manual page"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may be incomplete or incorrect for older or more recent protocol versions."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The reply for this request has the following format:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_init_out {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t major;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t minor;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t max_readahead;   /* Since v7.6 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t flags;           /* Since v7.6; some flags bits"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                                 were introduced later */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint16_t max_background;  /* Since v7.13 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint16_t congestion_threshold;  /* Since v7.13 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t max_write;       /* Since v7.5 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t time_gran;       /* Since v7.6 */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t unused[9];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the major version supported by the kernel is larger than that supported"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by the daemon, the reply shall consist of only"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " uint32_t major"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "(following the usual header),"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicating the largest major version supported by the daemon."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel will then issue a new"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_INIT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "request conforming to the older version."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "In the reverse case, the daemon should"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "quietly fall back to the kernel's major version."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The negotiated minor version is considered to be the minimum"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "of the minor versions provided by the daemon and the kernel and"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "both parties should use the protocol corresponding to said minor version."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_GETATTR"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_getattr_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t getattr_flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t dummy;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t fh;      /* Set only if"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                         (getattr_flags & FUSE_GETATTR_FH)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The requested operation is to compute the attributes to be returned"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " stat (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and similar operations for the given file system object."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The object for which the attributes should be computed is indicated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "either by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " header"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nodeid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "or, if the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_GETATTR_FH"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "flag is set, by the file handle"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fh."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The latter case of operation is analogous to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fstat (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For performance reasons, these attributes may be cached in the kernel for"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "a specified duration of time."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "While the cache timeout has not been exceeded,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the attributes will be served from the cache and will not cause additional"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_GETATTR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "requests."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The computed attributes and the requested"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "cache timeout should then be returned in the following structure:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_attr_out {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    /* Attribute cache duration (seconds + nanoseconds) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t attr_valid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t attr_valid_nsec;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t dummy;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct fuse_attr {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint64_t ino;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint64_t size;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint64_t blocks;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint64_t atime;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint64_t mtime;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint64_t ctime;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t atimensec;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t mtimensec;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t ctimensec;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t mode;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t nlink;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t uid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t gid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t rdev;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t blksize;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "        uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    } attr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_ACCESS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_access_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t mask;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "If the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " default_permissions"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "mount options is not used, this request may be used for permissions checking."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No reply data is expected, but errors may be indicated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as usual by setting the"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " error"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field in the reply header (in particular, access denied errors"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "may be indicated by returning"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " "
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": "EACCES )."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_OPEN \" and \" FUSE_OPENDIR"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_open_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t flags;     /* The flags that were passed"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "                           to the open(2) */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t unused;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The requested operation is to open the node indicated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " header"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nodeid ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The exact semantics of what this means will depend on the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem being implemented."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, at the very least the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "filesystem should validate that the requested"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "are valid for the indicated resource and then send a reply with the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "following format:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_open_out {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t fh;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t open_flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fh"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field is an opaque identifier that the kernel will use to refer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "to this resource"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " open_flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "field is a bit mask of any number of the flags"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "that indicate properties of this file handle to the kernel:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 7"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " 18"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FOPEN_DIRECT_IO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Bypass page cache for this open file."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FOPEN_KEEP_CACHE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Don't invalidate the data cache on open."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FOPEN_NONSEEKABLE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The file is not seekable."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_READ \" and \" FUSE_READDIR"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_read_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t fh;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t offset;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t size;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t read_flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t lock_owner;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The requested action is to read up to"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " size"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "bytes of the file or directory, starting at"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " offset ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The bytes should be returned directly following the usual reply header."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_INTERRUPT"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_interrupt_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t unique;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The requested action is to cancel the pending operation indicated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unique ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This request requires no response."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, receipt of this message does"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "not by itself cancel the indicated operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The kernel will still expect a reply to said operation (e.g., an"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINTR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "error or a short read)."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "At most one"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_INTERRUPT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "request will be issued for a given operation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "After issuing said operation,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "the kernel will wait uninterruptibly for completion of the indicated request."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_LOOKUP"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Directly following the header is a filename to be looked up in the directory"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "indicated by"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " header"
+        },
+        {
+          "type": "ESCAPE",
+          "content": "\\-"
+        },
+        {
+          "type": "TEXT",
+          "content": ">nodeid ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The expected reply is of the form:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_entry_out {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t nodeid;            /* Inode ID */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t generation;        /* Inode generation */"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t entry_valid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t attr_valid;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t entry_valid_nsec;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t attr_valid_nsec;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct fuse_attr attr;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The combination of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " nodeid"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " generation"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "must be unique for the filesystem's lifetime."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The interpretation of timeouts and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " attr"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "is as for"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_GETATTR ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_FLUSH"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_flush_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t fh;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t unused;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t lock_owner;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The requested action is to flush any pending changes to the indicated"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file handle."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "No reply data is expected."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, an empty reply message"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "still needs to be issued once the flush operation is complete."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_RELEASE \" and \" FUSE_RELEASEDIR"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_release_in {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t fh;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t release_flags;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t lock_owner;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "These are the converse of"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_OPEN"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_OPENDIR"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "respectively."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The daemon may now free any resources associated with the"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file handle"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fh"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "as the kernel will no longer refer to it."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is no reply data associated with this request,"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "but a reply still needs to be issued once the request has"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "been completely processed."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_STATFS"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "This operation implements"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " statfs (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for this filesystem."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There is no input data associated with this request."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "The expected reply data has the following structure:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_kstatfs {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t blocks;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t bfree;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t bavail;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t files;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint64_t ffree;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t bsize;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t namelen;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t frsize;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t padding;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    uint32_t spare[6];"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "empty",
+    "lines": [
+      [
+
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "struct fuse_statfs_out {"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "    struct fuse_kstatfs st;"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "};"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "For the interpretation of these fields, see"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " statfs (2)."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " ERRORS"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " E2BIG"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Returned from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations when the kernel's request is too large for the provided buffer"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and the request was"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_SETXATTR ."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EINVAL"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Returned from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if validation of the reply failed."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Not all mistakes in replies will be caught by this validation."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "However, basic mistakes, such as short replies or an incorrect"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " unique"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "value, are detected."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Returned from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations when the kernel's request is too large for the provided buffer."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".IR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " Note :"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "There are various ways in which incorrect use of these interfaces can cause"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "operations on the provided filesystem's files and directories to fail with"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EIO ."
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Among the possible incorrect uses are:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RS",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " * 3"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "changing"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mode & S_IFMT"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "for an inode that has previously been reported to the kernel; or"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".IP",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " *"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "giving replies to the kernel that are shorter than what the kernel expected."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".RE",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " ENODEV"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Returned from"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " read (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "and"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " write (2)"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "if the FUSE filesystem was unmounted."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".TP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".B",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " EPERM"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "Returned from operations on a"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".I",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " /dev/fuse"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": "file descriptor that has not been mounted."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " CONFORMING TO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The FUSE filesystem is Linux-specific."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " NOTES"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": "The following messages are not yet documented in this manual page:"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".PP",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "comment",
+    "lines": [
+      [
+        {
+          "type": "COMMENT_BLOCK",
+          "content": ".\\\" FIXME: Document the following."
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " +4n"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "TEXT",
+          "content": ".EX"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_BATCH_FORGET"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_BMAP"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_CREATE"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_DESTROY"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_FALLOCATE"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_FORGET"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_FSYNC"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_FSYNCDIR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_GETLK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_GETXATTR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_IOCTL"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_LINK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_LISTXATTR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_LSEEK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_MKDIR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_MKNOD"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_NOTIFY_REPLY"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_POLL"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_READDIRPLUS"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_READLINK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_REMOVEXATTR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_RENAME"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_RENAME2"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_RMDIR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_SETATTR"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_SETLK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_SETLKW"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_SYMLINK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_UNLINK"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " FUSE_WRITE"
+        }
+      ],
+      [
+        {
+          "type": "TEXT",
+          "content": ".EE"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".in",
+          "translatable": false
+        }
+      ]
+    ]
+  },
+  {
+    "type": "macro",
+    "lines": [
+      [
+        {
+          "type": "MACRO_BLOCK",
+          "content": ".SH",
+          "translatable": true
+        },
+        {
+          "type": "TEXT",
+          "content": " SEE ALSO"
+        }
+      ]
+    ]
+  },
+  {
+    "type": "content",
+    "lines": [
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " fusermount (1),"
+        }
+      ],
+      [
+        {
+          "type": "MACRO_INLINE",
+          "content": ".BR",
+          "translatable": false
+        },
+        {
+          "type": "TEXT",
+          "content": " mount.fuse (8)"
+        }
+      ]
+    ]
+  }
+]
